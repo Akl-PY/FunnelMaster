@@ -38,3 +38,19 @@ Registro de decisiones arquitectónicas adoptadas para FunnelMaster.
 - **Contexto**: Los embudos manejan información de clientes, leads y métricas privadas de negocio.
 - **Decisión**: El repositorio no contiene información personal identificable (PII) en control de versiones. Todas las configuraciones y accesos a bases de datos se leen desde variables de entorno (`.env`) y schemas estructurados descritos en `DATA.md`.
 - **Consecuencias**: El repositorio es seguro para compartir, clonar o publicar sin riesgo de fuga de datos sensibles.
+
+---
+
+## ADR-005: Desacoplamiento Total de Nichos (Cero Hardcoding en Skills)
+
+- **Contexto**: Un framework de funnels no debe estar restringido a un solo producto, nicho o campaña específica. Si los nichos se hardcodean en el código, el sistema pierde escalabilidad y se rompe al cambiar de cliente o industria.
+- **Decisión**: Todas las skills y scripts son procesadores neutros. Los parámetros de nicho, nombres de ofertas, URLs de referencia y avatares se leen en tiempo de ejecución desde `DATA.md` (`active_niche`) o mediante argumentos de entrada.
+- **Consecuencias**: El sistema es 100% reutilizable para cualquier nicho (fitness, espiritualidad, finanzas, software, infoproductos B2B/B2C).
+
+---
+
+## ADR-006: Verificación de Mercado en Tiempo Real vs. Datos Sintéticos
+
+- **Contexto**: Los modelos de lenguaje tienden a inventar o extrapolar cifras ("este competidor tiene 80 anuncios activos y factura \$50k") si no se les impone una disciplina de validación empírica.
+- **Decisión**: Las skills de validación (`niche-discovery`, `offer-reengineer`) deben realizar inspecciones en vivo mediante `browser-automation`. Toda afirmación sobre volumen de anuncios o páginas de venta debe estar respaldada por datos extraídos del DOM real de Meta Ads Library y de los sitios objetivo.
+- **Consecuencias**: Cero decisiones de negocio basadas en alucinaciones o datos desactualizados. Se asegura que la oferta elegida sea verdaderamente ganadora en el mercado real.

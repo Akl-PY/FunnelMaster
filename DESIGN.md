@@ -27,6 +27,14 @@ Toda nueva skill agregada a `agents/skills/<nombre>` debe cumplir con:
 
 ---
 
+## Reglas de Diseño de Skills
+
+1. **Agnósticas de Nicho**: Una skill nunca asume un nicho fijo. Todos los parámetros se leen de `DATA.md` o por flags de ejecución (`--niche`, `--competitor`).
+2. **Empíricas (Cero Alucinación)**: La skill debe guiar al agente para extraer datos reales del DOM, red o APIs públicas. Prohibido usar datos inventados como ejemplos finales o registros persistidos.
+3. **Browser Automation First**: Si la skill requiere inspección de páginas web, formular los comandos llamando a `node agents/skills/browser-automation/scripts/browser.js`.
+
+---
+
 ## Convenciones de Nomenclatura
 
 - **Skills**: kebab-case (ej.: `browser-automation`, `funnel-auditor`).

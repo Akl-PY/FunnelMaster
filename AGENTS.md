@@ -42,3 +42,18 @@ Cualquier copy para landing pages, correos de seguimiento, DMs o secuencias de n
 
 ### 7 — Repositorio agnóstico de datos privados
 El código fuente y las plantillas no deben contener credenciales hardcodeadas, emails personales, tokens de API ni números de teléfono reales. Todo dato sensible se lee desde variables de entorno (`.env`) o almacenes de datos seguros.
+
+### 8 — Cero Hardcoding: Skills y Scripts 100% Agnósticos
+- **Prohibido hardcodear** nombres de nichos, productos, avatares, copys fijos o URLs de competidores dentro del código fuente de scripts o skills.
+- Todo dato operativo se lee y escribe dinámicamente desde [`DATA.md`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/DATA.md) (sección `active_niche` o entidades de datos) o vía argumentos CLI.
+- Las skills son motores de ejecución abstractos y universales reutilizables para cualquier industria o producto.
+
+### 9 — Búsquedas reales y verificables (Cero Datos Inventados)
+- El agente y las skills **nunca** inventan resultados de mercado, anunciantes ficticios, conteos falsos de anuncios ni métricas inventadas de SimilarWeb.
+- Toda validación de nicho u oferta debe realizarse mediante búsquedas reales y verificables.
+- Si una búsqueda en Meta Ads Library no arroja anuncios activos suficientes, el veredicto es 0 y se rechaza el nicho; bajo ningún concepto se alucinan competidores o cifras infladas.
+
+### 10 — Navegación web mandatoria vía `browser-automation`
+Toda tarea que requiera investigar anuncios, capturar páginas de la competencia o auditar funnels debe usar exclusivamente [`agents/skills/browser-automation`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/browser-automation).
+- Emplear modo `--headless` por defecto para velocidad.
+- Almacenar snapshots y dumps en directorios limpios o temporales sin ensuciar el árbol principal.

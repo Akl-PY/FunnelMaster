@@ -20,13 +20,34 @@ El proyecto sigue una arquitectura desacoplada basada en directrices claras:
 
 ## 🛠 Skills Disponibles
 
-### `niche-discovery` (`agents/skills/niche-discovery`)
-Motor de búsqueda y validación objetiva de nichos para el plan de 48 horas:
-- **Filtros de nicho**: Demanda, escalabilidad digital, tendencias de 180 días y conexión visceral.
-- **Auditoría de Meta Ads Library**: Medición del número de anuncios activos (3-10 comenzando, 10-30 validado, 30-100 escalado, +100 ganador absoluto).
-- **Persistencia automática**: Registro del nicho confirmado y su competidor modelado en `DATA.md`.
+### 1. `niche-discovery` (`agents/skills/niche-discovery`)
+Motor de búsqueda y validación objetiva de nichos para los **Pasos #1 y #4**:
+- Filtros de nicho: Demanda, escalabilidad digital, tendencias de 180 días y conexión visceral.
+- Auditoría de Meta Ads Library: Medición del número de anuncios activos (3-10 comenzando, 10-30 validado, 30-100 escalado, +100 ganador absoluto).
+- Persistencia automática: Registro del nicho confirmado y su competidor modelado en `DATA.md`.
 
-### `browser-automation` (`agents/skills/browser-automation`)
+### 2. `offer-reengineer` (`agents/skills/offer-reengineer`)
+Ingeniería inversa de ofertas para los **Pasos #5 y #6**:
+- Captura e inspección del DOM de la página de venta ganadora con `browser-automation`.
+- Desglose de promesa, avatar, gatillos y precios.
+- Creación de una versión superior con nuevo mecanismo único y pila de bonos irresistibles.
+
+### 3. `funnel-copywriter` (`agents/skills/funnel-copywriter`)
+Redactor de páginas de venta para el **Paso #7**:
+- Arquitectura completa de 11 bloques del *Hero's Journey*.
+- Estilo estricto Anti-LLM: tono conversacional, persuasivo y sin clichés de IA.
+
+### 4. `lovable-prompter` (`agents/skills/lovable-prompter`)
+Generador del *Perfect Prompt* para Lovable.dev para el **Paso #8**:
+- Especificación técnica milimétrica (paleta HEX, responsive, destellos, microanimaciones, mockups).
+- Inyección directa del copy de los 11 bloques para evitar páginas genéricas.
+
+### 5. `product-generator` (`agents/skills/product-generator`)
+Generador de contenidos del infoproducto digital para el **Paso #9**:
+- Estructura modular de contenidos y entregables basada en el mecanismo único.
+- Redacción completa de las guías y la pila de bonos complementarios.
+
+### 6. `browser-automation` (`agents/skills/browser-automation`)
 Motor de navegación y automatización web basado en Playwright CLI y wrappers en Node.js:
 - **Aislamiento de sesión**: Perfiles persistentes (`.browser-profile`) para retener cookies y sesiones autenticadas.
 - **Soporte Headless / Headed**: Ejecución eficiente en background y elevación a headed sólo ante bloqueos, logins o captchas.
