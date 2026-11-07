@@ -34,4 +34,10 @@ describe('Orchestrator Skill & Contingency Rules', () => {
     assert.match(content, /Fase 3/i);
     assert.match(content, /Fase 4/i);
   });
+
+  test('orchestrator must strictly mandate execution-first and forbid chat simulations', () => {
+    const content = fs.readFileSync(orchestratorMd, 'utf8');
+    assert.match(content, /Prohibido Simular/i);
+    assert.match(content, /Cero Simulaci[oó]n/i);
+  });
 });

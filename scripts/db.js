@@ -38,6 +38,10 @@ function getDbInstance() {
     }
     const { DatabaseSync } = require('node:sqlite');
     sqliteDb = new DatabaseSync(SQLITE_FILE);
+    try {
+      sqliteDb.exec('PRAGMA journal_mode = WAL;');
+      sqliteDb.exec('PRAGMA busy_timeout = 5000;');
+    } catch (e) {}
   }
   return { type: 'sqlite', client: sqliteDb };
 }

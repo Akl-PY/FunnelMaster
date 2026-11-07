@@ -78,3 +78,14 @@ Registro de decisiones arquitectónicas adoptadas para FunnelMaster.
      - SQLite (`data/funnel_master.db`) permite funcionamiento *out-of-the-box* sin instalar motores de BD ni requerir credenciales externas.
      - PostgreSQL disponible automáticamente si se provee la variable `DATABASE_URL` en `.env` (Neon, Supabase o Postgres local).
 - **Consecuencias**: Flexibilidad absoluta para el usuario, cero fricción inicial de configuración, y persistencia estructurada y auditable de todos los datos extraídos y generados.
+
+---
+
+## ADR-009: Prohibición de Respuestas Simuladas y Ejecución Fáctica de Scripts CLI
+
+- **Contexto**: Un problema recurrente con los asistentes de IA es que tienden a "simular" o redactar en prosa el resultado esperado de una tarea en lugar de ejecutar fácticamente los scripts de las skills en la terminal y persistir los datos reales en disco y base de datos.
+- **Decisión**:
+  1. Las skills no son meras guías de texto para el LLM; son **herramientas de software ejecutables por CLI** (`node agents/skills/<skill>/scripts/<action>.js`).
+  2. Todo avance de fase o tarea delegada a una skill exige la ejecución comprobable del script en la consola.
+  3. Queda prohibido responder al usuario con resultados no respaldados por una ejecución previa en terminal con código de salida 0 y persistencia verificable en `data/` o en `data/funnel_master.db`.
+- **Consecuencias**: Trazabilidad completa en `automation_logs`, consistencia del estado en disco y eliminación total de "alucinaciones de conversación" que no existen en el sistema.

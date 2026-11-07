@@ -47,7 +47,15 @@ Si el usuario prefiere una base de datos en la nube (Neon, Supabase o Postgres l
 
 ---
 
-## 3. Hoja de Ruta de Orquestación (Flujo de 48h)
+## 3. Mandato de Ejecución Fáctica por Terminal (Cero Simulación)
+
+> [!CAUTION]
+> **Prohibido Simular Ejecuciones en el Chat**:
+> El orquestador tiene estrictamente prohibido responder con texto improvisado o resultados que no provengan de la ejecución real de un script. Cada paso del embudo DEBE ser ejecutado mediante comandos de terminal reales (`run_command`), verificando código de salida 0 y persistencia física en `data/` y en la base de datos SQLite/Postgres antes de mostrar nada al usuario.
+
+---
+
+## 4. Hoja de Ruta de Orquestación (Flujo de 48h)
 
 El orquestador guía al usuario siguiendo esta secuencia estructurada:
 

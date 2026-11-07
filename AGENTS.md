@@ -63,3 +63,9 @@ Toda skill, script, generador o cambio de código **DEBE** contar con sus corres
 - Comando de ejecución: `npm test` o `node --test tests/**/*.test.js`.
 - Los tests deben verificar que no haya valores hardcodeados, que se respete la estructura de esquemas de `DATA.md`, y que los outputs cumplan con las reglas de negocio y calidad (como filtros Anti-LLM y sintaxis de componentes).
 - Queda prohibido asumir que el código funciona sin haber visto la salida exitosa del runner de tests.
+
+### 12 — Prohibición Absoluta de Respuestas Simuladas (Execution-First Mandate)
+- **Queda estrictamente prohibido simular o fingir la ejecución de una skill** redactando respuestas directamente en el chat sin haber ejecutado fácticamente el script correspondiente en la terminal.
+- Cada paso debe ejecutarse mediante su comando CLI real (ej.: `node agents/skills/<skill>/scripts/<script>.js`).
+- El agente solo puede responder al usuario **DESPUÉS** de haber ejecutado el comando, haber comprobado que terminó con código de salida 0, y haber confirmado que los datos se persistieron en la base de datos (`data/funnel_master.db`) o en el sistema de archivos (`data/`).
+- Toda violación a esta regla es considerada un fallo crítico de comportamiento del agente.
