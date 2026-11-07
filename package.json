@@ -4,6 +4,7 @@
   "description": "Framework autónomo operado por agentes para auditoría, automatización y optimización de funnels de conversión.",
   "main": "index.js",
   "scripts": {
+    "test": "node --test tests/*.test.js",
     "browser": "node agents/skills/browser-automation/scripts/browser.js",
     "browser:guides": "node agents/skills/browser-automation/scripts/browser.js guides",
     "browser:status": "node agents/skills/browser-automation/scripts/browser.js status"

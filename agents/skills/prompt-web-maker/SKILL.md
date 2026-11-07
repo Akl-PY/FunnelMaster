@@ -1,12 +1,12 @@
 ---
-name: lovable-prompter
-description: Genera el Perfect Prompt meticuloso y ultra-especificado para Lovable.dev o constructores web con IA, integrando el copy persuasivo, paleta cromática, microanimaciones, mockups y diseño responsive sin resultados genéricos (Paso #8 del plan de 48h).
+name: prompt-web-maker
+description: Genera el Perfect Prompt meticuloso y ultra-especificado para constructores web con IA (Lovable.dev, v0, Bolt), integrando el copy persuasivo, paleta cromática, microanimaciones, mockups y diseño responsive sin resultados genéricos (Paso #8 del plan de 48h).
 allowed-tools: read_file write_file
 ---
 
-# Lovable Prompter (Paso #8)
+# Prompt Web Maker (Paso #8)
 
-Esta skill toma el copy redactado por `funnel-copywriter` y la identidad definida en `DATA.md` para producir un **"Perfect Prompt" para Lovable (`lovable.dev`)**.
+Esta skill toma el copy redactado por `funnel-copywriter` y la identidad definida en `DATA.md` para producir un **"Perfect Prompt" ultra-específico para constructores web basados en IA (Lovable.dev, v0.dev, Bolt.new, etc.)**.
 
 El objetivo es eliminar páginas web genéricas, especificando al detalle:
 - Tokens de diseño (colores HEX primarios, fondos oscuros/claros, acentos de destello).
@@ -17,7 +17,7 @@ El objetivo es eliminar páginas web genéricas, especificando al detalle:
 
 ---
 
-## Estructura del Perfect Prompt para Lovable
+## Estructura del Perfect Prompt
 
 El prompt generado debe componerse de las siguientes secciones técnicas:
 
@@ -52,4 +52,4 @@ El prompt debe incluir el texto exacto redactado para cada uno de los 11 bloques
 ---
 
 ## Salida de la Skill
-El prompt final se guarda en `funnels/<niche-slug>/lovable-prompt.txt` listo para que el usuario o el agente lo copie y ejecute directamente en Lovable.
+El prompt final se guarda en `funnels/<niche-slug>/web-builder-prompt.txt` listo para que el usuario o el agente lo copie y ejecute directamente en el generador web deseado.

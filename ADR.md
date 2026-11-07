@@ -54,3 +54,11 @@ Registro de decisiones arquitectónicas adoptadas para FunnelMaster.
 - **Contexto**: Los modelos de lenguaje tienden a inventar o extrapolar cifras ("este competidor tiene 80 anuncios activos y factura \$50k") si no se les impone una disciplina de validación empírica.
 - **Decisión**: Las skills de validación (`niche-discovery`, `offer-reengineer`) deben realizar inspecciones en vivo mediante `browser-automation`. Toda afirmación sobre volumen de anuncios o páginas de venta debe estar respaldada por datos extraídos del DOM real de Meta Ads Library y de los sitios objetivo.
 - **Consecuencias**: Cero decisiones de negocio basadas en alucinaciones o datos desactualizados. Se asegura que la oferta elegida sea verdaderamente ganadora en el mercado real.
+
+---
+
+## ADR-007: Validación Obligatoria Mediante Tests Automatizados
+
+- **Contexto**: Los agentes autónomos generan código, copys, estructuras y configs que pueden romperse con modificaciones imprevistas o degradarse hacia alucinaciones y formatos inválidos.
+- **Decisión**: Integrar un framework de testing nativo en Node.js (`node:test`) sin dependencias pesadas. Todas las skills y generadores deben tener tests asociados (`tests/*.test.js`) que validen schemas, ausencia de hardcoding, reglas Anti-LLM y generación de páginas.
+- **Consecuencias**: Ciclo de feedback instantáneo y garantía de estabilidad sin intervención manual del usuario.

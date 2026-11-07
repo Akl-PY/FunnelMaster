@@ -57,3 +57,9 @@ El código fuente y las plantillas no deben contener credenciales hardcodeadas, 
 Toda tarea que requiera investigar anuncios, capturar páginas de la competencia o auditar funnels debe usar exclusivamente [`agents/skills/browser-automation`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/browser-automation).
 - Emplear modo `--headless` por defecto para velocidad.
 - Almacenar snapshots y dumps en directorios limpios o temporales sin ensuciar el árbol principal.
+
+### 11 — Ejecución Mandatoria de Tests (Test-Driven Validation)
+Toda skill, script, generador o cambio de código **DEBE** contar con sus correspondientes tests unitarios/de integración y el agente está obligado a **ejecutarlos y verificar que pasen al 100%** antes de dar la tarea por finalizada:
+- Comando de ejecución: `npm test` o `node --test tests/**/*.test.js`.
+- Los tests deben verificar que no haya valores hardcodeados, que se respete la estructura de esquemas de `DATA.md`, y que los outputs cumplan con las reglas de negocio y calidad (como filtros Anti-LLM y sintaxis de componentes).
+- Queda prohibido asumir que el código funciona sin haber visto la salida exitosa del runner de tests.

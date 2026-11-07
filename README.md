@@ -37,17 +37,23 @@ Redactor de páginas de venta para el **Paso #7**:
 - Arquitectura completa de 11 bloques del *Hero's Journey*.
 - Estilo estricto Anti-LLM: tono conversacional, persuasivo y sin clichés de IA.
 
-### 4. `lovable-prompter` (`agents/skills/lovable-prompter`)
-Generador del *Perfect Prompt* para Lovable.dev para el **Paso #8**:
+### 4. `prompt-web-maker` (`agents/skills/prompt-web-maker`)
+Generador del *Perfect Prompt* para Lovable, v0 o Bolt (Paso #8):
 - Especificación técnica milimétrica (paleta HEX, responsive, destellos, microanimaciones, mockups).
 - Inyección directa del copy de los 11 bloques para evitar páginas genéricas.
 
-### 5. `product-generator` (`agents/skills/product-generator`)
+### 5. `landing-builder` (`agents/skills/landing-builder`)
+Constructor de landings desde cero en `/funnel` con **Astro** o **Next.js**:
+- Arquitectura modular basada en los 11 bloques del Hero's Journey (`HeroSection`, `PainPoints`, `UniqueMechanism`, `PricingOffer`, etc.).
+- Preservación obligatoria de parámetros UTM hacia pasarelas de pago (Hotmart, Shopify, Stripe).
+- Enfoque Mobile-First radical y velocidad de carga ultrarrápida (Core Web Vitals).
+
+### 6. `product-generator` (`agents/skills/product-generator`)
 Generador de contenidos del infoproducto digital para el **Paso #9**:
 - Estructura modular de contenidos y entregables basada en el mecanismo único.
 - Redacción completa de las guías y la pila de bonos complementarios.
 
-### 6. `browser-automation` (`agents/skills/browser-automation`)
+### 7. `browser-automation` (`agents/skills/browser-automation`)
 Motor de navegación y automatización web basado en Playwright CLI y wrappers en Node.js:
 - **Aislamiento de sesión**: Perfiles persistentes (`.browser-profile`) para retener cookies y sesiones autenticadas.
 - **Soporte Headless / Headed**: Ejecución eficiente en background y elevación a headed sólo ante bloqueos, logins o captchas.
@@ -73,5 +79,9 @@ Motor de navegación y automatización web basado en Playwright CLI y wrappers e
    ```bash
    npm install -D playwright-cli
    ```
-3. **Ejecución vía agentes**:
+3. **Ejecutar Suite de Tests**:
+   ```bash
+   npm test
+   ```
+4. **Ejecución vía agentes**:
    Los agentes leen `AGENTS.md` antes de actuar y ejecutan las skills documentadas según la tarea asignada.
