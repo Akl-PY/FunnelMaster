@@ -69,20 +69,14 @@ Historial de ejecuciones de las skills y pruebas de navegación.
 
 ## 2. Nicho y Oferta Activa (`active_niche`)
 
-Almacena el nicho investigado y confirmado mediante la skill `niche-discovery`:
-
-| Clave | Tipo | Descripción |
-|---|---|---|
-| `niche_name` | TEXT | Nombre del nicho seleccionado (ej.: Estoicismo Aplicado, Pérdida de Grasa con Ayuno) |
-| `macro_niche` | TEXT | `Salud`, `Dinero`, `Relaciones`, `Mentalidad` |
-| `target_avatar` | TEXT | Descripción del comprador ideal y sus dolores |
-| `validation_status` | TEXT | `pending`, `validated`, `scaled`, `super_winner` |
-| `active_ads_count` | INTEGER | Número de anuncios activos encontrados en Meta Ads Library |
-| `competitor_name` | TEXT | Nombre del competidor modelado |
-| `competitor_landing_url`| TEXT | URL de la página de ventas del competidor para ingeniería inversa |
-| `created_at` | TIMESTAMP | Fecha de validación |
-
----
+- **Nicho Activo**: Salud Hormonal y Perimenopausia (+35/+40)
+- **Avatar Target**: Mujeres mayores de 35 años con fatiga, insomnio y niebla mental
+- **Dolor Principal**: Cambios metabólicos y hormonales inexplicables sin respuesta médica clara
+- **Volumen de Anuncios Activos**: ~28000 anuncios detectados en Meta Ads Library
+- **Veredicto**: Ganador Absoluto (+100 anuncios) (super_winner)
+- **Acción Estratégica**: Prioridad máxima: modelar de inmediato, factura +$100.000 USD/mes comprobables.
+- **Competidor / Landing de Referencia**: https://balancehormonal.com/protocolo-vsl
+- **Fecha de Validación**: 2026-11-07T19:19:53.014Z
 
 ## 3. Variables de Entorno (`.env`)
 
