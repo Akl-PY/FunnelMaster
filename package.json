@@ -1,0 +1,26 @@
+{
+  "name": "funnel-master",
+  "version": "0.1.0",
+  "description": "Framework autónomo operado por agentes para auditoría, automatización y optimización de funnels de conversión.",
+  "main": "index.js",
+  "scripts": {
+    "browser": "node agents/skills/browser-automation/scripts/browser.js",
+    "browser:guides": "node agents/skills/browser-automation/scripts/browser.js guides",
+    "browser:status": "node agents/skills/browser-automation/scripts/browser.js status"
+  },
+  "keywords": [
+    "funnels",
+    "ai",
+    "automation",
+    "playwright",
+    "skills",
+    "agents",
+    "lead-generation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/cli": "^0.1.22"
+  }
+}

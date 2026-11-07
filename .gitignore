@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment & credentials
+.env
+.env.*
+!.env.example
+
+# Browser automation & persistent profiles
+.browser-profile/
+.browser-profile-*/
+.browser-profile-temp/
+.browser-config.json
+.playwright-cli/
+.playwright-mcp/
+.playwright/
+
+# Cache, logs & temp files
+logs/
+*.log
+.tmp-*
+.tmp_*
+.DS_Store
+Thumbs.db
+
+# Agent state & local runtime
+.agents
+.assistant/
+.devin/
+.claude/
+.impeccable/
+data/runtime/
+uploads/
