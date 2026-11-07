@@ -90,7 +90,27 @@ npm run preview -- --port 3003
 
 Abre en tu navegador:
 - **Página de Ventas**: [http://localhost:3003](http://localhost:3003)
-- **Embudo Quiz**: [http://localhost:3003/quiz](http://localhost:3003/quiz)
+- **Embudo Quiz (Captura de Leads)**: [http://localhost:3003/quiz](http://localhost:3003/quiz)
+- **Página de Checkout con Order Bump**: [http://localhost:3003/checkout](http://localhost:3003/checkout)
+- **Panel de Control & Dashboard de Métricas**: [http://localhost:3003/dashboard](http://localhost:3003/dashboard)
+
+### Captura de Leads y Exportación
+Cada vez que un visitante completa el Quiz en `/quiz`, sus respuestas y datos se guardan en la base de datos SQLite. Puedes descargar todos tus prospectos en un archivo Excel/CSV con:
+```bash
+node scripts/export-leads.js
+```
+O descargarlo directamente desde el botón en el Dashboard web.
+
+---
+
+## 4. Compilación de tu Producto a PDF para Entrega Inmediata
+
+No necesitas abrir Canva ni herramientas de diseño para maquetar tu infoproducto y los 4 bonos:
+
+```bash
+npm run export:docs
+```
+Esto compilará todos los entregables en archivos HTML elegantes en `products/<nicho>/dist_html/`. Ábrelos en cualquier navegador y presiona `Ctrl + P` para guardarlos como PDF profesional listos para subir a Hotmart o Shopify.
 
 ### Prueba de Tracking UTM
 Si pruebas ingresar con parámetros de seguimiento, por ejemplo:

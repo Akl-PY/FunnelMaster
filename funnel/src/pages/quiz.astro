@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const checkoutUrl = "https://pay.hotmart.com/PROT21RESET";
+const checkoutUrl = "/checkout";
 ---
 <BaseLayout 
   title="Test de Diagnóstico Metabólico en 60 Segundos | Protocolo Reset Hormonal 21™"
@@ -222,6 +222,22 @@ const checkoutUrl = "https://pay.hotmart.com/PROT21RESET";
         params.forEach((val, key) => url.searchParams.set(key, val));
         cta.href = url.toString();
       }
+
+      // Enviar lead a la base de datos de FunnelMaster
+      try {
+        fetch('http://localhost:3004/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            score: totalScore,
+            utm_source: params.get('utm_source') || '',
+            utm_medium: params.get('utm_medium') || '',
+            utm_campaign: params.get('utm_campaign') || ''
+          })
+        }).catch(() => {});
+      } catch (e) {}
     };
   </script>
 </BaseLayout>

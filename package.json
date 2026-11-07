@@ -7,6 +7,7 @@
     "start": "node scripts/wizard.js",
     "wizard": "node scripts/wizard.js",
     "roas": "node scripts/simulate-roas.js",
+    "export:docs": "node scripts/export-docs.js",
     "test": "node --test --test-concurrency=1 tests/*.test.js",
     "db:init": "node -e \"require('./scripts/db.js').initDb(); console.log('Database initialized successfully.');\"",
     "browser": "node agents/skills/browser-automation/scripts/browser.js",

@@ -93,6 +93,20 @@ function initDb() {
         details_json TEXT,
         created_at TEXT DEFAULT CURRENT_TIMESTAMP
       );
+
+      CREATE TABLE IF NOT EXISTS leads (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        funnel_id INTEGER DEFAULT 1,
+        name TEXT,
+        email TEXT NOT NULL,
+        phone TEXT,
+        score INTEGER DEFAULT 0,
+        utm_source TEXT DEFAULT '',
+        utm_medium TEXT DEFAULT '',
+        utm_campaign TEXT DEFAULT '',
+        answers_json TEXT DEFAULT '{}',
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP
+      );
     `);
     return { success: true, driver: 'sqlite', file: SQLITE_FILE };
   } else {
@@ -194,6 +208,40 @@ function logAutomation(skillName, action, status, details = {}) {
   return null;
 }
 
+function saveLead(leadData) {
+  initDb();
+  const db = getDbInstance();
+  if (db.type === 'sqlite') {
+    const stmt = db.client.prepare(`
+      INSERT INTO leads (funnel_id, name, email, phone, score, utm_source, utm_medium, utm_campaign, answers_json)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+    const info = stmt.run(
+      leadData.funnel_id || leadData.funnelId || 1,
+      leadData.name || '',
+      leadData.email,
+      leadData.phone || '',
+      leadData.score || 0,
+      leadData.utm_source || leadData.utmSource || '',
+      leadData.utm_medium || leadData.utmMedium || '',
+      leadData.utm_campaign || leadData.utmCampaign || '',
+      typeof leadData.answers === 'object' ? JSON.stringify(leadData.answers) : (leadData.answers_json || '{}')
+    );
+    return { id: info.lastInsertRowid, ...leadData };
+  }
+  return null;
+}
+
+function getLeads(limit = 100) {
+  initDb();
+  const db = getDbInstance();
+  if (db.type === 'sqlite') {
+    const stmt = db.client.prepare('SELECT * FROM leads ORDER BY id DESC LIMIT ?');
+    return stmt.all(limit);
+  }
+  return [];
+}
+
 function closeDb() {
   if (sqliteDb) {
     sqliteDb.close();
@@ -213,6 +261,8 @@ module.exports = {
   saveOffer,
   getLatestOffer,
   logAutomation,
+  saveLead,
+  getLeads,
   closeDb,
   getDbInstance
 };

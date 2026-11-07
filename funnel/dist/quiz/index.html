@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="es" class="scroll-smooth bg-[#0B0F19] text-[#F8FAFC]"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Test de Diagnóstico Metabólico en 60 Segundos | Protocolo Reset Hormonal 21™</title><meta name="description" content="Descubre qué patrón hormonal está bloqueando tu energía y desinflama tu cuerpo."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/index.xYZsjAg-.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const n=new URLSearchParams(window.location.search),e=["utm_source","utm_medium","utm_campaign","utm_term","utm_content","src","sck"];n.toString()&&document.querySelectorAll("a.checkout-btn").forEach(r=>{const o=r,c=new URL(o.href,window.location.origin);n.forEach((a,t)=>{(t.startsWith("utm_")||e.includes(t))&&c.searchParams.set(t,a)}),o.href=c.toString()})});
+<!DOCTYPE html><html lang="es" class="scroll-smooth bg-[#0B0F19] text-[#F8FAFC]"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Test de Diagnóstico Metabólico en 60 Segundos | Protocolo Reset Hormonal 21™</title><meta name="description" content="Descubre qué patrón hormonal está bloqueando tu energía y desinflama tu cuerpo."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/checkout.D3CNzB31.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const n=new URLSearchParams(window.location.search),e=["utm_source","utm_medium","utm_campaign","utm_term","utm_content","src","sck"];n.toString()&&document.querySelectorAll("a.checkout-btn").forEach(r=>{const o=r,c=new URL(o.href,window.location.origin);n.forEach((a,t)=>{(t.startsWith("utm_")||e.includes(t))&&c.searchParams.set(t,a)}),o.href=c.toString()})});
 </script></head> <body class="font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-emerald-500 selection:text-white">  <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto flex flex-col justify-center"> <!-- Header --> <div class="text-center mb-8"> <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 rounded-full mb-3">
 Evaluación Confidencial de 60 Segundos
 </span> <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -63,7 +63,7 @@ Hola <span id="display-name" class="text-emerald-400"></span>, tu metabolismo es
 ❌ <strong>Por qué tus análisis salen "normales":</strong> Los laboratorios miden patología clínica, pero no la desincronización funcional propia de la perimenopausia.
 </p> <p class="text-emerald-300 font-semibold pt-2 border-t border-slate-700">
 ✓ <strong>Solución Inmediata Recomendada:</strong> Aplicar el Sistema de Sincronización Metabólica por Fases (SMPF)™ para drenar tu hígado en las primeras 48 horas y estabilizar tu insulina sin pasar hambre.
-</p> </div> <a id="result-cta" href="https://pay.hotmart.com/PROT21RESET" class="checkout-btn inline-block w-full py-4 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-extrabold text-lg transition duration-200 shadow-xl shadow-emerald-500/25">
+</p> </div> <a id="result-cta" href="/checkout" class="checkout-btn inline-block w-full py-4 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-extrabold text-lg transition duration-200 shadow-xl shadow-emerald-500/25">
 Quiero Descargar el Protocolo Reset Hormonal 21™ ($37 USD) →
 </a> <p class="text-xs text-slate-500 mt-3">
 Incluye los 4 Bonos de Implementación Inmediata · Garantía Total de 30 Días
@@ -106,5 +106,21 @@ Incluye los 4 Bonos de Implementación Inmediata · Garantía Total de 30 Días
         params.forEach((val, key) => url.searchParams.set(key, val));
         cta.href = url.toString();
       }
+
+      // Enviar lead a la base de datos de FunnelMaster
+      try {
+        fetch('http://localhost:3004/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            score: totalScore,
+            utm_source: params.get('utm_source') || '',
+            utm_medium: params.get('utm_medium') || '',
+            utm_campaign: params.get('utm_campaign') || ''
+          })
+        }).catch(() => {});
+      } catch (e) {}
     };
   </script>  </body></html>
