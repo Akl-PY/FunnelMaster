@@ -67,7 +67,24 @@ Historial de ejecuciones de las skills y pruebas de navegación.
 
 ---
 
-## 2. Variables de Entorno (`.env`)
+## 2. Nicho y Oferta Activa (`active_niche`)
+
+Almacena el nicho investigado y confirmado mediante la skill `niche-discovery`:
+
+| Clave | Tipo | Descripción |
+|---|---|---|
+| `niche_name` | TEXT | Nombre del nicho seleccionado (ej.: Estoicismo Aplicado, Pérdida de Grasa con Ayuno) |
+| `macro_niche` | TEXT | `Salud`, `Dinero`, `Relaciones`, `Mentalidad` |
+| `target_avatar` | TEXT | Descripción del comprador ideal y sus dolores |
+| `validation_status` | TEXT | `pending`, `validated`, `scaled`, `super_winner` |
+| `active_ads_count` | INTEGER | Número de anuncios activos encontrados en Meta Ads Library |
+| `competitor_name` | TEXT | Nombre del competidor modelado |
+| `competitor_landing_url`| TEXT | URL de la página de ventas del competidor para ingeniería inversa |
+| `created_at` | TIMESTAMP | Fecha de validación |
+
+---
+
+## 3. Variables de Entorno (`.env`)
 
 | Variable | Requerida | Propósito |
 |---|---|---|

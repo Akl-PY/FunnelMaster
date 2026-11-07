@@ -20,6 +20,12 @@ El proyecto sigue una arquitectura desacoplada basada en directrices claras:
 
 ## 🛠 Skills Disponibles
 
+### `niche-discovery` (`agents/skills/niche-discovery`)
+Motor de búsqueda y validación objetiva de nichos para el plan de 48 horas:
+- **Filtros de nicho**: Demanda, escalabilidad digital, tendencias de 180 días y conexión visceral.
+- **Auditoría de Meta Ads Library**: Medición del número de anuncios activos (3-10 comenzando, 10-30 validado, 30-100 escalado, +100 ganador absoluto).
+- **Persistencia automática**: Registro del nicho confirmado y su competidor modelado en `DATA.md`.
+
 ### `browser-automation` (`agents/skills/browser-automation`)
 Motor de navegación y automatización web basado en Playwright CLI y wrappers en Node.js:
 - **Aislamiento de sesión**: Perfiles persistentes (`.browser-profile`) para retener cookies y sesiones autenticadas.
