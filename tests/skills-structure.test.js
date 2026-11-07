@@ -12,7 +12,8 @@ describe('Skills Structure & Zero-Hardcoding Validation', () => {
     'funnel-copywriter',
     'prompt-web-maker',
     'product-generator',
-    'landing-builder'
+    'landing-builder',
+    'traffic-launcher'
   ];
 
   const skillsDir = path.join(__dirname, '..', 'agents', 'skills');
