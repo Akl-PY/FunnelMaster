@@ -53,21 +53,14 @@ function evaluateAdVolume(activeAdsCount) {
 }
 
 function validateNicheCriteria(nicheData) {
-  const requiredFields = ['nicheName', 'macroNiche', 'targetAvatar', 'corePain'];
+  const requiredFields = ['nicheName', 'targetAvatar', 'corePain'];
   for (const field of requiredFields) {
     if (!nicheData[field] || typeof nicheData[field] !== 'string' || !nicheData[field].trim()) {
       return { valid: false, error: `Missing or invalid required field: ${field}` };
     }
   }
 
-  const validMacroNiches = ['Salud', 'Dinero', 'Relaciones', 'Mentalidad'];
-  if (!validMacroNiches.includes(nicheData.macroNiche)) {
-    return {
-      valid: false,
-      error: `macroNiche must be one of: ${validMacroNiches.join(', ')}`
-    };
-  }
-
+  // 100% agnóstico: no hay lista cerrada de macronichos ni nichos permitidos
   return { valid: true, error: null };
 }
 

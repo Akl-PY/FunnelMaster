@@ -41,11 +41,14 @@ Registro de decisiones arquitectónicas adoptadas para FunnelMaster.
 
 ---
 
-## ADR-005: Desacoplamiento Total de Nichos (Cero Hardcoding en Skills)
+## ADR-005: Desacoplamiento Total de Nichos (Cero Hardcoding en Skills y Flujos)
 
-- **Contexto**: Un framework de funnels no debe estar restringido a un solo producto, nicho o campaña específica. Si los nichos se hardcodean en el código, el sistema pierde escalabilidad y se rompe al cambiar de cliente o industria.
-- **Decisión**: Todas las skills y scripts son procesadores neutros. Los parámetros de nicho, nombres de ofertas, URLs de referencia y avatares se leen en tiempo de ejecución desde `DATA.md` (`active_niche`) o mediante argumentos de entrada.
-- **Consecuencias**: El sistema es 100% reutilizable para cualquier nicho (fitness, espiritualidad, finanzas, software, infoproductos B2B/B2C).
+- **Contexto**: Un framework de funnels no debe estar restringido a un solo producto, nicho o campaña específica. Si los nichos se hardcodean en el código o si el agente fuerza al usuario a elegir entre opciones predeterminadas (ej. "elige entre A, B o C"), el sistema pierde adaptabilidad y viola el principio de descubrimiento empírico.
+- **Decisión**:
+  1. Todas las skills y scripts son procesadores neutros sin arrays ni enums de categorías fijas.
+  2. Queda terminantemente prohibido que el agente o el orquestador ofrezca menús fijos o categorías hardcodeadas. La investigación del Paso #1 debe ser siempre abierta, ejecutada contra fuentes reales de tendencias (Hotmart, Gumroad, Google Trends, TikTok) y devolver oportunidades empíricas basadas en datos.
+  3. Toda configuración de nicho seleccionado vive exclusivamente en la base de datos y en `DATA.md` (`active_niche`).
+- **Consecuencias**: El sistema es 100% universal para cualquier industria o producto imaginable, sin sesgos preconcebidos.
 
 ---
 

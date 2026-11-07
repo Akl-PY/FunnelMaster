@@ -18,11 +18,13 @@ Un nicho es candidato a evaluación solo si cumple con los siguientes **5 filtro
 2. **Tendencia comprobable (últimos 180 días)**: Crecimiento de interés en Google Trends, TikTok Creative Center, Hotmart o Amazon KDP.
 3. **Ticket promedio y monetización**: Posibilidad de vender un frontend de \$17 a \$97 USD con upsell o recurrencia.
 4. **Ángulo de entrada innovador**: Nichos con demanda insatisfecha o donde se pueda introducir un nuevo "mecanismo único".
-5. **Conexión emocional y visceral con el avatar**: Apunta a uno de los 4 grandes motores humanos:
-   - **Salud / Físico**: Pérdida de peso específica, energía, biohacking, recuperación.
-   - **Dinero / Carrera**: Monetización con IA, habilidades de alto valor, automatizaciones, trading sistemático.
-   - **Relaciones / Vínculos**: Citas, seducción, recuperación de pareja, comunicación asertiva.
-   - **Propósito / Mentalidad**: Estoicismo aplicado, claridad mental, superación de procrastinación, espiritualidad práctica.
+5. **Conexión emocional y visceral con el avatar**: Resuelve un dolor agudo, frustración o deseo urgente en cualquier industria o mercado (sin categorías cerradas ni listas predeterminadas).
+
+---
+
+## Prohibición Estricta de Opciones Hardcodeadas
+- El agente **NUNCA** presenta menús fijos ni cuestionarios cerrados con opciones predeterminadas (ej.: "elige A, B o C").
+- El agente **DEBE investigar el mercado en vivo**, descubrir tendencias reales y presentar una lista de nichos emergentes respaldada por datos empíricos de los últimos 180 días.
 
 ---
 
@@ -46,8 +48,8 @@ Para confirmar un nicho, se analiza la cantidad de **anuncios activos** que tien
 ## Flujo de Ejecución (Paso a Paso)
 
 ### Fase 1: Extracción y Brainstorming de Nichos
-- [ ] Ejecutar investigación de tendencias en los 4 macronichos (Salud, Dinero, Relaciones, Mentalidad).
-- [ ] Identificar 3 a 5 subnichos emergentes con su correspondiente **mecanismo o tendencia**.
+- [ ] Ejecutar investigación abierta de tendencias de mercado (Google Trends, TikTok Creative Center, Hotmart, Gumroad) sin categorías preconcebidas.
+- [ ] Entregar una lista curada de nichos emergentes con demanda comprobada en los últimos 180 días.
 - [ ] Definir el tipo de producto ideal para cada uno:
   - Guía / Blueprint / PDF accionable (\$17 - \$27 USD).
   - Mini-curso en video o VSL (\$37 - \$67 USD).

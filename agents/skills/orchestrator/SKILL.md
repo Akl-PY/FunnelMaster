@@ -53,8 +53,9 @@ El orquestador guía al usuario siguiendo esta secuencia estructurada:
 
 ### Fase 1: Selección y Validación de Nicho
 - [ ] Inicializar la base de datos (`scripts/db.js`).
-- [ ] Consultar al usuario qué macronicho desea explorar (Salud, Dinero, Relaciones, Mentalidad) o si ya cuenta con un competidor identificado.
-- [ ] Ejecutar [`niche-discovery`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/niche-discovery/SKILL.md) para auditar anunciantes en Meta Ads Library.
+- [ ] Ejecutar investigación de mercado en tiempo real sin opciones hardcodeadas ni menús preestablecidos.
+- [ ] Presentar lista curada de nichos emergentes descubiertos mediante datos de los últimos 180 días.
+- [ ] Ejecutar [`niche-discovery`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/niche-discovery/SKILL.md) para auditar anunciantes en vivo en Meta Ads Library mediante `browser-automation`.
 - [ ] Si los anuncios activos son $\ge 10$ (validado) o $+100$ (ganador absoluto), persistir el registro con `saveNiche()`.
 
 ### Fase 2: Ingeniería Inversa y Rediseño de Oferta

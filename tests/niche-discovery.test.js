@@ -39,26 +39,23 @@ describe('Niche Discovery & Validation Rules', () => {
     assert.match(result120.action, /\+\$100\.000/);
   });
 
-  test('Niche criteria validation must enforce required fields and valid macro-niche', () => {
+  test('Niche criteria validation must enforce required fields and accept any dynamic niche without hardcoded restrictions', () => {
     const valid = validateNicheCriteria({
-      nicheName: 'Cualquier Nicho Dinámico',
-      macroNiche: 'Dinero',
+      nicheName: 'Cualquier Nicho Dinámico Descubierto',
       targetAvatar: 'Profesional buscando automatizar',
       corePain: 'Falta de tiempo y ventas inconsistentes'
     });
     assert.strictEqual(valid.valid, true);
 
-    const invalidMacro = validateNicheCriteria({
-      nicheName: 'X',
-      macroNiche: 'CriptomonedasRandom',
-      targetAvatar: 'Y',
-      corePain: 'Z'
+    const validAnyIndustry = validateNicheCriteria({
+      nicheName: 'Apicultura Urbana de Precisión',
+      targetAvatar: 'Apicultores aficionados',
+      corePain: 'Pérdida de colmenas en invierno'
     });
-    assert.strictEqual(invalidMacro.valid, false);
+    assert.strictEqual(validAnyIndustry.valid, true);
 
     const missingField = validateNicheCriteria({
       nicheName: '',
-      macroNiche: 'Salud',
       targetAvatar: 'Y',
       corePain: 'Z'
     });
