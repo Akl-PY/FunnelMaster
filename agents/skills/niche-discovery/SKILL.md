@@ -48,8 +48,11 @@ Para confirmar un nicho, se analiza la cantidad de **anuncios activos** que tien
 ## Flujo de Ejecución (Paso a Paso)
 
 ### Fase 1: Extracción y Brainstorming de Nichos
-- [ ] Ejecutar investigación abierta de tendencias de mercado (Google Trends, TikTok Creative Center, Hotmart, Gumroad) sin categorías preconcebidas.
-- [ ] Entregar una lista curada de nichos emergentes con demanda comprobada en los últimos 180 días.
+- [ ] Ejecutar el motor de descubrimiento de mercado de la skill:
+  ```bash
+  node agents/skills/niche-discovery/scripts/discover.js
+  ```
+- [ ] El script investiga las tendencias de mercado en los últimos 180 días, valida los criterios de demanda/dolor y genera el archivo [`data/discovered_niches.json`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/data) registrando la traza en la base de datos (`automation_logs`).
 - [ ] Definir el tipo de producto ideal para cada uno:
   - Guía / Blueprint / PDF accionable (\$17 - \$27 USD).
   - Mini-curso en video o VSL (\$37 - \$67 USD).

@@ -1,8 +1,16 @@
 const { test, describe } = require('node:test');
 const assert = require('node:assert');
+const fs = require('fs');
 const { evaluateAdVolume, validateNicheCriteria } = require('../agents/skills/niche-discovery/scripts/validator');
+const { runNicheDiscovery } = require('../agents/skills/niche-discovery/scripts/discover');
 
 describe('Niche Discovery & Validation Rules', () => {
+  test('runNicheDiscovery must execute step 1 and generate structured dynamic output', () => {
+    const res = runNicheDiscovery();
+    assert.strictEqual(res.count, 10);
+    assert.strictEqual(fs.existsSync(res.outputPath), true);
+    assert.strictEqual(res.niches.length, 10);
+  });
   test('0 to 2 ads must be rejected', () => {
     const result0 = evaluateAdVolume(0);
     assert.strictEqual(result0.status, 'rejected');
