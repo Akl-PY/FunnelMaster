@@ -66,4 +66,21 @@ describe('Landing Builder (Astro / Next.js) Rules & Structure', () => {
     assert.strictEqual(finalUrl.includes('utm_campaign=retargeting_vsl'), true);
     assert.strictEqual(finalUrl.includes('unrelated_param'), false);
   });
+
+  test('Physical /funnel directory contains scaffolded Astro landing files', () => {
+    const funnelDir = path.join(__dirname, '..', 'funnel');
+    assert.strictEqual(fs.existsSync(funnelDir), true, '/funnel directory must exist');
+
+    const pkgPath = path.join(funnelDir, 'package.json');
+    assert.strictEqual(fs.existsSync(pkgPath), true, 'package.json must exist in /funnel');
+
+    const indexPath = path.join(funnelDir, 'src', 'pages', 'index.astro');
+    assert.strictEqual(fs.existsSync(indexPath), true, 'src/pages/index.astro must exist in /funnel');
+
+    const layoutPath = path.join(funnelDir, 'src', 'layouts', 'BaseLayout.astro');
+    assert.strictEqual(fs.existsSync(layoutPath), true, 'BaseLayout.astro must exist in /funnel');
+
+    const layoutContent = fs.readFileSync(layoutPath, 'utf8');
+    assert.match(layoutContent, /utm_/i, 'BaseLayout.astro must contain UTM parameter preservation script');
+  });
 });

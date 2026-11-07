@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import PainPoints from '../components/PainPoints.astro';
+import UniqueMechanism from '../components/UniqueMechanism.astro';
+import PricingOffer from '../components/PricingOffer.astro';
+
+const checkoutUrl = "https://pay.hotmart.com/PROT21RESET";
+---
+<BaseLayout 
+  title="Protocolo Reset Hormonal 21™ | Recupera tu Energía y Desinflama tu Cuerpo"
+  description="Desactiva la inflamación silenciosa y reactiva tu energía en 21 días sin dietas de hambre ni pastillas.">
+  <main class="min-h-screen">
+    <HeroSection 
+      kicker="Para mujeres de 35 a 55 años"
+      headline="Desactiva la Inflamación Silenciosa y Recupera tu Energía en 21 Días"
+      subheadline="El método basado en el Sistema de Sincronización Metabólica por Fases (SMPF)™ para despertar descansada y desinflamar tu vientre desde casa."
+      ctaText="Quiero Acceder al Protocolo Hoy por $37 USD"
+      checkoutUrl={checkoutUrl}
+    />
+    <PainPoints />
+    <UniqueMechanism />
+    <PricingOffer price={37} totalValue={237} checkoutUrl={checkoutUrl} />
+  </main>
+</BaseLayout>

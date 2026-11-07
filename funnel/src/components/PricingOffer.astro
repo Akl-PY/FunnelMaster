@@ -1,0 +1,28 @@
+---
+interface Props {
+  price: number;
+  totalValue: number;
+  checkoutUrl: string;
+}
+const { price, totalValue, checkoutUrl } = Astro.props;
+---
+<section class="py-16 px-4 sm:px-6 max-w-3xl mx-auto text-center" id="oferta">
+  <div class="bg-gradient-to-b from-[#131B2E] to-[#0E1524] border-2 border-emerald-500/30 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+    <div class="inline-block px-4 py-1 mb-4 text-xs font-bold uppercase rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
+      OFERTA EXCLUSIVA DE LANZAMIENTO
+    </div>
+    <h3 class="text-2xl sm:text-4xl font-extrabold text-white mb-2">Protocolo Reset Hormonal 21™</h3>
+    <p class="text-slate-400 mb-6">Acceso completo de por vida + 4 Bonos de Aceleración</p>
+    
+    <div class="text-slate-400 line-through text-lg mb-1">Valor Total: ${totalValue} USD</div>
+    <div class="text-5xl sm:text-6xl font-extrabold text-emerald-400 mb-6">${price} <span class="text-xl text-slate-300 font-normal">USD</span></div>
+    
+    <a href={checkoutUrl} class="checkout-btn block w-full py-4 text-xl font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-[0_0_35px_rgba(16,185,129,0.4)] transition-all duration-300 hover:scale-[1.02]">
+      ACCEDER AL PROTOCOLO COMPLETO AHORA
+    </a>
+    
+    <div class="mt-8 pt-8 border-t border-slate-700/60 flex items-center justify-center gap-3 text-slate-300 text-sm">
+      <span>🛡️ Garantía Incondicional de 30 Días · Riesgo 100% nuestro</span>
+    </div>
+  </div>
+</section>
