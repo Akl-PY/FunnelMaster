@@ -17,6 +17,7 @@ package-lock.json
 .playwright/
 
 # Cache, logs & temp files
+data/*.db
 logs/
 *.log
 .tmp-*

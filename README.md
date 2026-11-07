@@ -20,6 +20,13 @@ El proyecto sigue una arquitectura desacoplada basada en directrices claras:
 
 ## 🛠 Skills Disponibles
 
+### 0. `orchestrator` (`agents/skills/orchestrator`) 🎯
+**Skill maestra y punto de entrada principal**:
+- Guía al usuario paso a paso en el plan de 48 horas.
+- Coordina la ejecución y transición entre todas las skills especializadas.
+- Gestiona la persistencia automática en base de datos (**SQLite** local por defecto o **PostgreSQL** con `DATABASE_URL`).
+- Asiste al usuario en la resolución de desafíos o captchas instruyendo el uso del subagente nativo `/browser`.
+
 ### 1. `niche-discovery` (`agents/skills/niche-discovery`)
 Motor de búsqueda y validación objetiva de nichos para los **Pasos #1 y #4**:
 - Filtros de nicho: Demanda, escalabilidad digital, tendencias de 180 días y conexión visceral.

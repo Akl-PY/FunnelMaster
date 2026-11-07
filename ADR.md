@@ -62,3 +62,16 @@ Registro de decisiones arquitectónicas adoptadas para FunnelMaster.
 - **Contexto**: Los agentes autónomos generan código, copys, estructuras y configs que pueden romperse con modificaciones imprevistas o degradarse hacia alucinaciones y formatos inválidos.
 - **Decisión**: Integrar un framework de testing nativo en Node.js (`node:test`) sin dependencias pesadas. Todas las skills y generadores deben tener tests asociados (`tests/*.test.js`) que validen schemas, ausencia de hardcoding, reglas Anti-LLM y generación de páginas.
 - **Consecuencias**: Ciclo de feedback instantáneo y garantía de estabilidad sin intervención manual del usuario.
+
+---
+
+## ADR-008: Orquestación Multi-Agente (Antigravity, Codex, LLMs) y Persistencia Dual (SQLite / PostgreSQL)
+
+- **Contexto**: El flujo de 11 pasos involucra múltiples fases interdisciplinarias (investigación de mercado, ingeniería inversa, copywriting, codificación web y creación de producto). Operar cada skill de forma aislada puede confundir al usuario o requerir demasiada coordinación manual. Además, la persistencia de datos debe ser inmediata tanto en local sin configuración como en servidores de producción.
+- **Decisión**:
+  1. **Skill Orquestadora Central (`orchestrator`)**: Un agente maestro coordina la secuencia de 48h, guía al usuario paso a paso y delega en las skills especializadas. Compatible nativamente con **Google Antigravity**, **OpenAI Codex**, Claude Code y entornos de desarrollo agentic.
+  2. **Subagente `/browser` en Antigravity**: Cuando las restricciones del Terminal Sandbox de Antigravity impiden abrir navegadores visuales (`--headed`) directamente desde el shell, el orquestador instruye el uso del subagente nativo `/browser` para interactuar con captchas y navegación autenticada.
+  3. **Persistencia Dual (SQLite por defecto + PostgreSQL opcional)**:
+     - SQLite (`data/funnel_master.db`) permite funcionamiento *out-of-the-box* sin instalar motores de BD ni requerir credenciales externas.
+     - PostgreSQL disponible automáticamente si se provee la variable `DATABASE_URL` en `.env` (Neon, Supabase o Postgres local).
+- **Consecuencias**: Flexibilidad absoluta para el usuario, cero fricción inicial de configuración, y persistencia estructurada y auditable de todos los datos extraídos y generados.

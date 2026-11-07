@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node --test tests/*.test.js",
+    "db:init": "node -e \"require('./scripts/db.js').initDb(); console.log('Database initialized successfully.');\"",
     "browser": "node agents/skills/browser-automation/scripts/browser.js",
     "browser:guides": "node agents/skills/browser-automation/scripts/browser.js guides",
     "browser:status": "node agents/skills/browser-automation/scripts/browser.js status"

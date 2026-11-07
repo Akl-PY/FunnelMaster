@@ -5,6 +5,7 @@ const path = require('path');
 
 describe('Skills Structure & Zero-Hardcoding Validation', () => {
   const requiredSkills = [
+    'orchestrator',
     'browser-automation',
     'niche-discovery',
     'offer-reengineer',
