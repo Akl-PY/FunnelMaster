@@ -78,6 +78,20 @@ Historial de ejecuciones de las skills y pruebas de navegación.
 - **Competidor / Landing de Referencia**: https://balancehormonal.com/protocolo-vsl
 - **Fecha de Validación**: 2026-11-07T19:19:53.014Z
 
+
+## 2.1 Oferta Rediseñada Activa (`active_offer`)
+
+- **Producto**: Protocolo Reset Hormonal 21™
+- **Nueva Promesa Transformadora**: Desactiva la inflamación silenciosa y reactiva tu energía en 21 días sin pasar hambre ni medicación innecesaria
+- **Mecanismo Único**: Sistema de Sincronización Metabólica por Fases (SMPF)™
+- **Precio Frontend**: $37 USD (Valor total acumulado: $237 USD - Descuento del 84%)
+- **Garantía Incondicional**: 30 días de riesgo cero
+- **Pila de Bonos**:
+  1. **Guía Rápida SOS: Eliminador de Sofocos e Insomnio Nocturno** (Valor: $29 USD) — Victoria rápida en las primeras 48 horas para dormir 7 horas continuas.
+  2. **Recetario Antiinflamatorio de 15 Minutos para Mujeres Ocupadas** (Valor: $37 USD) — Elimina la fricción de cocinar; 30 comidas fáciles de preparar.
+  3. **Calculadora de Balance Glucémico & Lista de Supermercado Anti-Niebla** (Valor: $27 USD) — Evita picos de insulina y quita la ansiedad de picotear entre comidas.
+  4. **Checklist de Análisis Clínicos: Qué pedirle a tu médico y cómo interpretarlo** (Valor: $47 USD) — Empodera a la mujer ante su consulta médica con preguntas específicas.
+
 ## 3. Variables de Entorno (`.env`)
 
 | Variable | Requerida | Propósito |

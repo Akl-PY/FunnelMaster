@@ -1,0 +1,64 @@
+{
+  "niche": {
+    "id": 6,
+    "niche_name": "Salud Hormonal y Perimenopausia (+35/+40)",
+    "macro_niche": "Salud y Bienestar",
+    "target_avatar": "Mujeres mayores de 35 años con fatiga, insomnio y niebla mental",
+    "core_pain": "Cambios metabólicos y hormonales inexplicables sin respuesta médica clara",
+    "active_ads_count": 28000,
+    "validation_status": "super_winner",
+    "competitor_url": "https://balancehormonal.com/protocolo-vsl",
+    "created_at": "2026-11-07 19:19:52"
+  },
+  "competitorAnalysis": {
+    "detectedPromise": "Desinflama tu abdomen y equilibra tus hormonas en la menopausia",
+    "weaknesses": [
+      "Enfoque teórico genérico sobre hormonas sin plan de acción diario",
+      "Falta de un mecanismo único memorable (parece una dieta keto más)",
+      "Bonos débiles o inexistentes (cero aceleradores de implementación)",
+      "Poco anclaje de valor antes del precio"
+    ]
+  },
+  "reengineeredOffer": {
+    "niche_id": 6,
+    "product_name": "Protocolo Reset Hormonal 21™",
+    "main_promise": "Desactiva la inflamación silenciosa y reactiva tu energía en 21 días sin pasar hambre ni medicación innecesaria",
+    "unique_mechanism": "Sistema de Sincronización Metabólica por Fases (SMPF)™",
+    "target_avatar": "Mujeres mayores de 35 años con fatiga, insomnio y niebla mental",
+    "price_usd": 37,
+    "guarantee_days": 30,
+    "bonuses": [
+      {
+        "id": 1,
+        "name": "Guía Rápida SOS: Eliminador de Sofocos e Insomnio Nocturno",
+        "perceivedValue": 29,
+        "purpose": "Victoria rápida en las primeras 48 horas para dormir 7 horas continuas."
+      },
+      {
+        "id": 2,
+        "name": "Recetario Antiinflamatorio de 15 Minutos para Mujeres Ocupadas",
+        "perceivedValue": 37,
+        "purpose": "Elimina la fricción de cocinar; 30 comidas fáciles de preparar."
+      },
+      {
+        "id": 3,
+        "name": "Calculadora de Balance Glucémico & Lista de Supermercado Anti-Niebla",
+        "perceivedValue": 27,
+        "purpose": "Evita picos de insulina y quita la ansiedad de picotear entre comidas."
+      },
+      {
+        "id": 4,
+        "name": "Checklist de Análisis Clínicos: Qué pedirle a tu médico y cómo interpretarlo",
+        "perceivedValue": 47,
+        "purpose": "Empodera a la mujer ante su consulta médica con preguntas específicas."
+      }
+    ],
+    "value_stack": {
+      "core_product_perceived": 97,
+      "total_bonuses_perceived": 140,
+      "total_perceived_value": 237,
+      "offer_price": 37,
+      "discount_percentage": 84
+    }
+  }
+}

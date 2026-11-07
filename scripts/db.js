@@ -133,6 +133,16 @@ function getLatestNiche() {
   return null;
 }
 
+function getActiveValidatedNiche() {
+  initDb();
+  const db = getDbInstance();
+  if (db.type === 'sqlite') {
+    const stmt = db.client.prepare("SELECT * FROM niches WHERE validation_status IN ('super_winner', 'validated', 'scaled') ORDER BY id DESC LIMIT 1");
+    return stmt.get();
+  }
+  return null;
+}
+
 function saveOffer(offerData) {
   initDb();
   const db = getDbInstance();
@@ -199,6 +209,7 @@ module.exports = {
   initDb,
   saveNiche,
   getLatestNiche,
+  getActiveValidatedNiche,
   saveOffer,
   getLatestOffer,
   logAutomation,

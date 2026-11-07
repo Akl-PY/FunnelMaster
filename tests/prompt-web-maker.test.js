@@ -45,4 +45,12 @@ describe('Prompt Web Maker & Offer Re-Engineer Validation', () => {
     assert.strictEqual(result.offerPrice, 47);
     assert.strictEqual(result.bonusesCount, 3);
   });
+
+  test('runOfferReengineering must execute and output structured offer data', () => {
+    const { runOfferReengineering } = require('../agents/skills/offer-reengineer/scripts/reengineer');
+    const res = runOfferReengineering();
+    assert.strictEqual(typeof res.savedOffer.id, 'number');
+    assert.strictEqual(res.reengineeredOffer.bonuses.length, 4);
+    assert.strictEqual(typeof res.reengineeredOffer.unique_mechanism, 'string');
+  });
 });
