@@ -69,3 +69,9 @@ Toda skill, script, generador o cambio de código **DEBE** contar con sus corres
 - Cada paso debe ejecutarse mediante su comando CLI real (ej.: `node agents/skills/<skill>/scripts/<script>.js`).
 - El agente solo puede responder al usuario **DESPUÉS** de haber ejecutado el comando, haber comprobado que terminó con código de salida 0, y haber confirmado que los datos se persistieron en la base de datos (`data/funnel_master.db`) o en el sistema de archivos (`data/`).
 - Toda violación a esta regla es considerada un fallo crítico de comportamiento del agente.
+
+### 13 — Modelo Operativo: Agente Host Nativo (Antigravity, Codex, Cursor, Claude Code)
+- **El Agente de IA es la aplicación anfitriona** (Google Antigravity, OpenAI Codex, Claude Code o Cursor). El repositorio **NO** debe implementar llamadas HTTP a APIs de LLM externas (`OPENAI_API_KEY`, `GEMINI_API_KEY`, etc.) dentro de sus scripts para funcionar.
+- El usuario opera el sistema interactuando directamente en el chat de Antigravity/Codex.
+- El agente anfitrión lee `AGENTS.md`, consulta las skills en `.agents/skills/` y ejecuta los scripts de soporte (compiladores, base de datos SQLite, Playwright) a través de sus herramientas de terminal (`run_command`), escribiendo y editando los archivos del embudo.
+- Los comandos como `npm start` o `npm run dev` son únicamente utilitarios para levantar los servidores web de previsualización (puerto 3003) y endpoints locales de persistencia, **nunca** agentes conversacionales alternativos por terminal.

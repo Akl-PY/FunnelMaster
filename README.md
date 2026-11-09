@@ -1,8 +1,50 @@
 # FunnelMaster 🚀
+### Framework Autónomo de Embudos de Conversión Operado por Agentes de IA
 
-Sistema autónomo impulsado por agentes de IA para el análisis, construcción, auditoría y automatización de embudos de conversión (funnels), captación de leads y validación de flujos comerciales.
+**FunnelMaster** es un entorno de trabajo concebido para ser operado directamente por **Agentes de IA de nueva generación** (Google Antigravity, OpenAI Codex, Claude Code, Cursor, Devin).
 
-El repositorio está diseñado para ser operado directamente por agentes de codificación (Antigravity, Claude Code, Devin, etc.) mediante **Skills** ejecutables, interfaces CLI y perfiles de automatización.
+> [!IMPORTANT]
+> **Modelo Operativo (Zero External API Keys)**:
+> Este repositorio **NO requiere claves de API externas** (`OPENAI_API_KEY`, etc.) ni ejecuta chatbots aislados en terminal. La Inteligencia Artificial es la propia aplicación anfitriona (Antigravity o Codex) en la que abres este proyecto.
+> 
+> El Agente de tu IDE lee `AGENTS.md`, descubre automáticamente las skills en `.agents/skills/`, y tú lo diriges hablando en el chat del editor. El agente ejecuta las herramientas de terminal (`run_command`), audita competidores con Playwright, redacta los copys, compila las páginas en Astro y persiste el estado en `DATA.md` y SQLite.
+
+---
+
+## 🎯 Cómo Operar el Repositorio con Antigravity / Codex
+
+Abre este repositorio en tu aplicación de agentes (Antigravity, Codex o Cursor) y pídele al Agente en el chat lo que necesitas:
+
+| Qué le dices al Agente en el Chat | Qué hace el Agente autónomamente |
+| :--- | :--- |
+| *"Agente, ejecuta el Paso 1 y descubre 5 nichos ganadores"* | Ejecuta `niche-discovery/scripts/discover.js` y analiza tendencias reales de 180 días. |
+| *"Audita este nicho en Meta Ads Library"* | Abre Playwright en headless, cuenta anunciantes activos y valida el volumen. |
+| *"Rediseña la oferta para [mi producto/nicho]"* | Ejecuta `offer-reengineer`, inventa el mecanismo único y crea la pila de 4 bonos. |
+| *"Redacta el copy de 11 bloques sin clichés de IA"* | Ejecuta `funnel-copywriter`, valida con el linter Anti-LLM y genera `copy.md`. |
+| *"Construye la Landing Page y el Quiz en Astro"* | Ejecuta `landing-builder` y crea la web interactiva con preservación de UTMs en `/funnel`. |
+| *"Genera los contenidos del infoproducto y los bonos"* | Ejecuta `product-generator` y redacta la guía maestra de 21 días y los 4 bonos en `products/`. |
+| *"Genera la estrategia de checkout, ManyChat y Meta Ads"* | Ejecuta `traffic-launcher`, `dm-automation` y `cart-recovery`. |
+| *"Ejecuta todo el embudo de 48h de punta a punta para [nicho]"* | El agente orquesta los 11 pasos de forma secuencial sin detenerse. |
+
+---
+
+## 💻 Visualización y Servidores de Desarrollo
+
+Para ver y probar las páginas generadas en tu navegador:
+
+```bash
+# Levantar la Landing Page, Quiz, Checkout y Dashboard (Puerto 3003)
+npm run dev
+
+# Exportar todos los productos y bonos a HTML imprimibles / PDF
+npm run export:docs
+
+# Simular métricas unitarias y ROAS estimado
+npm run roas
+
+# Ejecutar la batería de tests automatizados (100% obligatorio)
+npm test
+```
 
 ---
 

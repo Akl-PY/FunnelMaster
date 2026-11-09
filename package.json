@@ -4,9 +4,10 @@
   "description": "Framework autónomo operado por agentes para auditoría, automatización y optimización de funnels de conversión.",
   "main": "index.js",
   "scripts": {
-    "start": "node scripts/agent.js",
-    "agent": "node scripts/agent.js",
+    "start": "node scripts/wizard.js",
     "wizard": "node scripts/wizard.js",
+    "dev": "cd funnel && npx astro preview --port 3003 --host",
+    "dashboard": "node scripts/api-server.js",
     "roas": "node scripts/simulate-roas.js",
     "export:docs": "node scripts/export-docs.js",
     "test": "node --test --test-concurrency=1 tests/*.test.js",

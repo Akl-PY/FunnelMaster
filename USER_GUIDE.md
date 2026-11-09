@@ -1,45 +1,73 @@
 # Manual de Uso de FunnelMaster 🚀
-### Cómo crear, validar y lanzar un embudo de ventas en menos de 48 horas con IA
+### Cómo operar el framework con Google Antigravity, OpenAI Codex, Claude Code o Cursor
 
-Este documento está diseñado para que cualquier persona (creador, copywriter, media buyer o dueño de negocio) pueda utilizar **FunnelMaster** de principio a fin, incluso sin conocimientos avanzados de programación.
+**FunnelMaster** es un repositorio agentic-first: está diseñado específicamente para que lo abras dentro de tu **asistente de codificación de IA (Antigravity, Codex, Cursor o Claude Code)** y le delegues la creación, validación y lanzamiento de tus embudos conversando con él.
+
+> [!IMPORTANT]
+> **Sin claves de API externas ni configuraciones complejas**:
+> No tienes que configurar OpenAI ni Gemini por tu cuenta ni instalar bots en la terminal. El agente de IA es el propio asistente de tu entorno (Antigravity / Codex), que ya cuenta con herramientas para leer archivos, navegar por la web, ejecutar comandos en terminal y redactar copys de alta conversión.
 
 ---
 
-## 1. Inicio Rápido (En 1 Solo Comando)
+## 1. Flujo de Trabajo en el Chat de Antigravity / Codex
 
-Clona o abre este repositorio en tu terminal y ejecuta:
+Simplemente abre esta carpeta en tu editor y escribe en el chat lo que deseas que el Agente haga:
+
+### Paso 1: Descubrimiento y Validación de Nicho
+> **Tú en el chat**:  
+> *"Agente, investiga y valida 3 nichos emergentes escalables para el mercado hispano."*
+- El Agente ejecutará `agents/skills/niche-discovery`, consultará Meta Ads Library con Playwright y te presentará los datos reales de anunciantes activos.
+
+### Paso 2: Rediseño de Oferta y Mecanismo Único
+> **Tú en el chat**:  
+> *"Rediseña la oferta para [mi nicho o el nicho ganador]: define la nueva promesa visceral, un mecanismo único memorable y 4 bonos irresistibles."*
+- El Agente ejecutará `agents/skills/offer-reengineer`, persistirá la oferta en `data/funnel_master.db` y actualizará `DATA.md`.
+
+### Paso 3: Redacción del Copy de 11 Bloques (Hero's Journey)
+> **Tú en el chat**:  
+> *"Redacta el copy completo de la página de ventas aplicando la regla Anti-LLM."*
+- El Agente ejecutará `agents/skills/funnel-copywriter`, pasará el linter para evitar clichés de IA y guardará `copy.md`.
+
+### Paso 4: Construcción de la Landing y el Quiz
+> **Tú en el chat**:  
+> *"Construye la landing en Astro con Tailwind, preservación de UTMs y agrega el quiz interactivo de diagnóstico."*
+- El Agente compilará los componentes en `/funnel/src/pages/` (`index.astro`, `quiz.astro`, `checkout.astro`, `dashboard.astro`).
+
+### Paso 5: Creación del Infoproducto y Campaña Publicitaria
+> **Tú en el chat**:  
+> *"Genera la guía maestra del producto, los 4 bonos terminados, los guiones de video UGC para Meta Ads y la secuencia de 5 emails."*
+- El Agente generará todos los entregables en `products/`, `traffic/`, `content/` y compilará los HTMLs imprimibles listos para subir a Hotmart o Shopify.
+
+### Ejecución Todo-en-Uno (El Plan de 48 Horas)
+> **Tú en el chat**:  
+> *"Agente, ejecuta el plan completo de 48 horas de punta a punta para [Nicho/Idea]."*
+- El agente orquestará todos los pasos de forma secuencial sin detenerse hasta dejar el embudo terminado.
+
+---
+
+## 2. Visualización Local en el Navegador
+
+Cuando quieras ver el resultado visual de tu embudo en vivo, solo ejecuta en tu terminal:
 
 ```bash
-npm start
-```
-*(O también: `npm run wizard`)*
-
-Aparecerá el menú interactivo de FunnelMaster:
-
-```text
-╔══════════════════════════════════════════════════════════════╗
-║                    FUNNELMASTER CLI 🚀                       ║
-║        Framework de Generación Rápida de Embudos con IA      ║
-╚══════════════════════════════════════════════════════════════╝
-
-Selecciona una opción:
-
-  [1]  Investigar y Auditar Nicho en Meta Ads (Pasos #1-#4)
-  [2]  Rediseñar Oferta, Mecanismo Único y Bonos (Pasos #5-#6)
-  [3]  Generar Copy Persuasivo de 11 Bloques (Paso #7)
-  [4]  Generar Perfect Prompt para Lovable/v0 (Paso #8A)
-  [5]  Construir Landing Page y Quiz en Astro (Paso #8B)
-  [6]  Crear Contenido del Infoproducto y 4 Bonos (Paso #9)
-  [7]  Generar Setup de Checkout y Campaña Meta Ads (Pasos #10-#11)
-  [8]  Generar Contenido Orgánico y Secuencia de Email
-  [9]  Generar Flujos ManyChat y Recuperación por WhatsApp
-  [10] Simular Métricas Financieras, AOV y ROAS
-  
-  [11] ⚡ EJECUTAR PIPELINE COMPLETO DE PUNTA A PUNTA (1-Click)
-  [0]  Salir
+npm run dev
 ```
 
-> **Consejo Pro**: Si seleccionas la opción **[11]**, el sistema ejecutará todo el embudo automáticamente de forma secuencial.
+Y abre en tu navegador:
+- **Página de Ventas**: [http://localhost:3003](http://localhost:3003)
+- **Embudo Quiz**: [http://localhost:3003/quiz](http://localhost:3003/quiz)
+- **Checkout con Order Bump Reactivo**: [http://localhost:3003/checkout](http://localhost:3003/checkout)
+- **Panel de Control / Dashboard**: [http://localhost:3003/dashboard](http://localhost:3003/dashboard)
+
+---
+
+## 3. Comandos de Soporte y Utilidades
+
+El proyecto incluye scripts que tanto tú como el Agente pueden ejecutar en cualquier momento:
+
+- `npm run export:docs`: Compila todos los entregables (`master-guide.md` y los 4 bonos) a HTML imprimible para guardarlos como PDF en 1 clic.
+- `npm run roas`: Simula los Unit Economics, AOV y el retorno publicitario proyectado.
+- `npm test`: Ejecuta la suite de 68 pruebas automatizadas para verificar que todo esté en regla antes de lanzar.
 
 ---
 
