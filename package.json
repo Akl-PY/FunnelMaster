@@ -4,7 +4,8 @@
   "description": "Framework autónomo operado por agentes para auditoría, automatización y optimización de funnels de conversión.",
   "main": "index.js",
   "scripts": {
-    "start": "node scripts/wizard.js",
+    "start": "node scripts/agent.js",
+    "agent": "node scripts/agent.js",
     "wizard": "node scripts/wizard.js",
     "roas": "node scripts/simulate-roas.js",
     "export:docs": "node scripts/export-docs.js",

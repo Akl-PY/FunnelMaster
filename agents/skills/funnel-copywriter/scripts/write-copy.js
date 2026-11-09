@@ -24,7 +24,19 @@ function generateFunnelCopy() {
     throw new Error('No active offer found. Run offer-reengineer first.');
   }
 
-  const slug = 'salud-hormonal-21';
+  const productName = offer.product_name || 'Protocolo Reset Hormonal 21™';
+  const mainPromise = offer.main_promise || 'Desactiva la inflamación silenciosa y reactiva tu energía en 21 días';
+  const uniqueMech = offer.unique_mechanism || 'Sistema de Sincronización Metabólica por Fases (SMPF)™';
+  const targetAvatar = offer.target_avatar || 'Personas que buscan transformar su energía y bienestar';
+  const price = offer.price_usd || 37;
+
+  const slug = (productName.includes('Hormonal') ? 'salud-hormonal-21' : productName)
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
+
   const funnelsDir = path.join(__dirname, '..', '..', '..', '..', 'funnels', slug);
   if (!fs.existsSync(funnelsDir)) {
     fs.mkdirSync(funnelsDir, { recursive: true });

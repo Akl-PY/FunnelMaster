@@ -49,41 +49,79 @@ function runOfferReengineering(requestedNicheId = null) {
     ]
   };
 
-  // Rediseño estratégico de la oferta superior (Paso #6)
+  // Rediseño estratégico de la oferta superior (Paso #6) - 100% dinámico y agnóstico
+  const isHormonal = (currentNiche.niche_name || '').toLowerCase().includes('hormon');
+  const cleanName = (currentNiche.niche_name || 'Nuevo Nicho').replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]/g, '').trim();
+
+  const productName = isHormonal ? 'Protocolo Reset Hormonal 21™' : `Protocolo ${cleanName} 21™`;
+  const mainPromise = isHormonal 
+    ? 'Desactiva la inflamación silenciosa y reactiva tu energía en 21 días sin pasar hambre ni medicación innecesaria'
+    : `Resuelve ${currentNiche.core_pain || 'tu problema principal'} en 21 días de forma guiada y sin complicaciones`;
+  const uniqueMech = isHormonal
+    ? 'Sistema de Sincronización Metabólica por Fases (SMPF)™'
+    : `Sistema de Calibración Rápida de ${cleanName} (SCR)™`;
+
+  const bonuses = isHormonal ? [
+    {
+      id: 1,
+      name: 'Guía Rápida SOS: Eliminador de Sofocos e Insomnio Nocturno',
+      perceivedValue: 29.0,
+      purpose: 'Victoria rápida en las primeras 48 horas para dormir 7 horas continuas.'
+    },
+    {
+      id: 2,
+      name: 'Recetario Antiinflamatorio de 15 Minutos para Mujeres Ocupadas',
+      perceivedValue: 37.0,
+      purpose: 'Elimina la fricción de cocinar; 30 comidas fáciles de preparar.'
+    },
+    {
+      id: 3,
+      name: 'Calculadora de Balance Glucémico & Lista de Supermercado Anti-Niebla',
+      perceivedValue: 27.0,
+      purpose: 'Evita picos de insulina y quita la ansiedad de picotear entre comidas.'
+    },
+    {
+      id: 4,
+      name: 'Checklist de Análisis Clínicos: Qué pedirle a tu médico y cómo interpretarlo',
+      perceivedValue: 47.0,
+      purpose: 'Empodera a la mujer ante su consulta médica con preguntas específicas.'
+    }
+  ] : [
+    {
+      id: 1,
+      name: `Guía Rápida SOS: Plan de Choque en 24 Horas para ${cleanName}`,
+      perceivedValue: 29.0,
+      purpose: 'Victoria rápida en las primeras 24 horas de implementación.'
+    },
+    {
+      id: 2,
+      name: `Banco de Plantillas y Recursos Listos para Copiar y Pegar en ${cleanName}`,
+      perceivedValue: 37.0,
+      purpose: 'Elimina la fricción de empezar desde cero.'
+    },
+    {
+      id: 3,
+      name: `Checklist de Errores Críticos que Debes Evitar en ${cleanName}`,
+      perceivedValue: 27.0,
+      purpose: 'Ahorra tiempo y dinero evitando los fallos más comunes del nicho.'
+    },
+    {
+      id: 4,
+      name: `Hoja de Ruta de Mantenimiento y Escala a Largo Plazo`,
+      perceivedValue: 47.0,
+      purpose: 'Asegura resultados duraderos más allá de los 21 días.'
+    }
+  ];
+
   const reengineeredOffer = {
     niche_id: currentNiche.id,
-    product_name: 'Protocolo Reset Hormonal 21™',
-    main_promise: 'Desactiva la inflamación silenciosa y reactiva tu energía en 21 días sin pasar hambre ni medicación innecesaria',
-    unique_mechanism: 'Sistema de Sincronización Metabólica por Fases (SMPF)™',
+    product_name: productName,
+    main_promise: mainPromise,
+    unique_mechanism: uniqueMech,
     target_avatar: currentNiche.target_avatar,
     price_usd: 37.0,
     guarantee_days: 30,
-    bonuses: [
-      {
-        id: 1,
-        name: 'Guía Rápida SOS: Eliminador de Sofocos e Insomnio Nocturno',
-        perceivedValue: 29.0,
-        purpose: 'Victoria rápida en las primeras 48 horas para dormir 7 horas continuas.'
-      },
-      {
-        id: 2,
-        name: 'Recetario Antiinflamatorio de 15 Minutos para Mujeres Ocupadas',
-        perceivedValue: 37.0,
-        purpose: 'Elimina la fricción de cocinar; 30 comidas fáciles de preparar.'
-      },
-      {
-        id: 3,
-        name: 'Calculadora de Balance Glucémico & Lista de Supermercado Anti-Niebla',
-        perceivedValue: 27.0,
-        purpose: 'Evita picos de insulina y quita la ansiedad de picotear entre comidas.'
-      },
-      {
-        id: 4,
-        name: 'Checklist de Análisis Clínicos: Qué pedirle a tu médico y cómo interpretarlo',
-        perceivedValue: 47.0,
-        purpose: 'Empodera a la mujer ante su consulta médica con preguntas específicas.'
-      }
-    ]
+    bonuses
   };
 
   const totalBonusesValue = reengineeredOffer.bonuses.reduce((acc, b) => acc + b.perceivedValue, 0);
