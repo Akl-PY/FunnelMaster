@@ -38,10 +38,21 @@ Simplemente abre esta carpeta en tu editor y escribe en el chat lo que deseas qu
 > *"Genera la guía maestra del producto, los 4 bonos terminados, los guiones de video UGC para Meta Ads y la secuencia de 5 emails."*
 - El Agente generará todos los entregables en `products/`, `traffic/`, `content/` y compilará los HTMLs imprimibles listos para subir a Hotmart o Shopify.
 
+### Paso 6: Despliegue Asistido a Producción en Vercel con `/browser`
+> **Tú en el chat**:  
+> *"Agente, acompáñame a subir mi embudo a Vercel para dejarlo en vivo con HTTPS."*
+- El Agente te invitará a activar el comando:  
+  👉 **/browser**
+- A través del subagente `/browser`, el Agente abre Chromium y te acompaña paso a paso en pantalla:
+  1. Te guía para crear tu cuenta gratuita o iniciar sesión en [Vercel](https://vercel.com/signup) con GitHub o Google.
+  2. Despliega el proyecto de `/funnel` en modo producción (`npx vercel --cwd funnel --prod`) o vinculando tu repositorio de GitHub.
+  3. Verifica la URL pública HTTPS generada (ej: `https://tu-embudo.vercel.app`).
+  4. Comprueba en vivo que el Quiz interactivo, el Checkout con Order Bump y la captura de leads respondan al 100%.
+
 ### Ejecución Todo-en-Uno (El Plan de 48 Horas)
 > **Tú en el chat**:  
 > *"Agente, ejecuta el plan completo de 48 horas de punta a punta para [Nicho/Idea]."*
-- El agente orquestará todos los pasos de forma secuencial sin detenerse hasta dejar el embudo terminado.
+- El agente orquestará todos los pasos de forma secuencial sin detenerse hasta dejar el embudo terminado y listo para desplegar.
 
 ---
 

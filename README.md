@@ -24,7 +24,20 @@ Abre este repositorio en tu aplicación de agentes (Antigravity, Codex o Cursor)
 | *"Construye la Landing Page y el Quiz en Astro"* | Ejecuta `landing-builder` y crea la web interactiva con preservación de UTMs en `/funnel`. |
 | *"Genera los contenidos del infoproducto y los bonos"* | Ejecuta `product-generator` y redacta la guía maestra de 21 días y los 4 bonos en `products/`. |
 | *"Genera la estrategia de checkout, ManyChat y Meta Ads"* | Ejecuta `traffic-launcher`, `dm-automation` y `cart-recovery`. |
-| *"Ejecuta todo el embudo de 48h de punta a punta para [nicho]"* | El agente orquesta los 11 pasos de forma secuencial sin detenerse. |
+| *"Acompáñame a subir mi embudo a Vercel"* | Te invita a usar **/browser**, abre Vercel, asiste en la creación de cuenta/login, ejecuta el despliegue de `/funnel` y valida tu URL pública HTTPS. |
+| *"Ejecuta todo el embudo de 48h de punta a punta para [nicho]"* | El agente orquesta los 11 pasos y el despliegue de forma secuencial sin detenerse. |
+
+---
+
+## 🚀 Despliegue Asistido a Producción en Vercel con `/browser`
+
+Una vez construido el embudo en `/funnel`, el Agente no te deja solo con el código en tu máquina:
+1. El Agente te invita proactivamente a activar el comando:  
+   👉 **/browser**
+2. Se abre Chromium controlado por el Agente para navegar a `https://vercel.com/signup`.
+3. Creas tu cuenta o inicias sesión con GitHub/Google (respetando tu privacidad y contraseñas mediante el protocolo de barrera humana).
+4. El Agente despliega el proyecto `/funnel` a Vercel (`npx vercel --cwd funnel` o vinculando tu repositorio).
+5. El Agente valida que la URL en vivo con HTTPS funcione correctamente con el Quiz y el Checkout, y te entrega el enlace final listo para recibir pauta publicitaria.
 
 ---
 

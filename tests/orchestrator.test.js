@@ -40,4 +40,11 @@ describe('Orchestrator Skill & Contingency Rules', () => {
     assert.match(content, /Prohibido Simular/i);
     assert.match(content, /Cero Simulaci[oó]n/i);
   });
+
+  test('orchestrator must mandate guided Vercel deployment with /browser', () => {
+    const content = fs.readFileSync(orchestratorMd, 'utf8');
+    assert.match(content, /Fase 5/i);
+    assert.match(content, /Vercel/i);
+    assert.match(content, /\/browser/);
+  });
 });

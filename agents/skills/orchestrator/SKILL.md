@@ -37,13 +37,18 @@ Si el usuario prefiere una base de datos en la nube (Neon, Supabase o Postgres l
 
 ---
 
-## 2. Protocolo de Contingencia de Navegador (`/browser`)
+## 2. Protocolo de Navegador Guiado, Sandbox y Contingencias (`/browser`)
 
 > [!IMPORTANT]
-> **Aislamiento de Terminal Sandbox**: Si al ejecutar navegaciones el navegador en modo visual (`--headed`) no aparece en pantalla (debido a las restricciones de renderizado GUI dentro del sandbox de Antigravity), el orquestador **DEBE** instruir de inmediato al usuario:
-> 1. Activar el comando especial:  
+> **Aislamiento de Terminal Sandbox y Subagente `/browser` para Acompañamiento Visual y Despliegues**:
+> Si al ejecutar navegaciones el navegador en modo visual (`--headed`) no aparece en pantalla (debido a las restricciones de renderizado GUI dentro del sandbox de Antigravity), o para asistir en despliegues a producción en Vercel, el orquestador cuenta con el subagente nativo de navegación visual de Antigravity. El orquestador **DEBE invitar proactivamente al usuario a utilizar `/browser`** en dos momentos cruciales:
+> 
+> 1. **Acompañamiento en Despliegue en Vercel (Producción)**:  
+>    Para crear la cuenta en Vercel, iniciar sesión, conectar el repositorio y dejar el embudo publicado en internet con HTTPS sin fricciones técnicas.
+> 2. **Superación de Barreras Humanas, Cloudflare y Captchas**:  
+>    Si al inspeccionar páginas protegidas por Cloudflare o requerir autenticación manual el navegador headless queda bloqueado en el sandbox, el orquestador instruye al usuario a activar:
 >    👉 **/browser**
-> 2. Esto invoca el subagente nativo de Chrome DevTools integrado en Antigravity para interactuar con páginas protegidas por Cloudflare, realizar logins manuales o superar captchas de forma visual.
+>    Esto permite interactuar visualmente con la página, resolver captchas o completar formularios respetando la privacidad del usuario.
 
 ---
 
@@ -82,6 +87,16 @@ El orquestador guía al usuario siguiendo esta secuencia estructurada:
 - [ ] **Opción A (Código Propio)**: Invocar [`landing-builder`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/landing-builder/SKILL.md) para generar la landing en `/funnel` con Astro/Next.js y preservación de UTMs.
 - [ ] **Opción B (Generador con IA)**: Invocar [`prompt-web-maker`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/prompt-web-maker/SKILL.md) para entregar el *Perfect Prompt* a Lovable, v0 o Bolt.
 - [ ] Invocar [`product-generator`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/product-generator/SKILL.md) para redactar el infoproducto y los entregables de los bonos.
+
+### Fase 5: Despliegue Asistido a Producción en Vercel con `/browser`
+- [ ] Invitar proactivamente al usuario a publicar su embudo en la nube con Vercel.
+- [ ] Instruir o invocar el comando especial:
+  👉 **/browser**
+- [ ] Acompañar visualmente al usuario:
+  1. Abrir `https://vercel.com/signup` en el navegador para registro o login con GitHub/Google.
+  2. Ejecutar el despliegue del proyecto `/funnel` mediante Vercel CLI (`npx vercel --cwd funnel`) o vinculación de repositorio.
+  3. Verificar la URL pública HTTPS generada y comprobar que el Quiz, Checkout y preservación de UTMs funcionen en producción.
+  4. Entregar el enlace público final al usuario listo para recibir tráfico de Meta Ads.
 
 ---
 

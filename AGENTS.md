@@ -75,3 +75,10 @@ Toda skill, script, generador o cambio de código **DEBE** contar con sus corres
 - El usuario opera el sistema interactuando directamente en el chat de Antigravity/Codex.
 - El agente anfitrión lee `AGENTS.md`, consulta las skills en `.agents/skills/` y ejecuta los scripts de soporte (compiladores, base de datos SQLite, Playwright) a través de sus herramientas de terminal (`run_command`), escribiendo y editando los archivos del embudo.
 - Los comandos como `npm start` o `npm run dev` son únicamente utilitarios para levantar los servidores web de previsualización (puerto 3003) y endpoints locales de persistencia, **nunca** agentes conversacionales alternativos por terminal.
+
+### 14 — Protocolo de Acompañamiento en Despliegue con `/browser` (Vercel / Hosting)
+- Una vez generada la landing page y el quiz en `/funnel`, el agente **tiene prohibido dar por terminada la tarea dejando al usuario solo frente al código local**.
+- El agente **DEBE invitar proactivamente al usuario a publicar su embudo en Vercel** y acompañarlo en todo el proceso de puesta en producción.
+- Para crear la cuenta en Vercel, iniciar sesión, conectar el repositorio o configurar dominios sin fricción técnica, el agente debe instruir e invitar al usuario a activar el comando:
+  👉 **/browser**
+- A través del subagente `/browser`, el agente abre `https://vercel.com`, guía al usuario en el flujo visual, respeta las barreras humanas para autenticación/2FA, ejecuta el despliegue (`npx vercel` o conexión GitHub) y valida la URL en vivo con HTTPS.
