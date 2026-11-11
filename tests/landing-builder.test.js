@@ -69,15 +69,15 @@ describe('Landing Builder (Astro / Next.js) Rules & Structure', () => {
 
   test('Physical /funnel directory contains scaffolded Astro landing files', (t) => {
     const funnelDir = path.join(__dirname, '..', 'funnel');
-    if (!fs.existsSync(funnelDir)) {
-      t.skip('/funnel directory not yet generated');
+    const indexPath = path.join(funnelDir, 'src', 'pages', 'index.astro');
+    if (!fs.existsSync(indexPath)) {
+      t.skip('/funnel landing not yet generated');
       return;
     }
 
     const pkgPath = path.join(funnelDir, 'package.json');
     assert.strictEqual(fs.existsSync(pkgPath), true, 'package.json must exist in /funnel');
 
-    const indexPath = path.join(funnelDir, 'src', 'pages', 'index.astro');
     assert.strictEqual(fs.existsSync(indexPath), true, 'src/pages/index.astro must exist in /funnel');
 
     const layoutPath = path.join(funnelDir, 'src', 'layouts', 'BaseLayout.astro');

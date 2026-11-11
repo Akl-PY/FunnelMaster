@@ -1,10 +1,23 @@
-const { test, describe } = require('node:test');
+const { test, describe, after } = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
 const { buildMobileApp, generateAppSuperPrompt, runGenerateApp } = require('../agents/skills/app-maker/scripts/generate-app');
 
 describe('App Maker Agent (Mobile Companion App - Google Material Design 3)', () => {
+  const appDirPath = path.join(__dirname, '..', 'app');
+  const publicAppDirPath = path.join(__dirname, '..', 'funnel', 'public', 'app');
+  const hadAppBefore = fs.existsSync(appDirPath);
+  const hadPublicAppBefore = fs.existsSync(publicAppDirPath);
+
+  after(() => {
+    if (!hadAppBefore && fs.existsSync(appDirPath)) {
+      fs.rmSync(appDirPath, { recursive: true, force: true });
+    }
+    if (!hadPublicAppBefore && fs.existsSync(publicAppDirPath)) {
+      fs.rmSync(publicAppDirPath, { recursive: true, force: true });
+    }
+  });
   const mockOffer = {
     product_name: 'App Alivio Lumbar',
     unique_mechanism: 'Sistema Interactivo MDAP'

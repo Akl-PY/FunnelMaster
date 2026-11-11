@@ -36,7 +36,9 @@ function runBuildFunnel(slug = null) {
       if (dirs.length > 0) targetSlug = dirs[dirs.length - 1];
     }
   }
-  if (!targetSlug) targetSlug = 'sistema-productividad-y-trabajo-remoto-pro';
+  if (!targetSlug) {
+    throw new Error('No active funnel slug found. Define niche/currency/ticket with the user and run niche-discovery -> offer-reengineer -> funnel-copywriter first.');
+  }
 
   const funnelDir = path.join(rootDir, 'funnel');
   const copyPath = path.join(rootDir, 'funnels', targetSlug, 'copy.md');
@@ -412,7 +414,7 @@ const { title, description } = Astro.props;
         <div class="flex items-center justify-between pb-4 mb-4 border-b border-[#1B332C]">
           <div>
             <span class="text-[10px] font-bold uppercase tracking-widest text-[${archetype.colors.accentPrimary}]">Simulador Interactivo en Vivo</span>
-            <h2 class="text-base font-extrabold text-white">${webConfig.hero_widget_title || 'Distribuidor de Sueldo en 4 Bóvedas ABAI™'}</h2>
+            <h2 class="text-base font-extrabold text-white">${webConfig.hero_widget_title || 'Simulador de Asignación Estratégica'}</h2>
           </div>
           <span class="px-2.5 py-1 text-[11px] font-bold rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/50">
             ● En Vivo
@@ -434,7 +436,7 @@ const { title, description } = Astro.props;
             <div class="text-[10px] text-slate-400">Gastos fijos blindados</div>
           </div>
           <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/40">
-            <div class="text-[10px] font-bold uppercase text-emerald-400">2. Ataque ABAI™ (20%)</div>
+            <div class="text-[10px] font-bold uppercase text-emerald-400">2. Acelerador de Salida (20%)</div>
             <div id="vault-2-val" class="text-base font-extrabold text-emerald-300 mt-0.5">$320 USD</div>
             <div class="text-[10px] text-emerald-400/80">Liquida deuda más cara</div>
           </div>

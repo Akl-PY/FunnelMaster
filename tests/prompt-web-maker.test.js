@@ -1,4 +1,4 @@
-const { test, describe } = require('node:test');
+const { test, describe, after } = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
@@ -6,6 +6,35 @@ const path = require('path');
 describe('Prompt Web Maker & Offer Re-Engineer Validation', () => {
   const promptWebMakerMd = path.join(__dirname, '..', 'agents', 'skills', 'prompt-web-maker', 'SKILL.md');
   const offerReengineerMd = path.join(__dirname, '..', 'agents', 'skills', 'offer-reengineer', 'SKILL.md');
+  const dataMdPath = path.join(__dirname, '..', 'DATA.md');
+  const activeOfferPath = path.join(__dirname, '..', 'data', 'active_offer.json');
+  const originalDataMd = fs.existsSync(dataMdPath) ? fs.readFileSync(dataMdPath, 'utf8') : null;
+  const originalOfferJson = fs.existsSync(activeOfferPath) ? fs.readFileSync(activeOfferPath, 'utf8') : null;
+  const testSlug = '__test_prompt_funnel__';
+  const testFunnelDir = path.join(__dirname, '..', 'funnels', testSlug);
+  let createdNicheId = null;
+
+  after(() => {
+    try {
+      const db = require('../scripts/db').getDbInstance().client;
+      if (createdNicheId) {
+        db.prepare('DELETE FROM offers WHERE niche_id = ?').run(createdNicheId);
+        db.prepare('DELETE FROM niches WHERE id = ?').run(createdNicheId);
+      }
+      require('../scripts/db').closeDb();
+    } catch (_) {}
+    if (fs.existsSync(testFunnelDir)) {
+      fs.rmSync(testFunnelDir, { recursive: true, force: true });
+    }
+    if (originalDataMd !== null) {
+      fs.writeFileSync(dataMdPath, originalDataMd, 'utf8');
+    }
+    if (originalOfferJson !== null) {
+      fs.writeFileSync(activeOfferPath, originalOfferJson, 'utf8');
+    } else if (fs.existsSync(activeOfferPath)) {
+      fs.unlinkSync(activeOfferPath);
+    }
+  });
 
   test('prompt-web-maker must require detailed tokens, hex colors and microanimations', () => {
     const content = fs.readFileSync(promptWebMakerMd, 'utf8');
@@ -46,17 +75,35 @@ describe('Prompt Web Maker & Offer Re-Engineer Validation', () => {
     assert.strictEqual(result.bonusesCount, 3);
   });
 
-  test('runOfferReengineering must execute and output structured offer data', () => {
+  test('runOfferReengineering must execute and output structured offer data with dynamic currency and ticket', () => {
+    const { saveNiche } = require('../scripts/db');
+    const savedNiche = saveNiche({
+      niche_name: 'Apicultura Urbana de Precisión Test',
+      macro_niche: 'Oficios & Naturaleza',
+      target_avatar: 'Apicultores urbanos principiantes',
+      core_pain: 'Pérdida de colmenas en época invernal',
+      active_ads_count: 25,
+      validation_status: 'validated',
+      competitor_url: 'https://example.com/test'
+    });
+    createdNicheId = savedNiche.id;
+
     const { runOfferReengineering } = require('../agents/skills/offer-reengineer/scripts/reengineer');
-    const res = runOfferReengineering();
+    const res = runOfferReengineering(createdNicheId, { currency: 'EUR', price: 47 });
     assert.strictEqual(typeof res.savedOffer.id, 'number');
     assert.strictEqual(res.reengineeredOffer.bonuses.length, 4);
     assert.strictEqual(typeof res.reengineeredOffer.unique_mechanism, 'string');
+    assert.strictEqual(res.reengineeredOffer.currency, 'EUR');
+    assert.strictEqual(res.reengineeredOffer.currency_symbol, '€');
+    assert.strictEqual(res.reengineeredOffer.offer_price, 47);
   });
 
   test('runGeneratePrompt generates 48hs Playbook Perfect Prompt and enforces Rule #20', () => {
+    fs.mkdirSync(testFunnelDir, { recursive: true });
+    fs.writeFileSync(path.join(testFunnelDir, 'copy.md'), '# Copy Test\n\nBloque de prueba persuasiva.', 'utf8');
+
     const { runGeneratePrompt } = require('../agents/skills/prompt-web-maker/scripts/generate-prompt');
-    const res = runGeneratePrompt();
+    const res = runGeneratePrompt(testSlug);
     assert.strictEqual(typeof res.outputPath, 'string');
     assert.strictEqual(fs.existsSync(res.outputPath), true);
     assert.match(res.perfectPrompt, /DIRECTRIZ MAESTRA DEL PLAYBOOK DE 48HS/i);

@@ -68,4 +68,17 @@ describe('Orchestrator Skill & Contingency Rules', () => {
     const content = fs.readFileSync(orchestratorMd, 'utf8');
     assert.match(content, /Regla 17|Inicio 100% Abierto/i);
   });
+
+  test('AGENTS.md must enforce Rule #0 mandatory greeting and currency/ticket discovery before running anything', () => {
+    const agentsMd = fs.readFileSync(path.join(__dirname, '..', 'AGENTS.md'), 'utf8');
+    assert.match(agentsMd, /REGLA #0/i);
+    assert.match(agentsMd, /PAUSA OBLIGATORIA DE INICIO/i);
+    assert.match(agentsMd, /Moneda del Negocio/i);
+    assert.match(agentsMd, /Ticket Objetivo/i);
+  });
+
+  test('DATA.md in clean repository state must not contain leftover demo niche data', () => {
+    const dataMd = fs.readFileSync(path.join(__dirname, '..', 'DATA.md'), 'utf8');
+    assert.strictEqual(dataMd.includes('Liquidez Soberana'), false, 'DATA.md must remain clean in git repo');
+  });
 });

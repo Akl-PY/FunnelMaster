@@ -1,10 +1,19 @@
-const { test, describe } = require('node:test');
+const { test, describe, after } = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
+const path = require('path');
 const { evaluateAdVolume, validateNicheCriteria } = require('../agents/skills/niche-discovery/scripts/validator');
 const { runNicheDiscovery } = require('../agents/skills/niche-discovery/scripts/discover');
 
 describe('Niche Discovery & Validation Rules', () => {
+  const discoveredPath = path.join(__dirname, '..', 'data', 'discovered_niches.json');
+  const hadDiscoveredBefore = fs.existsSync(discoveredPath);
+
+  after(() => {
+    if (!hadDiscoveredBefore && fs.existsSync(discoveredPath)) {
+      fs.unlinkSync(discoveredPath);
+    }
+  });
   test('runNicheDiscovery must execute step 1 and generate structured dynamic output', () => {
     const res = runNicheDiscovery();
     assert.strictEqual(res.count, 10);

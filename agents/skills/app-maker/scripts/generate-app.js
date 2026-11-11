@@ -201,7 +201,7 @@ function buildMobileApp(offer, niche, archetype) {
   };
 
   const progressTitle = appConfig?.progress_title || (isFinanceApp ? 'Evolución de Liquidez y Reducción de Deuda' : 'Evolución Semanal de Resultados');
-  const progressDesc = appConfig?.progress_desc || (isFinanceApp ? 'Proyección de flujo libre recuperado al aplicar las 4 Bóvedas ABAI™:' : 'Mantén tu aplicación constante del método para desbloquear logros:');
+  const progressDesc = appConfig?.progress_desc || (isFinanceApp ? 'Proyección de flujo libre recuperado al aplicar la asignación de 4 Bóvedas:' : 'Mantén tu aplicación constante del método para desbloquear logros:');
   const milestones = Array.isArray(appConfig?.milestones) && appConfig.milestones.length >= 3
     ? appConfig.milestones
     : [
@@ -331,7 +331,7 @@ function buildMobileApp(offer, niche, archetype) {
     <!-- ==================== PESTAÑA 1: PANEL PRINCIPAL DEL MÉTODO ==================== -->
     <div id="view-today" class="tab-content active space-y-5">
       ${isFinanceApp ? `
-      <!-- Distribuidor Interactivo de Sueldo en 4 Bóvedas ABAI™ -->
+      <!-- Distribuidor Interactivo de Sueldo en 4 Bóvedas -->
       <div class="m3-card-elevated p-5 relative overflow-hidden">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2">
@@ -350,7 +350,7 @@ function buildMobileApp(offer, niche, archetype) {
             <span class="text-[10px] text-slate-500 block">Vivienda, comida y fijos</span>
           </div>
           <div class="p-3 rounded-2xl bg-emerald-950/35 border border-emerald-500/40">
-            <span class="text-[10px] font-bold uppercase text-emerald-400 block">2. Ataque ABAI™ (20%)</span>
+            <span class="text-[10px] font-bold uppercase text-emerald-400 block">2. Bóveda Aceleradora (20%)</span>
             <span id="app-v2" class="text-base font-extrabold text-emerald-300">$320 USD</span>
             <span class="text-[10px] text-emerald-400/80 block">Liquida tarjeta más cara</span>
           </div>
@@ -420,7 +420,7 @@ function buildMobileApp(offer, niche, archetype) {
           <div class="flex items-center gap-3.5 pr-2">
             <div id="box-4" class="w-6 h-6 rounded-lg border-2 border-slate-600 flex items-center justify-center text-xs font-bold text-slate-950 shrink-0 transition-colors"></div>
             <div>
-              <span class="text-sm font-semibold text-slate-100 block">4. Inyectar cuota de Avalancha Inversa ABAI™</span>
+              <span class="text-sm font-semibold text-slate-100 block">4. Inyectar cuota de Avalancha Inversa</span>
               <span class="text-[11px] text-slate-400">Acelerar la cancelación de capital sin usar pago mínimo</span>
             </div>
           </div>
@@ -527,12 +527,12 @@ function buildMobileApp(offer, niche, archetype) {
     <!-- ==================== PESTAÑA 2: SIMULADOR ESPECÍFICO DEL MÉTODO ==================== -->
     <div id="view-tools" class="tab-content space-y-5">
       ${isFinanceApp ? `
-      <!-- Simulador de Liquidación de Tarjetas: Avalancha Inversa ABAI™ -->
+      <!-- Simulador de Liquidación de Tarjetas: Avalancha Inversa -->
       <div class="m3-card-elevated p-5 space-y-4">
         <div class="flex items-center gap-2.5">
           <span class="material-symbols-rounded filled text-[${colors.accentPrimary}]">trending_down</span>
           <div>
-            <h2 class="text-base font-bold text-white">Simulador de Salida de Deudas ABAI™</h2>
+            <h2 class="text-base font-bold text-white">Simulador de Salida Acelerada</h2>
             <p class="text-[11px] text-slate-400">Calcula cuántos meses e intereses ahorras frente al pago mínimo</p>
           </div>
         </div>
@@ -548,7 +548,7 @@ function buildMobileApp(offer, niche, archetype) {
 
           <div>
             <div class="flex justify-between text-xs font-bold text-slate-300 mb-1">
-              <span>Cuota mensual destinada (Bóveda ABAI™):</span>
+              <span>Cuota mensual destinada (Bóveda #2):</span>
               <span id="sim-pay-label" class="text-emerald-400 font-extrabold">$350 USD/mes</span>
             </div>
             <input id="sim-pay" type="range" min="100" max="2000" step="25" value="350" oninput="updateDebtSim()" class="w-full accent-[${colors.accentPrimary}] cursor-pointer" />

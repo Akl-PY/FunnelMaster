@@ -129,20 +129,57 @@ function synthesizeEliteOfferBlueprint(niche) {
   };
 }
 
-function runOfferReengineering(requestedNicheId = null) {
+function getCurrencyConfig(currencyCode = 'USD', basePrice = 37) {
+  const code = (currencyCode || 'USD').toUpperCase().trim();
+  const symbols = {
+    USD: '$',
+    EUR: '€',
+    MXN: '$',
+    ARS: '$',
+    COP: '$',
+    CLP: '$',
+    PEN: 'S/',
+    BRL: 'R$',
+    GBP: '£'
+  };
+  const symbol = symbols[code] || '$';
+  const price = Number(basePrice) > 0 ? Number(basePrice) : 37;
+  return { code, symbol, price };
+}
+
+function runOfferReengineering(requestedNicheId = null, options = {}) {
   let currentNiche = null;
   const db = require('../../../../scripts/db').getDbInstance();
+  const dataMdPath = path.join(__dirname, '..', '..', '..', '..', 'DATA.md');
+  let dataMdContent = '';
+  if (fs.existsSync(dataMdPath)) {
+    dataMdContent = fs.readFileSync(dataMdPath, 'utf8');
+  }
+
+  // Leer moneda y ticket desde options, argumentos CLI o DATA.md
+  let targetCurrency = options.currency || process.env.FUNNEL_CURRENCY || null;
+  let targetPrice = options.price ? Number(options.price) : (process.env.FUNNEL_TICKET ? Number(process.env.FUNNEL_TICKET) : null);
+
+  if (!targetCurrency && dataMdContent) {
+    const curMatch = dataMdContent.match(/- \*\*Moneda\*\*:\s*([A-Z]{3})/i);
+    if (curMatch) targetCurrency = curMatch[1].toUpperCase();
+  }
+  if (!targetPrice && dataMdContent) {
+    const priceMatch = dataMdContent.match(/- \*\*Ticket Objetivo\*\*:\s*[^\d]*(\d+(?:[.,]\d+)?)/i);
+    if (priceMatch) targetPrice = Number(priceMatch[1].replace(',', ''));
+  }
+
+  const currencyCfg = getCurrencyConfig(targetCurrency || 'USD', targetPrice || 37);
 
   if (requestedNicheId) {
     currentNiche = db.client.prepare('SELECT * FROM niches WHERE id = ?').get(Number(requestedNicheId));
   }
 
-  if (!currentNiche) {
-    const dataMdPath = path.join(__dirname, '..', '..', '..', '..', 'DATA.md');
-    if (fs.existsSync(dataMdPath)) {
-      const match = fs.readFileSync(dataMdPath, 'utf8').match(/- \*\*Nicho Activo\*\*:\s*(.+)/);
-      if (match) {
-        const activeName = match[1].trim();
+  if (!currentNiche && dataMdContent) {
+    const match = dataMdContent.match(/- \*\*Nicho Activo\*\*:\s*(.+)/);
+    if (match) {
+      const activeName = match[1].trim();
+      if (activeName && !activeName.includes('Sin definir')) {
         currentNiche = db.client.prepare('SELECT * FROM niches WHERE niche_name = ? ORDER BY id DESC LIMIT 1').get(activeName);
       }
     }
@@ -153,10 +190,10 @@ function runOfferReengineering(requestedNicheId = null) {
   }
 
   if (!currentNiche) {
-    throw new Error('No active niche found in database. Run niche audit first.');
+    throw new Error('No active niche found in database. Consulte al usuario su nicho, moneda y ticket (Regla #0) y ejecute niche-discovery primero.');
   }
 
-  console.log(`[offer-reengineer] Running Step #5 & #6 for Niche: "${currentNiche.niche_name}"`);
+  console.log(`[offer-reengineer] Running Step #5 & #6 for Niche: "${currentNiche.niche_name}" (${currencyCfg.symbol}${currencyCfg.price} ${currencyCfg.code})`);
 
   const dataDir = path.join(__dirname, '..', '..', '..', '..', 'data');
   const offerJsonPath = path.join(dataDir, 'active_offer.json');
@@ -172,6 +209,13 @@ function runOfferReengineering(requestedNicheId = null) {
 
   const blueprint = synthesizeEliteOfferBlueprint(currentNiche);
 
+  // Escalar realistamente el valor percibido de los bonos y producto base según el ticket objetivo (ratio realista 5x-7x)
+  const scaleFactor = currencyCfg.price / 37;
+  const scaledBonuses = (existingData?.reengineeredOffer?.bonuses || blueprint.bonuses).map(b => ({
+    ...b,
+    perceivedValue: Math.max(1, Math.round(b.perceivedValue * scaleFactor))
+  }));
+
   const competitorAnalysis = existingData?.competitorAnalysis || {
     detectedPromise: `Soluciones tradicionales y cursos teóricos sobre ${currentNiche.niche_name}`,
     commonEnemy: blueprint.commonEnemy,
@@ -183,8 +227,9 @@ function runOfferReengineering(requestedNicheId = null) {
     ]
   };
 
-  const totalBonusesValue = (existingData?.reengineeredOffer?.bonuses || blueprint.bonuses).reduce((acc, b) => acc + b.perceivedValue, 0);
-  const totalPerceivedValue = 97.0 + totalBonusesValue; // Producto base ($97) + Bonos ($140) = $237
+  const corePerceived = Math.max(currencyCfg.price * 2, Math.round(97 * scaleFactor));
+  const totalBonusesValue = scaledBonuses.reduce((acc, b) => acc + b.perceivedValue, 0);
+  const totalPerceivedValue = corePerceived + totalBonusesValue;
 
   const reengineeredOffer = existingData?.reengineeredOffer || {
     niche_id: currentNiche.id,
@@ -193,15 +238,20 @@ function runOfferReengineering(requestedNicheId = null) {
     unique_mechanism: blueprint.uniqueMech,
     common_enemy: blueprint.commonEnemy,
     target_avatar: currentNiche.target_avatar,
-    price_usd: 37.0,
+    currency: currencyCfg.code,
+    currency_symbol: currencyCfg.symbol,
+    price_usd: currencyCfg.price,
+    offer_price: currencyCfg.price,
     guarantee_days: 30,
-    bonuses: blueprint.bonuses,
+    bonuses: scaledBonuses,
     value_stack: {
-      core_product_perceived: 97.0,
+      core_product_perceived: corePerceived,
       total_bonuses_perceived: totalBonusesValue,
       total_perceived_value: totalPerceivedValue,
-      offer_price: 37.0,
-      discount_percentage: Math.round(((totalPerceivedValue - 37.0) / totalPerceivedValue) * 100),
+      offer_price: currencyCfg.price,
+      currency: currencyCfg.code,
+      currency_symbol: currencyCfg.symbol,
+      discount_percentage: Math.round(((totalPerceivedValue - currencyCfg.price) / totalPerceivedValue) * 100),
       phases: blueprint.phases,
       comparison_table: blueprint.comparisonTable
     }
@@ -226,10 +276,12 @@ function runOfferReengineering(requestedNicheId = null) {
   }, null, 2), 'utf8');
 
   // Persistir en DATA.md
-  const dataMdPath = path.join(__dirname, '..', '..', '..', '..', 'DATA.md');
   if (fs.existsSync(dataMdPath)) {
     let dataMd = fs.readFileSync(dataMdPath, 'utf8');
     const activePhases = reengineeredOffer.value_stack?.phases || blueprint.phases;
+    const curSym = reengineeredOffer.currency_symbol || currencyCfg.symbol || '$';
+    const curCod = reengineeredOffer.currency || currencyCfg.code || 'USD';
+    const offerPriceVal = reengineeredOffer.offer_price || reengineeredOffer.price_usd;
     const offerSection = `
 ## 2.1 Oferta Rediseñada Activa (\`active_offer\`)
 
@@ -237,12 +289,13 @@ function runOfferReengineering(requestedNicheId = null) {
 - **Nueva Promesa Transformadora**: ${reengineeredOffer.main_promise}
 - **Mecanismo Único**: ${reengineeredOffer.unique_mechanism}
 - **Enemigo Común Derribado**: ${reengineeredOffer.common_enemy}
-- **Precio Frontend**: $${reengineeredOffer.price_usd} USD (Valor total acumulado: $${totalPerceivedValue} USD - Descuento del ${reengineeredOffer.value_stack.discount_percentage}%)
+- **Moneda**: ${curCod} (${curSym})
+- **Precio Frontend**: ${curSym}${offerPriceVal} ${curCod} (Valor total acumulado: ${curSym}${totalPerceivedValue} ${curCod} - Descuento del ${reengineeredOffer.value_stack.discount_percentage}%)
 - **Garantía Incondicional**: ${reengineeredOffer.guarantee_days} días de riesgo cero
 - **Fases del Sistema**:
 ${activePhases.map(p => `  - **${p.timeframe} (${p.name})**: ${p.desc}`).join('\n')}
 - **Pila de Bonos Mata-Objeciones**:
-${reengineeredOffer.bonuses.map((b, i) => `  ${i + 1}. **${b.name}** (Valor: $${b.perceivedValue} USD) — *Destruye objeción: ${b.objectionDestroyed}* — ${b.purpose}`).join('\n')}
+${reengineeredOffer.bonuses.map((b, i) => `  ${i + 1}. **${b.name}** (Valor: ${curSym}${b.perceivedValue} ${curCod}) — *Destruye objeción: ${b.objectionDestroyed}* — ${b.purpose}`).join('\n')}
 `;
     if (dataMd.includes('## 2.1 Oferta Rediseñada Activa')) {
       dataMd = dataMd.replace(/## 2\.1 Oferta Rediseñada Activa[\s\S]*?(?=## 3\. Variables de Entorno)/, offerSection.trim() + '\n\n');

@@ -37,3 +37,19 @@ app/dist/
 .impeccable/
 data/runtime/
 uploads/
+
+# Generated Funnel & Product Artifacts (clean fresh repository state)
+data/active_offer.json
+data/discovered_niches.json
+automations/
+content/
+funnels/
+products/
+recovery/
+traffic/
+app/
+funnel/.astro/
+funnel/public/
+funnel/src/components/
+funnel/src/layouts/
+funnel/src/pages/

@@ -1,4 +1,4 @@
-const { test, describe } = require('node:test');
+const { test, describe, after } = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
@@ -10,6 +10,14 @@ const {
 } = require('../agents/skills/video-editor/scripts/video-editor');
 
 describe('Video Editor Agent (FFmpeg & 9:16 Creatives)', () => {
+  const trafficDir = path.join(__dirname, '..', 'traffic');
+  const hadTrafficBefore = fs.existsSync(trafficDir);
+
+  after(() => {
+    if (!hadTrafficBefore && fs.existsSync(trafficDir)) {
+      fs.rmSync(trafficDir, { recursive: true, force: true });
+    }
+  });
   test('findFfmpegBinary detects FFmpeg or playwright fallback', () => {
     const bin = findFfmpegBinary();
     assert.ok(bin !== undefined);

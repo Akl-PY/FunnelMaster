@@ -7,7 +7,7 @@
 > **Modelo Operativo (Zero External API Keys)**:
 > Este repositorio **NO requiere claves de API externas** (`OPENAI_API_KEY`, etc.) ni ejecuta chatbots aislados en terminal. La Inteligencia Artificial es la propia aplicación anfitriona (Antigravity o Codex) en la que abres este proyecto.
 > 
-> El Agente de tu IDE lee `AGENTS.md`, descubre automáticamente las skills en `.agents/skills/`, y tú lo diriges hablando en el chat del editor. El agente ejecuta las herramientas de terminal (`run_command`), audita competidores con Playwright, redacta los copys, compila las páginas en Astro y persiste el estado en `DATA.md` y SQLite.
+> El Agente de tu IDE lee `AGENTS.md`, descubre automáticamente las skills en `agents/skills/`, y te recibe primero preguntándote tu nicho/idea, moneda de cobro y rango de precio (ticket). Luego ejecuta las herramientas de terminal, audita competidores con Playwright, redacta los copys, compila las páginas en Astro y persiste el estado en `DATA.md` y SQLite.
 
 > [!TIP]
 > **Diseñado para Personas que NUNCA han Programado**:
@@ -26,7 +26,7 @@ Abre este repositorio en tu aplicación de agentes (Antigravity, Codex o Cursor)
 | *"Rediseña la oferta para mi producto"* | Diseña tu oferta irresistible: define una promesa atractiva, un mecanismo único y 4 bonos de regalo. |
 | *"Redacta el texto de ventas sin clichés de IA"* | Escribe el copy persuasivo completo de tu página siguiendo técnicas de respuesta directa y tono natural. |
 | *"Construye la página web y el cuestionario"* | Maqueta tu página de ventas y tu test diagnóstico con un diseño visual único y adaptado a tu sector. |
-| *"Genera los contenidos del producto y los bonos"* | Redacta tu manual de 21 días y los 4 libros de regalo listos para entregar a tus clientes en PDF. |
+| *"Genera los contenidos del producto y los bonos"* | Redacta tu manual de implementación completo en fases realistas y los 4 libros de regalo listos para entregar a tus clientes en PDF. |
 | *"Genera los anuncios, emails y WhatsApp"* | Prepara los guiones en video para TikTok/Reels, correos de venta y mensajes de recuperación. |
 | *"Acompáñame a subir mi embudo a Vercel"* | Te invita a usar **/browser**, abre el navegador frente a ti, te guía en el registro y publica tu web con enlace HTTPS gratuito. |
 | *"Ejecuta todo el plan completo para mi nicho"* | El agente construye todo tu negocio digital de principio a fin sin que tengas que programar nada. |

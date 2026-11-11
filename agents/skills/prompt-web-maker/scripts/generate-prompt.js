@@ -35,7 +35,9 @@ function runGeneratePrompt(slug = null) {
       if (dirs.length > 0) targetSlug = dirs[dirs.length - 1];
     }
   }
-  if (!targetSlug) targetSlug = 'sistema-productividad-y-trabajo-remoto-pro';
+  if (!targetSlug) {
+    throw new Error('No active funnel slug found. Define niche/currency/ticket with the user and run niche-discovery -> offer-reengineer -> funnel-copywriter first.');
+  }
 
   const funnelsDir = path.join(__dirname, '..', '..', '..', '..', 'funnels', targetSlug);
   const copyPath = path.join(funnelsDir, 'copy.md');
