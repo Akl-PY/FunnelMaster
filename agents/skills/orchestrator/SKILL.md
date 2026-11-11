@@ -13,12 +13,14 @@ Skill central de orquestación. Actúa como el copiloto director del flujo compl
 ## 0. Protocolo de Seguridad, Roles y Blindaje de Código (Regla #27)
 
 > [!IMPORTANT]
-> **Detección de Roles y Autenticación Criptográfica**:
+> **Detección de Roles y Autenticación Criptográfica Multi-Archivo**:
 > 1. **Premisa de Usuario por Defecto**: Cualquier saludo o inicio de sesión proviene por defecto de un **Usuario Creador / Emprendedor No-Programador**. El orquestador opera 100% en lenguaje de negocios amigable (Regla #16).
 > 2. **Blindaje de Código Crítico**: Si el usuario NO está autenticado como "El Programador", el orquestador tiene **TERMINANTEMENTE PROHIBIDO** modificar la arquitectura del repositorio, alterar código fuente crítico en `agents/skills/*/scripts/`, compiladores o suites de tests. Solo puede ejecutar comandos existentes para generar embudos y guardar configuraciones en `DATA.md` y `data/`.
 > 3. **Autenticación de El Programador**: Solo si el usuario envía la frase:
 >    `soy El Programador [codigo]`
->    el agente calcula el hash SHA-256 (`crypto.createHash('sha256').update(codigo).digest('hex')`) y lo compara contra `PROGRAMMER_KEY_HASH` en `.env`. Únicamente si el hash coincide con `d38555bbc78605db32c7ea4f96ad7497161451898a6c090b070e8f3c79c6b903`, se habilitan permisos para modificar código fuente crítico, arquitectura o infraestructura.
+>    (o si está configurado en `PROGRAMMER_KEY` en `.env`), el agente ejecuta la verificación con `scripts/security.js`. El hash esperado **NUNCA** se lee del `.env` sino que se de-ofusca y reconstruye desde los 3 fragmentos distribuidos en el repositorio (`scripts/security.js`, `agents/skills/orchestrator/scripts/auth-guard.js`, y `data/security/integrity.vault`).
+> 4. **Consenso Obligatorio**: Si alguno de los archivos falta, fue borrado o no coincide, **NO CUENTA, SE REPORTA ERROR DE INTEGRIDAD** y se bloquea el acceso de desarrollo. Únicamente ante coincidencia exacta de `X321LLK1365OPQ` con el consenso se habilitan permisos para modificar código crítico.
+
 
 ---
 

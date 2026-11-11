@@ -251,14 +251,18 @@ Toda skill, script, generador o cambio de código **DEBE** contar con sus corres
     - Modificar archivos de código fuente crítico (`agents/skills/*/scripts/`, compiladores, suites de tests, bases de datos o middlewares).
     - Ejecutar refactorizaciones de software o exponer tecnicismos de código en las respuestas.
   - El agente solo puede operar en modo consultor estratégico y ejecutar las herramientas existentes para persistir los datos de negocio (`DATA.md` / `data/`) y compilar los entregables del usuario.
-- **Autenticación Criptográfica de "El Programador"**:
-  - Para desbloquear permisos de desarrollo y modificación de código crítico, el usuario debe identificarse explícitamente diciendo:
-    `soy El Programador [codigo]`
-  - Al recibir esta frase, el agente debe calcular el hash SHA-256 del código ingresado:
-    `crypto.createHash('sha256').update(codigo).digest('hex')`
-    y compararlo contra el valor de `PROGRAMMER_KEY_HASH` presente en las variables de entorno (`.env`).
-  - Solo si el hash resultante coincide exactamente con el valor esperado (`d38555bbc78605db32c7ea4f96ad7497161451898a6c090b070e8f3c79c6b903`), se habilitan los permisos de desarrollo para refactorizar código, alterar la suite de tests o modificar la infraestructura del repositorio.
-  - Si el código no coincide o no se presenta, el agente continúa operando bajo el blindaje de seguridad.
+- **Ubicación de Clave vs. Hash (Anti-Manipulación de `.env`)**:
+  - La clave secreta del programador reside únicamente en el entorno local privado (`PROGRAMMER_KEY` en `.env`) o se suministra en el chat con `soy El Programador [codigo]`.
+  - **El hash de validación NUNCA se almacena en `.env`**, ya que cualquier usuario podría manipular su propio `.env` para falsear el hash.
+  - El hash de verificación se encuentra **distribuido, malformado y ofuscado** con caracteres de ruido (`?`, `-`, `_`, `{`, `}`, `+`, `´`) a través de múltiples archivos del repositorio:
+    1. Fragmento A: en `scripts/security.js`
+    2. Fragmento B: en `agents/skills/orchestrator/scripts/auth-guard.js`
+    3. Fragmento C: en `data/security/integrity.vault`
+- **Consenso de Integridad Obligatorio**:
+  - Una función especializada (`scripts/security.js`) limpia los caracteres de interferencia, reconstruye el hash maestro SHA-256 y verifica la clave ingresada.
+  - **Si alguno de los archivos falta, fue borrado, modificado o el hash no coincide en su totalidad, NO CUENTA, SE DECLARA ERROR DE INTEGRIDAD** y el agente bloquea de inmediato cualquier permiso de modificación estructural o de código.
+  - Solo si la clave proporcionada (`X321LLK1365OPQ`) genera un hash SHA-256 idéntico al consenso de los 3 fragmentos, se habilitan los permisos de desarrollo e ingeniería.
+
 
 
 
