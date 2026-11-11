@@ -10,6 +10,18 @@ Skill central de orquestación. Actúa como el copiloto director del flujo compl
 
 ---
 
+## 0. Protocolo de Seguridad, Roles y Blindaje de Código (Regla #27)
+
+> [!IMPORTANT]
+> **Detección de Roles y Autenticación Criptográfica**:
+> 1. **Premisa de Usuario por Defecto**: Cualquier saludo o inicio de sesión proviene por defecto de un **Usuario Creador / Emprendedor No-Programador**. El orquestador opera 100% en lenguaje de negocios amigable (Regla #16).
+> 2. **Blindaje de Código Crítico**: Si el usuario NO está autenticado como "El Programador", el orquestador tiene **TERMINANTEMENTE PROHIBIDO** modificar la arquitectura del repositorio, alterar código fuente crítico en `agents/skills/*/scripts/`, compiladores o suites de tests. Solo puede ejecutar comandos existentes para generar embudos y guardar configuraciones en `DATA.md` y `data/`.
+> 3. **Autenticación de El Programador**: Solo si el usuario envía la frase:
+>    `soy El Programador [codigo]`
+>    el agente calcula el hash SHA-256 (`crypto.createHash('sha256').update(codigo).digest('hex')`) y lo compara contra `PROGRAMMER_KEY_HASH` en `.env`. Únicamente si el hash coincide con `d38555bbc78605db32c7ea4f96ad7497161451898a6c090b070e8f3c79c6b903`, se habilitan permisos para modificar código fuente crítico, arquitectura o infraestructura.
+
+---
+
 ## 1. Protocolo de Persistencia en Base de Datos
 
 El orquestador garantiza que toda la información recuperada o generada se guarde en base de datos:
@@ -64,9 +76,11 @@ Si el usuario prefiere una base de datos en la nube (Neon, Supabase o Postgres l
 
 El orquestador guía al usuario siguiendo esta secuencia estructurada:
 
-### Fase 1: Selección y Validación de Nicho
+### Fase 1: Selección, Moneda, Ticket y Validación de Nicho
 - [ ] Inicializar la base de datos (`scripts/db.js`).
 - [ ] **Inicio 100% Abierto (Regla 17)**: Prohibido ofrecer menús cerrados o listas prefijadas de nichos (ej.: "Opción A, B, C o D"). Preguntar al usuario qué mercado, habilidad, producto o cliente desea abordar, o permitirle ingresar cualquier palabra clave libre.
+- [ ] **Calibración de Moneda y Ticket (Regla 26)**: Preguntar al usuario en qué moneda desea operar (USD $, EUR €, MXN $, ARS $, COP $, etc.) y a qué rango de ticket apunta su oferta (Low-ticket de impulso $17–$37, Mid-ticket $47–$147, o Ticket superior con acompañamiento).
+- [ ] **Precios Realistas**: Asesorar con puntos de precio de alta conversión y anclajes matemáticos creíbles (evitar cifras absurdas o infladas que arruinen la credibilidad).
 - [ ] Si el usuario pide exploración autónoma, investigar tendencias en vivo o sobre la industria que él indique, sin recitar nichos hardcodeados de plantillas.
 - [ ] Ejecutar [`niche-discovery`](../niche-discovery/SKILL.md) para auditar anunciantes en vivo en Meta Ads Library mediante `browser-automation`.
 - [ ] Si los anuncios activos son $\ge 10$ (validado) o $+100$ (ganador absoluto), persistir el registro con `saveNiche()`.
@@ -75,7 +89,7 @@ El orquestador guía al usuario siguiendo esta secuencia estructurada:
 - [ ] Tomar la URL de la página de venta del competidor validado.
 - [ ] Invocar [`offer-reengineer`](../offer-reengineer/SKILL.md).
 - [ ] Extraer DOM con `browser-automation` o `/browser`.
-- [ ] Desglosar la oferta y construir la nueva promesa, mecanismo único y pila de 3 a 5 bonos.
+- [ ] Desglosar la oferta y construir la nueva promesa, mecanismo único, pila de bonos específicos y precios adaptados a la moneda y ticket seleccionados.
 - [ ] Persistir la oferta rediseñada con `saveOffer()`.
 
 ### Fase 3: Redacción del Copy del Embudo

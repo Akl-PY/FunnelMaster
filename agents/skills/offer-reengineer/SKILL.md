@@ -54,4 +54,9 @@ El script `reengineer.js` y el agente persisten en `data/active_offer.json`, SQL
 - **Mecanismo Único**: Nombre del método + explicación lógica de su superioridad.
 - **3 Fases de Implementación**: Con nombre, marco temporal realista, acción concreta y métrica de éxito.
 - **4 Bonos Tácticos**: Con nombre de alto valor, valor en USD, objeción que derriba y descripción práctica.
-- **Anclaje de Valor**: Suma total percibida vs. Precio de lanzamiento ($37 USD) + Order Bump ($17 USD) + Upsell ($67 USD) + Garantía Incondicional de 30 Días.
+- **Anclaje de Valor y Precios Realistas (Regla 26)**:
+  - Los precios y anclajes se calibran dinámicamente según la moneda (USD, EUR, MXN, ARS, COP, etc.) y el rango de ticket acordado con el usuario:
+    - *Low-ticket de entrada rápida*: Precio de oferta ($17–$37 USD o equivalente local) + Order Bump inmediato ($9–$19 USD) + Upsell de aceleración ($47–$97 USD).
+    - *Mid-ticket de sistema completo*: Precio de oferta ($47–$147 USD o equivalente local) + Order Bump ($27–$47 USD) + Upsell de acompañamiento ($147–$297 USD).
+  - Prohibido inflar valores de forma inverosímil (ej.: un producto de $27 USD tiene un anclaje percibido de ~$150 a $300 USD respaldado por sus bonos y herramientas, nunca cifras absurdas de $10,000 USD que destruyan la confianza del comprador).
+  - Toda cifra debe incluir la divisa seleccionada y contar con Garantía Incondicional de 30 Días.

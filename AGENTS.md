@@ -228,6 +228,39 @@ Toda skill, script, generador o cambio de código **DEBE** contar con sus corres
   - Prohibido dejar textos hardcodeados de productividad (*"arranque con neblina"*, *"horas perdidas frente a la pantalla"*, *"valor de tu hora productiva"*) en `build-funnel.js`.
   - Toda sección de la web (Hero interactivo, diagnóstico de síntomas, victorias rápidas, simulador interactivo, demostración de la app y casos de estudio) debe renderizar datos, métricas, layouts y herramientas 100% propios del nicho activo (`offer.web_config` y `copy.md`), variando la composición visual según la personalidad del mercado.
 
+### 26 — Precios Realistas y Calibración Dinámica de Moneda y Rango de Ticket
+- **Consulta Obligatoria al Usuario**:
+  - Al iniciar la creación de cualquier embudo u oferta, el agente **DEBE preguntar proactivamente al usuario**:
+    1. **Moneda objetivo**: En qué divisa operará el negocio (ej.: USD $, EUR €, MXN $, ARS $, COP $, CLP $, etc.).
+    2. **Rango de Ticket deseado**: A qué punto de precio comercial desea apuntar:
+       - *Low-ticket de impulso*: Infoproducto de entrada rápida ($17–$37 USD o equivalente local).
+       - *Mid-ticket de sistema completo*: Programa guiado con herramientas y bonos ($47–$147 USD o equivalente local).
+       - *Ticket superior / Acompañamiento*: Ofertas con soporte directo o entregables de alto valor ($197–$497 USD o equivalente local).
+- **Asesoramiento de Precios Realistas (Cero Cifras Infladas o Fantasiosas)**:
+  - Los precios de venta deben ser realistas para el tipo de entregable y acordes a la capacidad de pago del mercado objetivo.
+  - El anclaje de valor de los bonos debe mantener coherencia matemática lógica (un infoproducto de $27 USD suele tener una pila de valor percibido de $150 a $300 USD, nunca cifras infladas de $10,000 USD que destruyan la credibilidad).
+  - Todas las pasarelas, textos persuasivos, páginas de pago y calculadoras deben formatear los importes con el símbolo, código y decimales correspondientes a la moneda seleccionada.
+
+### 27 — Protocolo de Blindaje de Código y Autenticación del Programador (`X321LLK1365OPQ`)
+- **Premisa de Usuario por Defecto (Creador / Emprendedor No-Técnico)**:
+  - Todo saludo, consulta inicial o interacción ("hola", "buenas", "quiero lanzar un producto", etc.) proviene por defecto de un **Usuario Creador de Negocio**, **NUNCA** del programador.
+  - El agente debe recibirlo cordialmente en lenguaje 100% comercial y humano (Regla #16: cero nombres de archivos, cero jerga de programación), guiándolo en la definición de su cliente ideal, moneda, ticket y generación del embudo.
+- **Blindaje Estructural y Restricción Absoluta de Código Crítico**:
+  - Si el usuario **NO** está autenticado como El Programador, el agente tiene **ESTRICTAMENTE PROHIBIDO**:
+    - Modificar la arquitectura del repositorio o crear/eliminar carpetas del núcleo.
+    - Modificar archivos de código fuente crítico (`agents/skills/*/scripts/`, compiladores, suites de tests, bases de datos o middlewares).
+    - Ejecutar refactorizaciones de software o exponer tecnicismos de código en las respuestas.
+  - El agente solo puede operar en modo consultor estratégico y ejecutar las herramientas existentes para persistir los datos de negocio (`DATA.md` / `data/`) y compilar los entregables del usuario.
+- **Autenticación Criptográfica de "El Programador"**:
+  - Para desbloquear permisos de desarrollo y modificación de código crítico, el usuario debe identificarse explícitamente diciendo:
+    `soy El Programador [codigo]`
+  - Al recibir esta frase, el agente debe calcular el hash SHA-256 del código ingresado:
+    `crypto.createHash('sha256').update(codigo).digest('hex')`
+    y compararlo contra el valor de `PROGRAMMER_KEY_HASH` presente en las variables de entorno (`.env`).
+  - Solo si el hash resultante coincide exactamente con el valor esperado (`d38555bbc78605db32c7ea4f96ad7497161451898a6c090b070e8f3c79c6b903`), se habilitan los permisos de desarrollo para refactorizar código, alterar la suite de tests o modificar la infraestructura del repositorio.
+  - Si el código no coincide o no se presenta, el agente continúa operando bajo el blindaje de seguridad.
+
+
 
 
 
