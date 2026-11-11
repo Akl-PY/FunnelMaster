@@ -66,27 +66,28 @@ El orquestador guía al usuario siguiendo esta secuencia estructurada:
 
 ### Fase 1: Selección y Validación de Nicho
 - [ ] Inicializar la base de datos (`scripts/db.js`).
-- [ ] Ejecutar investigación de mercado en tiempo real sin opciones hardcodeadas ni menús preestablecidos.
-- [ ] Presentar lista curada de nichos emergentes descubiertos mediante datos de los últimos 180 días.
-- [ ] Ejecutar [`niche-discovery`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/niche-discovery/SKILL.md) para auditar anunciantes en vivo en Meta Ads Library mediante `browser-automation`.
+- [ ] **Inicio 100% Abierto (Regla 17)**: Prohibido ofrecer menús cerrados o listas prefijadas de nichos (ej.: "Opción A, B, C o D"). Preguntar al usuario qué mercado, habilidad, producto o cliente desea abordar, o permitirle ingresar cualquier palabra clave libre.
+- [ ] Si el usuario pide exploración autónoma, investigar tendencias en vivo o sobre la industria que él indique, sin recitar nichos hardcodeados de plantillas.
+- [ ] Ejecutar [`niche-discovery`](../niche-discovery/SKILL.md) para auditar anunciantes en vivo en Meta Ads Library mediante `browser-automation`.
 - [ ] Si los anuncios activos son $\ge 10$ (validado) o $+100$ (ganador absoluto), persistir el registro con `saveNiche()`.
 
 ### Fase 2: Ingeniería Inversa y Rediseño de Oferta
 - [ ] Tomar la URL de la página de venta del competidor validado.
-- [ ] Invocar [`offer-reengineer`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/offer-reengineer/SKILL.md).
+- [ ] Invocar [`offer-reengineer`](../offer-reengineer/SKILL.md).
 - [ ] Extraer DOM con `browser-automation` o `/browser`.
 - [ ] Desglosar la oferta y construir la nueva promesa, mecanismo único y pila de 3 a 5 bonos.
 - [ ] Persistir la oferta rediseñada con `saveOffer()`.
 
 ### Fase 3: Redacción del Copy del Embudo
-- [ ] Invocar [`funnel-copywriter`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/funnel-copywriter/SKILL.md).
+- [ ] Invocar [`funnel-copywriter`](../funnel-copywriter/SKILL.md).
 - [ ] Redactar los 11 bloques del *Hero's Journey* bajo reglas estrictas Anti-LLM.
 - [ ] Guardar el documento en `funnels/<niche-slug>/copy.md`.
 
-### Fase 4: Construcción Web y Lanzamiento
-- [ ] **Opción A (Código Propio)**: Invocar [`landing-builder`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/landing-builder/SKILL.md) para generar la landing en `/funnel` con Astro/Next.js y preservación de UTMs.
-- [ ] **Opción B (Generador con IA)**: Invocar [`prompt-web-maker`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/prompt-web-maker/SKILL.md) para entregar el *Perfect Prompt* a Lovable, v0 o Bolt.
-- [ ] Invocar [`product-generator`](file:///c:/Users/danie/OneDrive/Escritorio/FunnelMaster/agents/skills/product-generator/SKILL.md) para redactar el infoproducto y los entregables de los bonos.
+### Fase 4: Construcción Web Dinámica (Playbook de 48hs) y Lanzamiento
+- [ ] Invocar [`prompt-web-maker`](../prompt-web-maker/SKILL.md) para generar el *Perfect Prompt* meticuloso del Paso #8 del Playbook de 48hs en `funnels/<niche-slug>/web-builder-prompt.txt`.
+- [ ] Invocar [`landing-builder`](../landing-builder/SKILL.md) para generar la landing page interactiva en `/funnel` con arquitectura dinámica, diseño visual por arquetipo, integración de checkout con pasarelas globales y locales (Stripe y Mercado Pago) y preservación estricta de UTMs.
+- [ ] Invocar [`app-maker`](../app-maker/SKILL.md) para construir la aplicación móvil de acompañamiento en `/app` y su Super Prompt de IA en `/app/app-super-prompt.md`.
+- [ ] Invocar [`product-generator`](../product-generator/SKILL.md) para redactar el infoproducto y los entregables de los bonos.
 
 ### Fase 5: Despliegue Asistido a Producción en Vercel con `/browser`
 - [ ] Invitar proactivamente al usuario a publicar su embudo en la nube con Vercel.
@@ -100,9 +101,40 @@ El orquestador guía al usuario siguiendo esta secuencia estructurada:
 
 ---
 
-## 4. Validación Obligatoria de Calidad
+## 5. Comunicación Amigable para Personas sin Conocimientos de Programación (No-Code First)
+- El orquestador debe comunicarse siempre con lenguaje claro, cercano, comprensible y 100% orientado a negocios. El usuario final nunca ha programado ni tiene por qué lidiar con tecnicismos.
+- **Prohibido mencionar nombres de archivos con extensión (`.js`, `.ts`, `.astro`, `.json`, rutas relativas o comandos confusos)** al dirigirse al usuario en el chat.
+- Referirse a los entregables por su valor real de negocio:
+  - *Tu Página de Ventas* (en vez de hablar de archivos o código de landing)
+  - *Tu Test de Diagnóstico Interactivo* (en vez de scripts de quiz)
+  - *Tu Pasarela de Pago y Ofertas de Compra Rápida* (en vez de scripts de checkout)
+  - *Tu Sistema de Implementación y Bonos de Regalo* (en vez de scripts de producto)
+  - *Tu Aplicación Móvil de Bolsillo* (en vez de archivos PWA)
+  - *Tus Anuncios para Redes Sociales con Guiones en Video* (en vez de scripts de tráfico)
+  - *Tus Correos de Venta y Nutrición Automáticos* (en vez de secuencias de email en código)
+  - *Tus Mensajes de WhatsApp y Respuestas Automáticas en Instagram* (en vez de JSONs o flujos)
+  - *Tu Panel de Control y Registro de Clientes* (en vez de base de datos)
+- Presentar avances claros, resúmenes en lenguaje cotidiano y enlaces directos para hacer clic y ver el resultado en pantalla.
+
+---
+
+## 6. Arquitectura de Cadena de Super Prompts y Filtro Anti-Genérico (Reglas 20 y 21)
+
+El orquestador garantiza que cada skill estratégica genere un **Super Prompt / Blueprint Maestro** y lo pase a la siguiente skill ejecutora:
+1. **Prohibido el Cliché de "21 Días" y Plantillas Mad-Libs**: Ninguna oferta, titular o componente puede usar rellenos mecánicos como *"Resuelve [Dolor] en 21 días"* ni nombres terminados en *"21™"*, ni concatenaciones gramaticales rotas (*"Si eres Profesionales..."*).
+2. **Inyección Real de Copy y Super Prompt**: `landing-builder` debe leer e inyectar íntegramente `copy.md` y las especificaciones de `web-builder-prompt.txt` para construir los **12 módulos interactivos de alta conversión** (Top Status Bar, Split Hero con Simulador en Vivo, Auditoría de 4 Síntomas, Timeline de Victorias Rápidas, Calculadora/Simulador Interactivo del Arquetipo, Matriz Comparativa Viejo vs. Nuevo, Mecanismo Único en 3 Fases, Filtro de Audiencia 2 Columnas, Radiografía del Sistema + App Móvil, 3 Casos de Estudio Cuantificados, Pila de Bonos + Bóveda de Oferta Stripe/Mercado Pago, y Acordeón FAQ de 6 Objeciones + Sticky Mobile CTA).
+
+---
+
+## 7. Prohibición de Reciclar Bonos y Ejemplos Ilustrativos de los `.md` (Regla #24)
+- **Todo bono, mecanismo, fase, calculadora o gancho escrito dentro de `AGENTS.md` o de cualquier `SKILL.md` es ESTRICTAMENTE UN EJEMPLO ILUSTRATIVO** para explicar el formato y nivel de profundidad esperado.
+- **Queda terminantemente prohibido copiar o reutilizar los mismos nombres de bonos** entre un proyecto/nicho y otro. Cada vez que se diseñe una oferta desde cero, los bonos, fases y entregables deben inventarse 100% a medida del dolor, vocabulario y objeciones reales de ese nicho específico.
+
+---
+
+## 8. Validación Obligatoria de Calidad
 Antes de cerrar cualquier etapa, el orquestador verifica:
-1. Que no existan datos ficticios ni nichos hardcodeados.
+1. Que no existan datos ficticios, nichos hardcodeados, bonos reciclados de ejemplos ni textos genéricos de 2 líneas.
 2. Que los tests unitarios e integrados pasen al 100%:
    ```bash
    npm test

@@ -1,7 +1,7 @@
 /**
  * agents/skills/product-generator/scripts/generate-product.js
- * Generador autónomo y agnóstico de contenidos de infoproductos (Paso #9).
- * Lee los datos de la oferta activa y redacta la guía maestra y los bonos sin fluff ni clichés de IA.
+ * Generador autónomo y agnóstico de contenidos de infoproductos de alto valor percibido (Paso #9).
+ * Lee los datos de la oferta activa y redacta la Guía Maestra y 4 Bonos 100% diferenciados (Cero Bonos Clónicos).
  */
 
 const fs = require('fs');
@@ -27,324 +27,402 @@ function loadOfferData() {
 }
 
 function generateMasterGuide(offer, niche) {
-  const productName = offer.product_name;
-  const uniqueMech = offer.unique_mechanism;
-  const promise = offer.main_promise;
-  const avatar = offer.target_avatar;
+  const productName = offer.product_name || 'Sistema Operativo de Alto Rendimiento Pro™';
+  const uniqueMech = offer.unique_mechanism || 'Arquitectura de Sincronización Operativa™';
+  const promise = offer.main_promise || 'Elimina la fricción diaria y recupera el control desde las primeras 48 horas';
+  const avatar = offer.target_avatar || 'Profesionales comprometidos con resultados medibles';
+  const nicheName = niche?.niche_name || offer.niche_name || 'Productividad y Ejecución';
+  const corePain = niche?.core_pain || offer.core_pain || 'la sobrecarga operativa y dispersión continua';
+  const corePainLower = corePain.charAt(0).toLowerCase() + corePain.slice(1).replace(/\.$/, '');
+  const commonEnemy = offer.common_enemy || 'los métodos tradicionales llenos de teoría densa que exigen horas libres que hoy no tienes';
+
+  const phases = offer?.value_stack?.phases || [
+    {
+      timeframe: 'Fase 1 · Primeras 48 Horas',
+      name: 'Auditoría de Raíz y Desbloqueo de Choque',
+      desc: `Identifica y neutraliza de inmediato las fugas ocultas que provocan ${corePainLower}, logrando tu primera victoria medible en menos de 48 horas.`,
+      deliverable: 'Matriz de Diagnóstico Rápido + Protocolo SOS de 5 Minutos'
+    },
+    {
+      timeframe: 'Fase 2 · Días 3 al 7',
+      name: `Instalación Operativa de la ${uniqueMech}`,
+      desc: 'Sustituye la improvisación diaria por bloques tácticos de 15 minutos con plantillas listas para ejecutar.',
+      deliverable: 'Plantillas Operativas Plug & Play + Secuencia Guiada en App'
+    },
+    {
+      timeframe: 'Fase 3 · Consolidación Permanente',
+      name: 'Automatización de Flujo y Blindaje Anti-Recaídas',
+      desc: 'Deja instalado un estándar sostenible que mantiene tus resultados incluso en semanas de alta carga o imprevistos.',
+      deliverable: 'Tablero de Mantenimiento Semanal en 10 Minutos'
+    }
+  ];
 
   return `# ${productName}
-## Manual Operativo de 21 Días: De la Inflamación a la Vitalidad
+## Manual Operativo Maestro: De la Fricción a los Resultados Medibles desde tus Primeras 48 Horas
 
-**Mecanismo Base**: ${uniqueMech}  
-**Promesa Central**: ${promise}  
-**Dirigido a**: ${avatar}
-
----
-
-## 1. Manifiesto de Acción Rápida (Cero Teoría Inútil)
-
-Si tienes esta guía en tus manos, probablemente estás cansada de escuchar frases vacías como "es el estrés" o "es la edad". Este manual no es un tratado médico de endocrinología ni un recetario de dietas restrictivas. 
-
-Es una hoja de ruta diaria dividida en 3 fases de 7 días. Cada fase ataca un interruptor biológico específico para que tu metabolismo vuelva a quemar grasa y producir energía sin forzarte a pasar hambre.
-
-### Las 3 Reglas de Oro del Protocolo:
-1. **Comer con saciedad**: Reducir calorías de forma drástica eleva el cortisol y bloquea tu tiroides. Aquí priorizamos densidad nutricional, no inanición.
-2. **Respetar la cadencia circadiana**: Tu metabolismo responde a la luz solar y al descanso nocturno más que a cualquier suplemento mágico.
-3. **Medir victorias funcionales, no solo la balanza**: La desinflamación abdominal, la desaparición de la niebla mental y el sueño continuo son los primeros indicadores de que el sistema se activó.
+**Mecanismo Propietario**: ${uniqueMech}  
+**Promesa Ejecutiva**: ${promise}  
+**Diseñado específicamente para**: ${avatar}  
+**Foco de Intervención**: Erradicación estructural de ${corePainLower}  
+**Valor Individual del Manual**: $97 USD (Incluido en tu acceso completo)
 
 ---
 
-## 2. Fase 1 (Días 1 al 7): Drenaje y Reseteo Hepático
+## 1. Manifiesto de Implementación Rápida (Cero Relleno Teórico)
 
-### Objetivo de la Fase
-Descongestionar el hígado y el tracto digestivo para permitir que los metabolitos estrogénicos acumulados salgan de tu cuerpo en lugar de recircular en sangre.
+Bienvenido/a al **${productName}**. Este documento no es un libro académico para leer pasivamente ni un tratado teórico de 300 páginas. Es un **manual de operaciones en campo** diseñado para que obtengas tu primera victoria cuantificable dentro de las próximas **24 a 48 horas**.
 
-### Protocolo Diario Paso a Paso
+La razón por la que la mayoría fracasa al intentar resolver **${corePainLower}** no es la falta de capacidad ni de disciplina; el verdadero culpable son **${commonEnemy}**. Cuando intentas aplicar consejos genéricos que te piden 2 horas libres al día, tu sistema nervioso y tu agenda colapsan al tercer día.
 
-#### Mañana (Primeros 30 minutos)
-- **Hidratación celular**: 400 ml de agua tibia con una pizca de sal marina integral y unas gotas de limón. Estimula la motilidad gástrica y apoya a las glándulas suprarrenales sin alterar la glucosa.
-- **Luz solar directa**: 10 a 15 minutos de exposición a la luz natural matutina (sin gafas de sol) antes de mirar pantallas. Esto sincroniza tu reloj biológico y suprime la melatonina residual.
-
-#### Alimentación de la Fase 1
-- **Alimentos Estrella**: Hortalizas crucíferas (brócoli, coliflor, rúcula), alcachofas, aceite de oliva virgen extra, semillas de lino molidas (fitoestrógenos moduladores) y proteínas magras limpias (huevos, pescado azul pequeño, pollo de pastura).
-- **Alimentos en Pausa Estratégica (7 días)**:
-  - Alcohol de cualquier tipo.
-  - Azúcares refinados y edulcorantes artificiales.
-  - Lácteos ultraprocesados comerciales.
-  - Aceites de semillas refinados (soja, maíz, girasol común).
-
-#### Noche (Preparación del Reseteo)
-- Cenar al menos 2 horas y media antes de acostarte.
-- Apagar luces blancas directas a partir de las 21:00 y sustituir por luz cálida y tenue.
-
-### Checklist Diario - Fase 1
-- [ ] 400 ml de agua matutina con sal marina tomada.
-- [ ] 10 min de sol en los ojos antes de las 10:00 AM.
-- [ ] 2 porciones de vegetales crucíferos o verdes amargos incluidos en el día.
-- [ ] Cero consumo de azúcar ni alcohol.
-- [ ] Última ingesta finalizada 2.5h antes de dormir.
+### Las 3 Reglas de Oro de la ${uniqueMech}:
+1. **Intervención Mínima Viable (15 Minutos al Día)**: Más vale ejecutar un bloque quirúrgico de 15 minutos con cero distracciones que planificar sesiones maratónicas imposibles de cumplir.
+2. **Victorias en 48 Horas, No en Meses**: No esperes semanas para ver cambios; al aplicar el corte de fugas de la Fase 1 hoy mismo, liberarás entre 60 y 120 minutos de carga mental desde mañana.
+3. **Estandarización antes que Fuerza de Voluntad**: Usa siempre las plantillas de este manual y tu **Aplicación Móvil Material Design 3** para no gastar energía decidiendo por dónde empezar.
 
 ---
 
-## 3. Fase 2 (Días 8 al 14): Calibración Glucémica Inteligente
+## 2. Diagnóstico Inicial de Línea Base (Completa Antes de Empezar)
 
-### Objetivo de la Fase
-Estabilizar la curva de insulina postprandial para frenar el almacenamiento de grasa abdominal y erradicar los bajones de energía y antojos de las 16:00.
+Antes de ejecutar la Fase 1, califica del **1 al 5** (donde 1 = Nunca y 5 = Todos los días) tu situación actual para tener un punto de comparación objetivo a los 7 días:
 
-### La Regla del Orden de Ingesta
-No solo importa qué comes, sino en qué secuencia entra a tu estómago. La ciencia digestiva confirma que cambiar el orden aplana los picos de glucosa hasta un 40%:
-1. **Primero**: Fibra vegetal (ensaladas, verduras cocidas).
-2. **Segundo**: Proteína y grasas saludables (pescado, carne, huevos, aguacate).
-3. **Tercero**: Carbohidratos complejos o almidones (boniato, legumbres, arroz integral).
-
-### Protocolo de Manejo de Antojos Dulces
-Si a media tarde sientes la necesidad imperiosa de azúcar, es señal de deshidratación o fatiga suprarrenal, no debilidad de carácter:
-- Toma 1 vaso de agua con 1 cucharada sopera de vinagre de manzana sin filtrar.
-- Come 1 puñado pequeño de frutos secos crudos (nueces o almendras) con una pizca de canela Ceilán.
-- Espera 15 minutos: el 90% de los antojos por dopamina se desvanecen.
-
-### Checklist Diario - Fase 2
-- [ ] Regla de ingesta aplicada en comida y cena (fibra -> proteína -> carbohidrato).
-- [ ] Ningún carbohidrato consumido "desnudo" (siempre acompañado de grasa o proteína).
-- [ ] Caminata suave de 10 minutos tras la comida principal (activa transportadores GLUT-4 sin sudar).
-- [ ] Registro de nivel de energía a las 16:00 (escala del 1 al 10).
-
----
-
-## 4. Fase 3 (Días 15 al 21): Blindaje Mitocondrial y Hábitos Definitivos
-
-### Objetivo de la Fase
-Aumentar la densidad mitocondrial y la sensibilidad muscular a los nutrientes mediante micropíldoras de movimiento de bajo cortisol.
-
-### Rutina de Activación Muscular Suave (8 Minutos Diarios)
-Nada de entrenamientos extenuantes de CrossFit que eleven el cortisol al cielo. Necesitas señalizar a tus músculos que retengan masa magra:
-- **Minuto 0 a 2**: Sentadillas lentas asistidas o libres (15 repeticiones controladas).
-- **Minuto 2 a 4**: Flexiones de brazos en pared o mesa (12 repeticiones).
-- **Minuto 4 a 6**: Puente de glúteos en el suelo con contracción isométrica de 2 segundos (15 repeticiones).
-- **Minuto 6 a 8**: Plancha abdominal suave sobre antebrazos (3 series de 25 segundos con descanso).
-
-### Plan de Sostenibilidad (Día 22 en adelante)
-Has reprogramado la respuesta basal de tu organismo. Para mantener los resultados:
-- Aplica la regla 85/15: mantén estas pautas el 85% del tiempo y disfruta de eventos sociales o comidas libres en el 15% restante sin culpa.
-- Repite la Fase 1 (Drenaje Hepático) durante 3 días una vez al mes si sientes que la hinchazón o el estrés vuelven a acumularse.
-
----
-
-## 5. Matriz de Resolución de Obstáculos Frecuentes
-
-| Síntoma o Dificultad | Causa Probable | Solución Inmediata |
+| Indicador de Fricción Actual | Puntaje Hoy (1-5) | Meta Día 7 (1-5) |
 | :--- | :--- | :--- |
-| Dolor de cabeza en días 2 o 3 | Retiro de azúcares y pérdida de electrolitos | Aumenta el agua con sal marina e incluye caldo de huesos |
-| Estreñimiento temporal | Aumento repentino de fibra sin suficiente agua | Añade 1 cucharada de semillas de chía hidratadas en agua tibia |
-| Despertar a las 3:00 AM con calor | Descenso de glucosa nocturno y pico de cortisol | Toma 1 cucharadita de aceite de coco o crema de almendras antes de dormir |
-| Resistencia a cocinar a diario | Falta de planificación previa | Utiliza el Bono 2 (Recetas de 15 Minutos) para cocinar en lotes |
+| 1. Inicio el día respondiendo urgencias externas antes de avanzar en mi prioridad clave | [ ___ ] | ≤ 1 |
+| 2. Siento fatiga acumulada o bloqueo mental a mitad de la jornada por exceso de micro-decisiones | [ ___ ] | ≤ 2 |
+| 3. Pierdo más de 90 minutos diarios por interrupciones, cambios de contexto o falta de estructura | [ ___ ] | ≤ 1 |
+| 4. Termino el día con la sensación de haber estado ocupado pero sin cerrar lo importante | [ ___ ] | ≤ 1 |
+
+> **Interpretación rápida**: Si tu suma supera los **10 puntos**, estás operando con una fuga severa de energía. Ve directamente al paso de corte de hemorragia en la Fase 1.
+
+---
+
+## 3. ${phases[0].timeframe}: ${phases[0].name}
+
+### Objetivo Táctico de la Fase 1
+${phases[0].desc}
+
+### Protocolo Operativo Paso a Paso (Primeras 48 Horas)
+
+#### Paso 1.1 — El Corte de las 3 Fugas Críticas (Duración: 10 Minutos Hoy)
+El 80% de **${corePainLower}** proviene de tres disparadores que ocurren durante la primera hora de tu mañana. Ejecuta este ajuste ahora mismo:
+1. **Aislamiento de Entrada (Primeros 30 min del día)**: Prohibido abrir bandeja de correo, mensajería o redes antes de definir el **Único Entregable Crítico (UEC)** de la jornada.
+2. **Despeje Visual y Digital**: Cierra todas las ventanas, pestañas o documentos que no pertenezcan al bloque que estás ejecutando en este instante.
+3. **Definición del Criterio de Victoria**: Escribe en una sola línea: *"Hoy es un día ganado si antes de las 13:00 dejo completado: [____________________]"*.
+
+#### Paso 1.2 — El Bloque de Tracción Inmediata (Duración: 15 Minutos)
+- Abre tu **Aplicación Móvil de Acompañamiento** en la pestaña **Hoy**.
+- Activa el cronómetro guiado y ejecuta los primeros 15 minutos sobre tu Entregable Crítico sin editar ni perfeccionar sobre la marcha.
+- Si sientes resistencia al arrancar, activa la **Onda Binaural de 432Hz** en la pestaña *Mecanismo* de la App para aislar el ruido externo.
+
+#### Paso 1.3 — Pausa de Descompresión Activa (Duración: 90 Segundos cada 90 Minutos)
+- Antes de que aparezca el agotamiento, levántate de la silla o cambia de postura durante 90 segundos, hidrátate y realiza 3 respiraciones profundas (inhalación de 4s, retención de 2s, exhalación de 6s) para resetear la carga cognitiva.
+
+### Checklist de Verificación — Fase 1 (Primeras 48 Horas)
+- [ ] Diagnóstico de línea base completado con puntaje inicial.
+- [ ] Único Entregable Crítico (UEC) definido antes de abrir mensajes.
+- [ ] Primer bloque de 15 minutos ejecutado con el temporizador de la App Móvil.
+- [ ] Al menos 2 pausas de descompresión de 90 segundos aplicadas en el día.
+- [ ] Primera victoria tangible registrada al cierre de las primeras 24–48 horas.
+
+---
+
+## 4. ${phases[1].timeframe}: ${phases[1].name}
+
+### Objetivo Táctico de la Fase 2
+${phases[1].desc}
+
+### Arquitectura de Ejecución en 3 Movimientos Diarios
+
+| Momento del Día | Acción Exacta a Ejecutar | Tiempo Requerido | Herramienta Asociada |
+| :--- | :--- | :--- | :--- |
+| **1. Calibración Matutina** | Selección de 1 Prioridad Principal + 2 Tareas Secundarias | 3 Minutos | Plantilla #1 (Bono 2) + App Tab 1 |
+| **2. Bloque de Inmersión SPTP** | Ejecución profunda sin notificaciones ni multitarea | 25 a 50 Minutos | Temporizador M3 + Audio 432Hz |
+| **3. Cierre y Descarga Nocturna** | Registro de avance y preparación del día siguiente | 2 Minutos | Checklist de Cierre en App |
+
+### Cómo Aplicar el Filtro de Eliminación de Tareas Basura
+Cada vez que surja una tarea imprevista durante los Días 3 al 7, pásala por este filtro de 3 preguntas en 10 segundos:
+1. **¿Impacta directamente en el resultado principal de esta semana?** Si la respuesta es NO → Pospón o descarta.
+2. **¿Puede resolverse en menos de 2 minutos al final de la tarde?** Si la respuesta es SÍ → Agrupa todas las micro-tareas en un solo bloque de 15 minutos a última hora.
+3. **¿Se repite todas las semanas?** Si la respuesta es SÍ → Conviértela en una lista de pasos fijos usando las plantillas del Bono #2.
+
+### Checklist de Verificación — Fase 2 (Días 3 al 7)
+- [ ] Calibración matutina de 3 minutos ejecutada durante 5 días consecutivos.
+- [ ] Al menos 1 bloque diario de inmersión completado con cero interrupciones.
+- [ ] Agrupación de correos, mensajes y pendientes menores en un único bloque vespertino.
+- [ ] Reducción medible de al menos un 50% en la sensación de fatiga al terminar el día.
+
+---
+
+## 5. ${phases[2].timeframe}: ${phases[2].name}
+
+### Objetivo Táctico de la Fase 3
+${phases[2].desc}
+
+### El Ritual Semanal de Calibración en 10 Minutos (Viernes o Domingo)
+Para que este sistema funcione en piloto automático mes tras mes sin depender de motivación momentánea, ejecuta esta revisión de 10 minutos una vez por semana:
+1. **Minutos 1 a 3 (Auditoría de Métricas)**: Abre el Bono #3 (Calculadora y Matriz Semanal) y anota cuántas horas de enfoque limpio lograste esta semana.
+2. **Minutos 4 a 7 (Detección de Cuellos de Botella)**: Identifica qué día de la semana tuviste mayor fricción y cuál fue la causa exacta.
+3. **Minutos 8 a 10 (Blindaje de la Semana Entrante)**: Deja definidos tus 3 bloques intocables en el calendario antes de que empiece el lunes.
+
+### Checklist de Verificación — Fase 3 (Consolidación Permanente)
+- [ ] Ritual semanal de 10 minutos agendado de forma fija en el calendario.
+- [ ] Racha activa registrada en la pestaña *Progreso* de la App Móvil.
+- [ ] Protocolo de contingencia (Bono #4) listo para días de emergencia o sobrecarga.
+- [ ] Comparativa de puntaje Día 1 vs. Día 7 completada con mejora verificable.
+
+---
+
+## 6. Matriz Maestra de Resolución de Obstáculos en Campo
+
+| Obstáculo Real en tu Semana | Causa Raíz Exacta | Intervención Táctica en 2 Minutos |
+| :--- | :--- | :--- |
+| **Día caótico lleno de urgencias imprevistas** | Intentar aplicar el bloque largo en medio de una crisis | Cambia al **Modo Mínimo Viable de 5 Minutos** (Bono #1 y Bono #4) para no cortar tu racha |
+| **Fatiga pesada después del mediodía** | Acumulación de micro-decisiones sin pausas de descarga | Aplica la pausa activa de 90 segundos + 15 minutos con Onda Binaural 432Hz en tareas mecánicas |
+| **Interrupciones constantes de clientes o equipo** | Disponibilidad reactiva permanente sin ventanas definidas | Establece 2 ventanas fijas de respuesta al día y silencia notificaciones durante tu bloque de 25 min |
+| **Pérdida de constancia tras un fin de semana o viaje** | Querer recuperar todo el trabajo atrasado de golpe | Aplica la **Regla de Reactivación en 24h** (elige 1 sola tarea de 10 minutos para recuperar tracción hoy) |
 `;
 }
 
-function generateBonusContent(bonus) {
-  const { id, name, purpose, perceivedValue } = bonus;
+function generateBonusContent(bonus, index, offer, niche) {
+  const { id, name, purpose, perceivedValue, objectionDestroyed } = bonus;
+  const bonusNum = id || index + 1;
+  const uniqueMech = offer?.unique_mechanism || 'Arquitectura de Sincronización Operativa™';
+  const nicheName = niche?.niche_name || offer?.niche_name || 'Productividad y Trabajo Remoto';
+  const corePain = (niche?.core_pain || offer?.core_pain || 'fricción operativa y dispersión').toLowerCase();
 
-  if (id === 1 || name.toLowerCase().includes('insomnio') || name.toLowerCase().includes('sos')) {
-    return `# ${name}
-### Bono de Acompañamiento · Valor Percibido: $${perceivedValue} USD
+  // BONO 1: PROTOCOLO SOS DE INTERVENCIÓN EN 5 MINUTOS
+  if (bonusNum === 1) {
+    return `# Bono #1: ${name}
+### Herramienta Táctica de Emergencia · Valor Individual: $${perceivedValue || 29} USD (Incluido Gratis)
 
-**Propósito**: ${purpose}
-
----
-
-## 1. El Interruptor del Sueño Profundo: Protocolo 3-2-1
-
-El insomnio y los sofocos nocturnos en la perimenopausia no son casualidad: ocurren cuando la caída de estrógenos descalibra el termostato del hipotálamo y el cortisol nocturno sube a deshora.
-
-Aplica esta regla cada noche:
-- **3 Horas Antes**: Cierra la cocina. Cero alimentos sólidos para permitir que la sangre vaya a reparar tejidos y no a digerir.
-- **2 Horas Antes**: Cierra el trabajo y conversaciones estresantes. Pasa al modo reposo.
-- **1 Hora Antes**: Cierra pantallas con luz azul (móvil, televisión, tablets) o usa modo nocturno cálido.
+**Propósito Operativo**: ${purpose || 'Secuencia de choque para desactivar el bloqueo agudo y recuperar el control en menos de 5 minutos.'}  
+**Objeción que Elimina de Raíz**: ${objectionDestroyed || '“No tengo tiempo libre en el día para aplicar un sistema largo”'}
 
 ---
 
-## 2. La Bebida Termorreguladora Nocturna
+## 1. Cuándo Activar este Protocolo SOS
 
-Prepara esta infusión 45 minutos antes de dormir para bajar la temperatura central y estimular receptores GABA:
-- 250 ml de agua caliente (sin hervir a borbotones).
-- 1 sobre de manzanilla pura o pasiflora.
-- 1/4 cucharadita de canela Ceilán en polvo.
-- 1 cápsula abierta de citrato o bisglicinato de magnesio (o 200 mg).
+Este manual de bolsillo fue diseñado para tus **peores días**: esas mañanas donde te despiertas tarde, tienes 15 mensajes urgentes esperando, sientes la mente saturada por **${corePain}** y estás a punto de dar el día por perdido.
 
-*Tómala despacio, a sorbos pequeños mientras lees un libro físico.*
+En lugar de abandonar tu progreso, ejecuta esta **Secuencia Cronometrada de 5 Minutos**.
 
 ---
 
-## 3. Ejercicio de Regulación Vagal (Técnica 4-7-8)
+## 2. Secuencia Cronometrada Minuto a Minuto (Protocolo de 5 Minutos)
 
-Acuéstate boca arriba con una mano en el abdomen y otra en el pecho:
-1. Inhala suavemente por la nariz contando hasta **4** (sintiendo que el vientre se infla).
-2. Retén el aire en tus pulmones contando hasta **7**.
-3. Exhala lentamente por la boca con un suave sonido sibilante contando hasta **8**.
-4. Repite este ciclo 4 veces consecutivas. Sentirás cómo la frecuencia cardíaca disminuye y el sistema nervioso simpático se apaga.
+| Minuto | Fase de Choque | Acción Exacta a Ejecutar Ahora Mismo |
+| :--- | :--- | :--- |
+| **Minuto 01** | **Corte Físico y Sensorial** | Cierra todas las pestañas salvo una. Pon el teléfono boca abajo en modo No Molestar y realiza 3 exhalaciones largas de 6 segundos. |
+| **Minuto 02** | **Vaciado de Ruido Mental** | Escribe en un papel las 3 cosas que te están generando presión ahora mismo. Sacarlas de tu memoria de trabajo reduce la ansiedad un 40% al instante. |
+| **Minuto 03** | **Aislamiento de la Palanca Única** | De esas 3 cosas, tacha 2 temporalmente y encierra en un círculo la única que, si se resuelve hoy, destraba el resto. |
+| **Minuto 04** | **Reducción al Micro-Paso de 120s** | Divide esa tarea en una acción ridículamente pequeña que puedas empezar en los próximos 60 segundos (ej.: redactar solo el primer párrafo o estructura). |
+| **Minuto 05** | **Disparo con Temporizador M3** | Abre tu App Móvil, pulsa *Iniciar Rutina (03:00)* y arranca sin detenerte hasta que suene la señal auditiva. |
+
+---
+
+## 3. Matriz de Respuesta Rápida ante Síntomas Agudos
+
+- **Si sientes parálisis por exceso de pendientes**:
+  - *Acción en 60s*: Oculta tu lista general. Crea una nota limpia con una sola línea y prohíbete mirar el resto por los próximos 25 minutos.
+- **Si sufres agotamiento visual o neblina mental a media tarde**:
+  - *Acción en 60s*: Aléjate de la pantalla 3 metros, bebe un vaso completo de agua e inicia el bloque con el generador binaural de 432Hz en la App.
+- **Si una urgencia externa destruyó tu agenda de la mañana**:
+  - *Acción en 60s*: Declara un "Nuevo Mediodía". Divide la tarde como si fuera un día nuevo y aplica un único bloque de 15 minutos antes de las 16:00.
+
+---
+
+## 4. Tarjeta de Bolsillo SOS (Lista de Verificación en 60 Segundos)
+
+- [ ] Notificaciones silenciadas y pestañas secundarias cerradas.
+- [ ] Las 3 urgencias descargadas en papel fuera de la cabeza.
+- [ ] 1 sola prioridad seleccionada para los próximos 15 minutos.
+- [ ] Temporizador de la App Móvil en marcha.
 `;
   }
 
-  if (id === 2 || name.toLowerCase().includes('recetario') || name.toLowerCase().includes('15')) {
-    return `# ${name}
-### Bono de Acompañamiento · Valor Percibido: $${perceivedValue} USD
+  // BONO 2: KIT DE PLANTILLAS Y FRAMEWORKS PLUG & PLAY
+  if (bonusNum === 2) {
+    return `# Bono #2: ${name}
+### Banco de Plantillas Copiables · Valor Individual: $${perceivedValue || 37} USD (Incluido Gratis)
 
-**Propósito**: ${purpose}
-
----
-
-## Filosofía: Cero Horas en la Cocina
-
-Cocinar sano no debe convertirse en un segundo empleo. Estas 6 preparaciones base se arman en 15 minutos exactos y utilizan ingredientes que encuentras en cualquier supermercado estándar.
+**Propósito Operativo**: ${purpose || 'Estructuras pre-armadas listas para copiar, rellenar y ejecutar sin pensar desde cero.'}  
+**Objeción que Elimina de Raíz**: ${objectionDestroyed || '“No sé por dónde empezar ni quiero perder tiempo diseñando mi propio sistema”'}
 
 ---
 
-### Desayunos Anti-Picos de Insulina (5 a 7 Minutos)
+## 1. Plantilla #1: Tablero Diario de Prioridad Única (Regla 1-2-3)
 
-#### 1. Huevos Revueltos Proteicos con Espinacas y Cúrcuma
-- **Ingredientes**: 2 huevos enteros camperos, 1 puñado grande de espinacas frescas baby, 1 cucharadita de aceite de oliva virgen extra, pizca de cúrcuma y pimienta negra molida.
-- **Preparación**: Saltea las espinacas 1 minuto en la sartén con el aceite. Vierte los huevos batidos con la cúrcuma y sal marina. Revuelve a fuego medio durante 3 minutos. Listo.
+Copia esta estructura cada mañana (en papel, Notion, Notes o junto a tu App Móvil) en menos de 3 minutos:
 
-#### 2. Bowl Cremoso de Yogur Griego, Lino y Frutos Rojos
-- **Ingredientes**: 150 g de yogur griego entero natural (sin azúcar añadido), 1 cucharada sopera de semillas de lino molidas, 1 cucharada de nueces picadas, 1/2 taza de arándanos o fresas frescas.
-- **Preparación**: Mezcla en un tazón. El lino aporta lignanos (fitoestrógenos naturales) y la grasa del yogur mantiene tu apetito saciado hasta el almuerzo.
-
----
-
-### Almuerzos Rápidos de Alta Energía (10 a 12 Minutos)
-
-#### 3. Ensalada Templada de Salmón o Caballa con Aguacate y Rúcula
-- **Ingredientes**: 1 lata de salmón salvaje o caballa al natural (excelente fuente de Omega-3 antiinflamatorio), 2 tazas de rúcula o canónigos, 1/2 aguacate maduro en cubos, 1 cucharada de semillas de calabaza, aliño de aceite de oliva virgen extra y zumo de limón.
-- **Preparación**: Coloca los verdes en la base, añade la proteína en conserva escurrida, el aguacate y las semillas. Aliña y disfruta de un plato rico en nutrientes sin encender fogones.
-
-#### 4. Salteado Express de Pechuga con Brócoli y Aceite de Sésamo
-- **Ingredientes**: 150 g de tiras de pollo previamente cocidas o solomillos de pavo finos, flores de brócoli precocidas al vapor (puedes usar las de bolsa ultracongelada en 4 min de microondas), 1 diente de ajo laminado, 1 cucharadita de semillas de sésamo y tamari (salsa de soja sin gluten).
-- **Preparación**: Dora el ajo en la sartén 30 segundos, incorpora el pollo y el brócoli, añade el tamari y saltea a fuego vivo 3 minutos. Termina con sésamo por encima.
+> **FECHA**: [ ___ / ___ / 2026 ] · **NIVEL DE ENERGÍA INICIAL (1-10)**: [ ___ ]
+>
+> **🎯 1 ENTREGABLE CRÍTICO INNEGOCIABLE (60% de tu impacto de hoy)**:
+> - [ ] __________________________________________________________________
+> - *Bloque asignado*: De [ __:__ ] a [ __:__ ] (Sin correo ni teléfono)
+>
+> **⚡ 2 TAREAS DE IMPULSO COMPLEMENTARIO**:
+> - [ ] 1. _______________________________________________________________
+> - [ ] 2. _______________________________________________________________
+>
+> **🧹 3 MICRO-PENDIENTES OPERATIVOS (Agrupados al final de la tarde en 15 min)**:
+> - [ ] A. ___________________ · [ ] B. ___________________ · [ ] C. ___________________
 
 ---
 
-### Cenas Livianas de Reparación Digestiva (10 a 15 Minutos)
+## 2. Plantilla #2: Guion de Bloque de Inmersión con ${uniqueMech}
 
-#### 5. Crema Reconfortante de Calabacín y Almendras
-- **Ingredientes**: 1 calabacín mediano cortado en rodajas, 1/2 cebolla dulce, 1 taza de caldo de verduras casero o bajo en sodio, 1 cucharada de puré de almendras 100% puro.
-- **Preparación**: Hierve el calabacín y la cebolla en el caldo durante 8 minutos. Tritura en batidora junto con la cucharada de crema de almendras hasta obtener textura aterciopelada.
+Utiliza esta secuencia cada vez que te sientes a ejecutar un bloque de 25 o 50 minutos:
 
-#### 6. Tortilla Francesa Doble con Espárragos Verdes y Champiñones
-- **Ingredientes**: 2 huevos, 4 espárragos trigueros cortados en trozos pequeños, 3 champiñones laminados, aceite de oliva virgen extra.
-- **Preparación**: Saltea los espárragos y champiñones 4 minutos. Añade los huevos batidos, dobla la tortilla por la mitad y cocina 1 minuto más.
+| Etapa del Bloque | Minutos | Qué Hacer Exactamente |
+| :--- | :--- | :--- |
+| **1. Preparación de Cabina** | Min 00 a 02 | Abrir únicamente el archivo de trabajo, activar Onda 432Hz en la App y definir qué debe quedar listo al terminar el reloj. |
+| **2. Tracción Bruta (Cero Edición)** | Min 02 a 20 | Avanzar a máxima velocidad sobre el entregable sin corregir detalles estéticos ni cambiar de ventana. |
+| **3. Pulido y Cierre con Sello** | Min 20 a 25 | Revisar el resultado, guardar cambios y dejar anotado el siguiente paso exacto para el próximo bloque. |
+
+---
+
+## 3. Plantilla #3: Mensajes Pre-Redactados para Blindar tu Tiempo sin Fricción
+
+Copia y pega estos mensajes para proteger tus bloques de concentración frente a clientes, jefes o colegas sin parecer inaccesible:
+
+- **Guion A (Respuesta rápida para diferir una solicitud no urgente)**:
+  > *"¡Hola [Nombre]! Recibido. Ahora mismo estoy cerrando una entrega prioritaria para tenerla lista a tiempo. Apenas termine mi bloque a las [Hora, ej: 12:30] lo reviso con calma y te doy respuesta."*
+- **Guion B (Para evitar reuniones innecesarias de 45 minutos)**:
+  > *"Para avanzar más rápido hoy sin esperar a coincidir en agenda: ¿me envías por aquí un audio de 2 minutos o 3 puntos con lo clave y te devuelvo la solución resuelta antes de las [Hora]?"*
+
+---
+
+## 4. Checklist de Uso de Plantillas
+
+- [ ] Plantilla 1-2-3 rellenada antes de revisar el teléfono por la mañana.
+- [ ] Bloques de inmersión ejecutados separando creación bruta de corrección.
+- [ ] Mensajes de blindaje aplicados para evitar interrupciones en horario pico.
 `;
   }
 
-  if (id === 3 || name.toLowerCase().includes('calculadora') || name.toLowerCase().includes('supermercado')) {
-    return `# ${name}
-### Bono de Acompañamiento · Valor Percibido: $${perceivedValue} USD
+  // BONO 3: CALCULADORA Y MATRIZ DE AUDITORÍA SEMANAL
+  if (bonusNum === 3) {
+    return `# Bono #3: ${name}
+### Sistema de Medición y Auditoría · Valor Individual: $${perceivedValue || 27} USD (Incluido Gratis)
 
-**Propósito**: ${purpose}
-
----
-
-## 1. Semáforo de Carbohidratos y Carga Glucémica
-
-Usa esta guía rápida para tomar decisiones al instante frente a la despensa o la carta de un restaurante:
-
-### Zona Verde (Consumo Libre y Diario)
-- **Verduras de hoja y crucíferas**: Espinacas, acelgas, col rizada, brócoli, repollo, espárragos, calabacín, pepino, pimientos.
-- **Frutas de baja carga glucémica**: Arándanos, frambuesas, moras, fresas, limones, aguacate.
-
-### Zona Amarilla (Consumo Consciente con Proteína o Grasa)
-- **Tubérculos y legumbres**: Boniato, zanahoria cocida, lentejas, garbanzos, quinoa, avena integral en copos gruesos.
-- **Regla**: Siempre acompáñalos con proteína limpia y aliño de aceite de oliva o frutos secos para retrasar la absorción gástrica.
-
-### Zona Roja (Pausa Estratégica en los 21 Días)
-- **Refinados y ultraprocesados**: Harinas blancas, panes comerciales de molde, refrescos, galletas "digestive", zumos envasados y alcohol.
+**Propósito Operativo**: ${purpose || 'Herramienta cuantitativa para medir tu progreso real en horas recuperadas, claridad y retorno económico.'}  
+**Objeción que Elimina de Raíz**: ${objectionDestroyed || '“No sé cómo medir si realmente estoy mejorando cada semana”'}
 
 ---
 
-## 2. Lista Maestra de Supermercado por Pasillos
+## 1. Test de Auditoría Operativa sobre 100 Puntos
 
-Lleva esta lista en tu móvil para evitar caer en compras impulsivas:
+Suma **10 puntos** por cada afirmación cumplida durante los últimos 7 días:
 
-### Pasillo 1: Frutería y Verduras Frescas
-- [ ] 2 bolsas de espinacas o rúcula fresca
-- [ ] 2 piezas de brócoli o coliflor
-- [ ] 3 aguacates en su punto
-- [ ] 1 caja de frutos rojos frescos o congelados
-- [ ] 1 red de limones
-- [ ] 1 bulbo de jengibre fresco
+- [ ] **+10 pts**: Completé mi Entregable Crítico antes del mediodía al menos 4 días de esta semana.
+- [ ] **+10 pts**: Pasé los primeros 30 minutos de la mañana sin abrir redes sociales ni bandejas de entrada reactivas.
+- [ ] **+10 pts**: Ejecuté al menos 1 bloque diario cronometrado desde la App Móvil.
+- [ ] **+10 pts**: Apliqué pausas breves de descompresión antes de llegar al agotamiento mental.
+- [ ] **+10 pts**: Agrupé los mensajes, correos y trámites menores en un solo bloque por la tarde.
+- [ ] **+10 pts**: Utilicé el Protocolo SOS de 5 minutos cuando surgió un imprevisto en vez de abandonar el día.
+- [ ] **+10 pts**: Cerré mi jornada a una hora definida registrando mi victoria diaria.
+- [ ] **+10 pts**: Reduje visiblemente las horas perdidas en multitarea o pestañas abiertas sin propósito.
+- [ ] **+10 pts**: Mantuve mi racha activa en la App Móvil durante la semana.
+- [ ] **+10 pts**: Terminé la semana con mayor claridad mental y energía disponible que la semana anterior.
 
-### Pasillo 2: Pescadería, Carnicería y Huevos
-- [ ] 2 docenas de huevos ecológicos o camperos (código 0 o 1)
-- [ ] Lomo o filetes de salmón / trucha
-- [ ] Pechugas de pollo o solomillos de pavo
-- [ ] Latas de sardinillas o melva en aceite de oliva virgen extra
+### Tabla de Diagnóstico según tu Puntuación Total:
 
-### Pasillo 3: Frutos Secos y Despensa Sana
-- [ ] Semillas de lino marrón o dorado entero (moler en casa para conservar aceites)
-- [ ] Nueces de nogal crudas
-- [ ] Aceite de oliva virgen extra de primera presión en frío
-- [ ] Vinagre de manzana con la "madre" (crudo sin pasteurizar)
-- [ ] Canela de Ceilán en polvo
-- [ ] Sal marina pura o del Himalaya
+| Rango de Puntos | Nivel Operativo | Acción Recomendada para los Próximos 7 Días |
+| :--- | :--- | :--- |
+| **0 a 40 Puntos** | **Fuga Crítica** | No intentes hacer todo a la vez. Aplica únicamente el Paso 1.1 de la Guía Maestra y el Bono #1 (SOS 5 min) durante 3 días. |
+| **50 a 70 Puntos** | **Tracción en Marcha** | Ya cortaste las fugas principales. Incorpora la Plantilla 1-2-3 del Bono #2 cada mañana para subir al 80%. |
+| **80 a 100 Puntos** | **Alto Rendimiento SPTP** | Tu sistema opera en piloto automático. Mantén el ritual de calibración de 10 minutos los viernes. |
+
+---
+
+## 2. Fórmula de Cálculo de Tiempo y Valor Económico Recuperado
+
+Completa esta ecuación simple al final de cada semana para cuantificar tu retorno de inversión:
+
+1. **Horas diarias recuperadas de dispersión/fatiga**: \`[ A ]\` horas/día (Promedio: \`1.5\` a \`2.5\` h)
+2. **Horas recuperadas al mes** (\`A × 22 días hábiles\`): \`[ B ]\` horas/mes
+3. **Valor de tu hora profesional en USD**: \`$[ C ]\` USD/hora
+4. **Valor Económico Mensual Recuperado (\`B × C\`)**: **\`$[ _________ ] USD / mes\`**
+
+---
+
+## 3. Registro de Evolución de 4 Semanas
+
+| Semana | Puntaje Auditoría (0-100) | Bloques Completados | Horas Libres Recuperadas | Victoria Principal Lograda |
+| :--- | :--- | :--- | :--- | :--- |
+| **Semana 1** | _____ / 100 | _____ bloques | _____ hrs | ___________________________ |
+| **Semana 2** | _____ / 100 | _____ bloques | _____ hrs | ___________________________ |
+| **Semana 3** | _____ / 100 | _____ bloques | _____ hrs | ___________________________ |
+| **Semana 4** | _____ / 100 | _____ bloques | _____ hrs | ___________________________ |
 `;
   }
 
-  // Bono 4 o genérico de soporte médico / checklist
-  return `# ${name}
-### Bono de Acompañamiento · Valor Percibido: $${perceivedValue} USD
+  // BONO 4: MANUAL DE BLINDAJE Y PREVENCIÓN DE RECAÍDAS
+  return `# Bono #4: ${name}
+### Sistema de Mantenimiento y Anti-Frágil · Valor Individual: $${perceivedValue || 47} USD (Incluido Gratis)
 
-**Propósito**: ${purpose}
-
----
-
-## 1. El Problema del "Todo Está Bien en tus Análisis"
-
-Muchas mujeres asisten a consulta médica sintiéndose agotadas, pero reciben como única respuesta un escueto: *"Tus analíticas están normales"*. 
-
-El motivo es simple: los rangos estándar de laboratorio miden la ausencia de enfermedad aguda clínica (como diabetes declarada o hipotiroidismo severo), no el estado metabólico óptimo ni los desequilibrios tempranos de la perimenopausia.
+**Propósito Operativo**: ${purpose || 'Plan de blindaje para mantener tus resultados en semanas de máxima presión, viajes o imprevistos.'}  
+**Objeción que Elimina de Raíz**: ${objectionDestroyed || '“Ya probé otros métodos antes y terminé abandonando a las pocas semanas”'}
 
 ---
 
-## 2. Panel Analítico Completo Recomendado
+## 1. Por Qué Fallan los Hábitos Tradicionales (Y Cómo Blindar el Tuyo)
 
-Solicita a tu médico o especialista de confianza incluir estos marcadores en tu próxima analítica de sangre:
+La razón número uno por la que las personas abandonan cualquier sistema es la **mentalidad de "Todo o Nada"**: creen que si un martes caótico no pueden hacer su rutina perfecta de 45 minutos, ya "rompieron el método" y abandonan por completo.
 
-### Panel Metabólico y de Glucosa
-- **Insulina Basal en ayunas**: El indicador temprano de resistencia a la insulina (el valor ideal óptimo suele situarse por debajo de 6-8 uIU/mL, aun cuando el laboratorio marque hasta 25 como normal).
-- **Glucosa basal y Hemoglobina Glicosilada (HbA1c)**.
-- **Perfil lipídico completo**: Triglicéridos, HDL, LDL y ratio Triglicéridos/HDL (debe ser menor a 2).
+Con la **${uniqueMech}**, jamás dependes de tener un día perfecto. Tienes **3 Marchas Operativas** según tu nivel de energía y tiempo disponible:
 
-### Panel Tiroideo Completo (No solo TSH)
-- **TSH** (Hormona estimulante de tiroides).
-- **T4 libre y T3 libre**: Esenciales para ver si tu cuerpo convierte eficientemente la hormona tiroidea inactiva en activa.
-- **Anticuerpos anti-TPO y anti-Tiroglobulina**: Para descartar tiroiditis autoinmune subclínica (frecuente a partir de los 35 años).
-
-### Micronutrientes y Co-Factores Clave
-- **Vitamina D (25-OH)**: Nivel funcional óptimo > 40-50 ng/mL.
-- **Ferritina sérica**: Mide tus reservas de hierro reales (si está por debajo de 40-50 ng/mL genera fatiga profunda y caída de cabello).
-- **Vitamina B12 y Ácido Fólico**.
+| Marcha Operativa | Cuándo Usarla | Qué Haces Exactamente (Tiempo Total) |
+| :--- | :--- | :--- |
+| **🟢 Marcha 3 (Día Óptimo)** | Días normales con agenda bajo control | Calibración 1-2-3 (3m) + 2 Bloques de Inmersión (50m) + Cierre nocturno (2m). |
+| **🟡 Marcha 2 (Día Ocupado)** | Días con muchas reuniones o entregas | Calibración rápida (2m) + 1 Bloque Táctico (25m) + Checklist en App. |
+| **🔴 Marcha 1 (Día de Caos / SOS)** | Emergencias, viajes, enfermedad o agotamiento extremo | **Modo Mínimo Viable**: 1 sola micro-acción de **3 a 5 minutos** para mantener viva tu racha. |
 
 ---
 
-## 3. Guion de Preguntas Asertivas para tu Consulta
+## 2. Los 4 Disparadores de Recaída y su Antídoto Inmediato
 
-Usa estas preguntas textuales si te sientes incomprendida:
-- *"Doctor/a, aunque los valores no muestren una patología aguda, presento síntomas claros de fatiga, insomnio y niebla mental. ¿Podríamos evaluar mi insulina basal y mis niveles de T3 libre para comparar con mis registros anteriores?"*
-- *"¿Considera conveniente revisar mis niveles de ferritina y vitamina D para optimizar mi función metabólica en esta etapa de mi ciclo?"*
+1. **Disparador #1: "Hoy me levanté sin ganas ni energía"**
+   - *Antídoto*: Reduce la barra de entrada. No te pidas terminar el proyecto entero; comprométete únicamente a encender el cronómetro de 3 minutos en la App Móvil. El movimiento genera la energía, no al revés.
+2. **Disparador #2: "Acumulé 2 días sin aplicar el sistema por una urgencia"**
+   - *Antídoto*: Aplica la **Regla de Cero Culpa y Reinicio en 15 Minutos**. Prohibido intentar "recuperar el doble de trabajo" el tercer día. Retoma en Marcha 1 o Marcha 2 con una sola tarea ganadora.
+3. **Disparador #3: "El entorno en casa o la oficina vuelve a interrumpirme"**
+   - *Antídoto*: Reactiva la señal física (auriculares puestos + Onda 432Hz + mensaje automático del Bono #2) durante una ventana corta de 25 minutos.
+4. **Disparador #4: "Siento que vuelvo a llenarme de tareas secundarias"**
+   - *Antídoto*: Haz una purga de 5 minutos tachando o posponiendo todo lo que no mueva la aguja de esta semana.
+
+---
+
+## 3. Contrato de Blindaje y Continuidad
+
+- [ ] Acepto usar la **Marcha 1 (3 a 5 minutos)** en mis días difíciles en lugar de abandonar.
+- [ ] Nunca permitiré pasar 2 días consecutivos sin registrar al menos una micro-victoria en mi App Móvil.
+- [ ] Revisaré mi matriz de puntaje (Bono #3) cada viernes en menos de 10 minutos.
 `;
 }
 
 function runProductGeneration() {
-  console.log('[product-generator] Starting product content generation...');
+  console.log('[product-generator] Starting high-value product content generation...');
   const data = loadOfferData();
   const offer = data.reengineeredOffer || data.offer;
   const niche = data.niche;
 
-  const nicheSlug = slugify(niche.niche_name || 'salud-hormonal');
+  const nicheSlug = slugify(niche?.niche_name || offer.product_name || 'producto-activo');
   const productsDir = path.join(__dirname, '..', '..', '..', '..', 'products', nicheSlug);
   const bonusesDir = path.join(productsDir, 'bonuses');
 
   if (!fs.existsSync(bonusesDir)) {
     fs.mkdirSync(bonusesDir, { recursive: true });
+  } else {
+    fs.readdirSync(bonusesDir).forEach(f => {
+      if (f.endsWith('.md')) fs.unlinkSync(path.join(bonusesDir, f));
+    });
+  }
+  const distHtmlDir = path.join(productsDir, 'dist_html');
+  if (fs.existsSync(distHtmlDir)) {
+    fs.readdirSync(distHtmlDir).forEach(f => {
+      if (f.endsWith('.html')) fs.unlinkSync(path.join(distHtmlDir, f));
+    });
   }
 
   // 1. Generar Guía Maestra
@@ -353,15 +431,15 @@ function runProductGeneration() {
   fs.writeFileSync(masterGuidePath, masterGuideContent, 'utf8');
   console.log(`[product-generator] Master guide generated at: ${masterGuidePath}`);
 
-  // 2. Generar Bonos
+  // 2. Generar los 4 Bonos Diferenciados
   const generatedBonuses = [];
   const bonuses = offer.bonuses || [];
   bonuses.forEach((bonus, index) => {
-    const bonusSlug = `bono-${bonus.id || index + 1}-${slugify(bonus.name).slice(0, 25)}`;
-    const bonusContent = generateBonusContent(bonus);
+    const bonusSlug = `bono-${bonus.id || index + 1}-${slugify(bonus.name || bonus.title || 'acelerador').slice(0, 25)}`;
+    const bonusContent = generateBonusContent(bonus, index, offer, niche);
     const bonusFilePath = path.join(bonusesDir, `${bonusSlug}.md`);
     fs.writeFileSync(bonusFilePath, bonusContent, 'utf8');
-    generatedBonuses.push({ file: `${bonusSlug}.md`, name: bonus.name });
+    generatedBonuses.push({ file: `${bonusSlug}.md`, name: bonus.name || bonus.title });
     console.log(`[product-generator] Bonus generated: ${bonusFilePath}`);
   });
 

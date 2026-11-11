@@ -4,19 +4,35 @@ description: Genera flujos de automatización para Instagram DMs y ManyChat. Cap
 allowed-tools: read_file write_file
 ---
 
-# DM Automation Agent (ManyChat & Instagram Direct) 💬
+# DM Automation Agent 💬 — Embudos Conversacionales para Instagram y ManyChat
 
-Esta skill genera los flujos de mensajería directa y automatización de comentarios para Instagram y WhatsApp a través de ManyChat.
+Esta skill convierte la interacción orgánica y publicitaria en Instagram/WhatsApp en un flujo automatizado de captura de leads y ventas hacia `/quiz` y `/funnel`.
 
 ---
 
-## 1. Disparadores Soportados (Triggers)
-- **Palabra clave en comentarios**: Comentarios con palabras como `RESET`, `SUEÑO` o `GUIA` en Reels y publicaciones.
-- **Mensaje directo (DM)**: El usuario escribe directamente al perfil pidiendo la guía o el quiz.
-- **Mención en Stories**: Respuesta automática de agradecimiento con enlace al test diagnóstico.
+## 1. Arquitectura del Flujo Conversacional en 4 Nodos (`manychat-flow.json` y `manychat-guide.md`)
 
-## 2. Flujo de Conversación
-1. **Paso 1 (Inmediato - 0s)**: Mensaje privado amigable confirmando la solicitud.
-2. **Paso 2 (Filtro / Calificación)**: Pregunta rápida de segmentación o solicitud de email.
-3. **Paso 3 (Entrega del Enlace)**: Envío del enlace hacia la landing page o el quiz con etiquetas UTM dinámicas (`utm_source=instagram&utm_medium=dm_automation`).
-4. **Paso 4 (Follow-up a las 2 horas)**: Recordatorio automático si el usuario no ha abierto el enlace.
+1. **Nodo 1 — Disparador Inteligente (Trigger)**:
+   - Se activa cuando un usuario comenta la palabra clave del nicho en un Reel/Post, responde a una Historia o envía un Mensaje Directo.
+2. **Nodo 2 — Respuesta Pública + Apertura en DM (0 segundos)**:
+   - Respuesta automática al comentario para impulsar el algoritmo de Instagram + envío inmediato de un mensaje privado cálido y humano que valida el dolor principal del nicho.
+3. **Nodo 3 — Micro-Compromiso y Entrega con UTMs**:
+   - Entrega del acceso directo al **Test de Diagnóstico de 60 Segundos (`/quiz`)** y a la **Página de Ventas (`/funnel`)** inyectando parámetros de rastreo (`?utm_source=instagram&utm_medium=manychat_dm&utm_campaign=<slug>`).
+   - Asignación automática de etiquetas de segmentación (`tag:lead_interesado`, `tag:<niche_slug>`).
+4. **Nodo 4 — Seguimiento Inteligente a las 2 Horas (Smart Delay)**:
+   - Verifica si el usuario hizo clic; si no completó el diagnóstico, envía un recordatorio conversacional de una línea destacando la victoria rápida que obtendrá.
+
+---
+
+## 2. Entregables de la Skill
+
+- `automations/<niche-slug>/manychat-flow.json`: Esquema estructurado con nodos, textos, botones, delays y etiquetas listo para importar o replicar.
+- `automations/<niche-slug>/manychat-guide.md`: Guía paso a paso en lenguaje sencillo (cero programación) para dejar la automatización activa en 5 minutos.
+
+---
+
+## 3. Ejecución
+
+```bash
+node agents/skills/dm-automation/scripts/generate-flows.js
+```

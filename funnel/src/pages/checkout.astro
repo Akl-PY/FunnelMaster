@@ -2,208 +2,288 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout 
-  title="Checkout Seguro y Encriptado | Protocolo Reset Hormonal 21™"
-  description="Finaliza tu inscripción con el 84% de descuento y acceso inmediato de por vida.">
+  title="Finalizar Orden Segura | Sistema Liquidez Soberana & Cero Deudas™"
+  description="Página de pago seguro con cifrado SSL de 256 bits y garantía incondicional de 30 días.">
   
-  <div class="min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-    <!-- Header -->
-    <div class="text-center mb-8">
-      <div class="inline-flex items-center space-x-2 px-3 py-1 bg-emerald-950/60 border border-emerald-800/40 rounded-full text-xs text-emerald-400 font-semibold mb-2">
-        <span>🔒 Conexión Segura Encriptada SSL de 256 Bits</span>
+  <div class="min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <!-- Header de Pago Seguro -->
+    <div class="flex items-center justify-between border-b border-[#18382E] pb-6 mb-8">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">🔒</span>
+        <div>
+          <h1 class="text-lg font-bold text-white">Pago Seguro Cifrado (SSL 256-bit)</h1>
+          <p class="text-xs text-slate-400">Transacción protegida con estándar bancario internacional</p>
+        </div>
       </div>
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-white">
-        Finalizar Pedido — Acceso Inmediato
-      </h1>
-      <p class="text-slate-400 text-sm mt-1">
-        Garantía incondicional de satisfacción por 30 días. Pago único sin suscripciones ocultas.
-      </p>
+      <div class="hidden sm:flex items-center gap-2 text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-3 py-1.5 rounded-lg">
+        <span>🛡️ Garantía de 30 Días</span>
+      </div>
     </div>
 
-    <!-- Main Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <!-- Columna Izquierda: Datos y Formulario (7 cols) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- Columna Izquierda: Formulario de Pago Mockup -->
       <div class="lg:col-span-7 space-y-6">
-        
-        <!-- Paso 1: Datos Personales -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-          <div class="flex items-center space-x-3 mb-4">
-            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-bold text-sm">1</span>
-            <h2 class="text-lg font-bold text-white">Tus Datos de Acceso</h2>
-          </div>
+        <div class="bg-[#0C1A15] border border-[#18382E] rounded-2xl p-6 shadow-xl">
+          <h2 class="text-base font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-[#10B981] text-slate-950 text-xs flex items-center justify-center font-extrabold">1</span>
+            Datos del Comprador
+          </h2>
           <div class="space-y-4">
             <div>
-              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Nombre Completo</label>
-              <input type="text" id="cust-name" required placeholder="Ej. Laura Martínez" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition" />
+              <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Nombre Completo</label>
+              <input type="text" id="cust-name" placeholder="Tu nombre y apellido" class="w-full bg-slate-800/70 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#10B981] text-sm" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Correo Electrónico (Donde recibirás el acceso)</label>
-              <input type="email" id="cust-email" required placeholder="tu@email.com" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition" />
+              <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Correo Electrónico (para recibir accesos)</label>
+              <input type="email" id="cust-email" placeholder="tu@correo.com" class="w-full bg-slate-800/70 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#10B981] text-sm" />
             </div>
           </div>
         </div>
 
-        <!-- Paso 2: ORDER BUMP (Maximizador de AOV) -->
-        <div class="bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-900 border-2 border-dashed border-emerald-500/60 rounded-2xl p-6 shadow-xl relative overflow-hidden">
-          <div class="absolute top-0 right-0 bg-emerald-500 text-slate-950 text-[10px] font-extrabold uppercase px-3 py-1 rounded-bl-lg">
-            Oferta 1-Click Única
+        <!-- Selector de Métodos de Pago (Stripe & Mercado Pago) -->
+        <div class="bg-[#0C1A15] border border-[#18382E] rounded-2xl p-6 shadow-xl space-y-4">
+          <h2 class="text-base font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-[#10B981] text-slate-950 text-xs flex items-center justify-center font-extrabold">2</span>
+            Método de Pago Seguro
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label class="cursor-pointer border-2 border-[#10B981] bg-[#10B981]/10 rounded-xl p-4 flex flex-col justify-between transition hover:border-[#10B981]" id="opt-stripe" onclick="selectGateway('stripe')">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-extrabold uppercase text-white flex items-center gap-2">
+                  <input type="radio" name="payment-method" value="stripe" checked class="text-[#10B981]" />
+                  Stripe (Global)
+                </span>
+                <span class="text-lg">💳</span>
+              </div>
+              <p class="text-[11px] text-slate-400">Tarjetas de Crédito y Débito Internacionales (Visa, Mastercard, AMEX).</p>
+            </label>
+
+            <label class="cursor-pointer border border-slate-700 bg-slate-800/40 rounded-xl p-4 flex flex-col justify-between transition hover:border-[#10B981]" id="opt-mercadopago" onclick="selectGateway('mercadopago')">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-extrabold uppercase text-white flex items-center gap-2">
+                  <input type="radio" name="payment-method" value="mercadopago" class="text-[#10B981]" />
+                  Mercado Pago (LATAM)
+                </span>
+                <span class="text-lg">🟢</span>
+              </div>
+              <p class="text-[11px] text-slate-400">Tarjetas locales, Débito, Efectivo (OXXO/PagoFácil) y Transferencias.</p>
+            </label>
           </div>
-          
-          <label class="flex items-start space-x-4 cursor-pointer select-none">
-            <input type="checkbox" id="order-bump-checkbox" onchange="toggleOrderBump()" class="mt-1.5 w-5 h-5 text-emerald-500 bg-slate-800 border-slate-600 rounded focus:ring-emerald-400 focus:ring-offset-slate-900 transition" />
-            <div class="space-y-1">
-              <span class="text-sm font-bold text-white block">
-                ¡SÍ! Añadir el Pack de 10 Audios SOS de Activación Vagal por solo <span class="text-emerald-400">$17 USD</span> <span class="line-through text-slate-500 text-xs">($47 USD)</span>
-              </span>
+        </div>
+
+        <!-- Order Bump -->
+        <div class="bg-amber-950/20 border-2 border-dashed border-amber-500/60 rounded-2xl p-5 relative overflow-hidden">
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="order-bump-checkbox" onchange="toggleOrderBump(this)" class="mt-1 h-5 w-5 rounded border-amber-400 text-amber-500 focus:ring-amber-400 cursor-pointer" />
+            <div class="text-sm">
+              <label for="order-bump-checkbox" class="font-extrabold text-amber-300 cursor-pointer block mb-1">
+                ⚡ ¡SÍ! Agregar Pack SOS de Implementación Acelerada por solo $17 USD (Descuento 60%)
+              </label>
               <p class="text-xs text-slate-300 leading-relaxed">
-                Audios guiados de 5 minutos en frecuencia binaural delta para apagar el cortisol nocturno, frenar la mente acelerada y conciliar el sueño profundo sin esfuerzo.
+                Incluye checklist imprimible de emergencia en 3 minutos y guía de bolsillo. Solo disponible en este paso.
               </p>
             </div>
-          </label>
-        </div>
-
-        <!-- Paso 3: Método de Pago Simulado -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-          <div class="flex items-center space-x-3 mb-4">
-            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-bold text-sm">2</span>
-            <h2 class="text-lg font-bold text-white">Método de Pago</h2>
-          </div>
-          
-          <div class="space-y-3">
-            <div class="p-4 rounded-xl border border-emerald-500/50 bg-emerald-950/20 flex items-center justify-between">
-              <span class="text-sm font-semibold text-white">💳 Tarjeta de Crédito / Débito Internacional</span>
-              <span class="text-xs text-emerald-400 font-bold">Activo</span>
-            </div>
-            <div class="p-4 rounded-xl border border-slate-800 bg-slate-800/40 flex items-center justify-between text-slate-400">
-              <span class="text-sm">🅿️ PayPal / Métodos en Efectivo Locales (OXXO, Efecty)</span>
-              <span class="text-xs text-slate-500">Disponible</span>
-            </div>
-          </div>
-
-          <button type="button" onclick="completeOrder()" class="mt-6 w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-extrabold text-lg transition duration-200 shadow-xl shadow-emerald-500/25">
-            Pagar <span id="btn-total">$37 USD</span> y Obtener Acceso Inmediato →
-          </button>
-          
-          <div class="flex items-center justify-center space-x-4 mt-4 text-xs text-slate-500">
-            <span>🛡️ Garantía de 30 Días</span>
-            <span>•</span>
-            <span>⚡ Descarga Instantánea</span>
-            <span>•</span>
-            <span>🔒 Encriptación Bancaria</span>
           </div>
         </div>
 
+        <!-- Botón de Pago -->
+        <button type="button" onclick="completeOrder()" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#10B981] to-[#F59E0B] hover:opacity-90 text-slate-950 font-extrabold text-lg transition duration-200 shadow-xl shadow-[rgba(16, 185, 129, 0.32)] flex items-center justify-center gap-2">
+          <span>PAGAR DE FORMA SEGURA <span id="btn-total">$37 USD</span> →</span>
+        </button>
+
+        <!-- Modal de Conexión de Pasarela (Guía Asistida) -->
+        <div id="payment-modal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+          <div class="bg-[#111827] border border-[#1E293B] rounded-2xl max-w-lg w-full p-6 shadow-2xl relative space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 class="text-base font-bold text-white flex items-center gap-2">
+                <span>⚙️</span> Conectar Pasarela de Pagos Real
+              </h3>
+              <button onclick="closeModal()" class="text-slate-400 hover:text-white text-lg">✕</button>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Tu embudo está listo para recibir pagos reales. Para conectar tu cuenta de <strong>Stripe</strong> o <strong>Mercado Pago</strong> en 2 minutos:
+            </p>
+
+            <div class="space-y-2 text-xs">
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <span class="font-bold text-white block mb-0.5">Opción A: Stripe Payment Link</span>
+                <span class="text-slate-400">1. Entra a tu dashboard de Stripe > Productos > Payment Links.<br>2. Crea un enlace por $37 USD y pégalo en tu archivo <code>.env</code> como:</span>
+                <code class="block mt-1 text-[11px] text-emerald-400 font-mono bg-slate-950 p-1.5 rounded">STRIPE_PAYMENT_LINK="https://buy.stripe.com/..."</code>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <span class="font-bold text-white block mb-0.5">Opción B: Mercado Pago Link de Cobro</span>
+                <span class="text-slate-400">1. En tu app de Mercado Pago, crea un link de cobro por el monto.<br>2. Pégalo en tu <code>.env</code> como:</span>
+                <code class="block mt-1 text-[11px] text-cyan-400 font-mono bg-slate-950 p-1.5 rounded">MP_CHECKOUT_URL="https://mpago.la/..."</code>
+              </div>
+            </div>
+
+            <div class="pt-2 flex flex-col sm:flex-row gap-2">
+              <button onclick="simulateSuccessOrder()" class="flex-1 py-2.5 rounded-xl bg-[#10B981] text-slate-950 font-bold text-xs">
+                Probar Compra en Modo Sandbox →
+              </button>
+              <button onclick="closeModal()" class="py-2.5 px-4 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold hover:bg-slate-700">
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Columna Derecha: Resumen de Pedido y Pila de Valor (5 cols) -->
+      <!-- Columna Derecha: Resumen de Orden con Stack de Valor Completo -->
       <div class="lg:col-span-5 space-y-6">
-        
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-          <h3 class="text-base font-bold text-white mb-4 border-b border-slate-800 pb-3">
-            Resumen de tu Pedido
-          </h3>
-
-          <div class="space-y-3 text-sm">
+        <div class="bg-[#0C1A15] border border-[#18382E] rounded-2xl p-6 shadow-xl">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-base font-bold text-white uppercase tracking-wider">Resumen de tu Acceso</h2>
+            <span class="text-[11px] font-extrabold text-emerald-400 bg-emerald-950 px-2.5 py-0.5 rounded-full border border-emerald-800/50">Ahorras 84%</span>
+          </div>
+          
+          <div class="space-y-2.5 border-b border-slate-700/60 pb-4 text-xs sm:text-sm">
+            <div class="flex justify-between text-slate-200 font-semibold">
+              <span>📘 Sistema Liquidez Soberana & Cero Deudas™ (Manual Maestro)</span>
+              <span class="text-slate-400 line-through">$97 USD</span>
+            </div>
+            <div class="flex justify-between text-emerald-400 font-semibold">
+              <span>📱 App Calculadora de Liquidez y Deudas</span>
+              <span>GRATIS</span>
+            </div>
+            
             <div class="flex justify-between text-slate-300">
-              <span>Protocolo Reset Hormonal 21™</span>
-              <span class="font-semibold text-white">$37 USD</span>
+              <span>🎁 Bono #1: Guiones de Negociación Bancaria para Congelar Intereses y Quitas de Deuda</span>
+              <span class="text-slate-400 line-through">$29 USD</span>
             </div>
-            <div class="text-xs text-slate-400 pl-2 space-y-1">
-              <div>✓ Guía Maestra de 3 Fases (SMPF)™</div>
-              <div>✓ Bono 1: SOS Insomnio Nocturno <span class="text-emerald-400">GRATIS</span></div>
-              <div>✓ Bono 2: Recetario Antiinflamatorio 15 min <span class="text-emerald-400">GRATIS</span></div>
-              <div>✓ Bono 3: Calculadora Glucémica & Compras <span class="text-emerald-400">GRATIS</span></div>
-              <div>✓ Bono 4: Checklist de Análisis Clínicos <span class="text-emerald-400">GRATIS</span></div>
+            <div class="flex justify-between text-slate-300">
+              <span>🎁 Bono #2: Kit de Automatización de Sueldo en 4 Bóvedas (Sin Excel ni Anotar Gastos Diarios)</span>
+              <span class="text-slate-400 line-through">$37 USD</span>
             </div>
+            <div class="flex justify-between text-slate-300">
+              <span>🎁 Bono #3: Simulador Matemático de Liquidación Acelerada: Bola de Nieve vs. Avalancha Inversa</span>
+              <span class="text-slate-400 line-through">$27 USD</span>
+            </div>
+            <div class="flex justify-between text-slate-300">
+              <span>🎁 Bono #4: Protocolo de Blindaje para Meses de Vacas Flacas, Imprevistos o Ingresos Variables</span>
+              <span class="text-slate-400 line-through">$47 USD</span>
+            </div>
+            <div class="flex justify-between text-slate-400 pt-2 border-t border-slate-800 text-xs">
+              <span>Valor Real Acumulado:</span>
+              <span class="line-through text-rose-400 font-bold">$237 USD</span>
+            </div>
+            <div id="order-bump-row" class="hidden flex justify-between text-amber-300 pt-1 font-bold">
+              <span>⚡ Order Bump: Pack SOS Acelerador</span>
+              <span>+$17 USD</span>
+            </div>
+          </div>
 
-            <!-- Order bump line item -->
-            <div id="bump-line-item" class="hidden justify-between text-emerald-400 pt-2 border-t border-slate-800">
-              <span>+ Pack 10 Audios SOS Vagal</span>
-              <span class="font-bold">+$17 USD</span>
-            </div>
+          <div class="pt-4 flex justify-between items-center text-base font-bold text-white">
+            <span>Total Único Hoy:</span>
+            <span id="final-total" class="text-2xl text-[#10B981] font-extrabold">$37 USD</span>
+          </div>
 
-            <!-- Total -->
-            <div class="pt-4 border-t border-slate-800 flex justify-between items-baseline">
-              <span class="text-base font-bold text-white">Total a Pagar:</span>
-              <span id="summary-total" class="text-2xl font-extrabold text-emerald-400">$37 USD</span>
-            </div>
-            <p class="text-[11px] text-slate-500 text-right">Ahorro total aplicado: $200 USD (84% OFF)</p>
+          <div class="mt-6 pt-5 border-t border-slate-800 text-xs text-slate-300 space-y-2">
+            <p class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Cifrado bancario SSL 256 bits verificado</p>
+            <p class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Garantía Incondicional de 30 Días (Riesgo Cero)</p>
+            <p class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Desbloqueo instantáneo de App + 5 PDFs Imprimibles</p>
           </div>
         </div>
-
-        <!-- Garantía Card -->
-        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 text-center space-y-2">
-          <span class="text-3xl">🛡️</span>
-          <h4 class="text-sm font-bold text-white">30 Días de Garantía Blindada</h4>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Prueba el método completo por 3 semanas. Si no experimentas mayor energía, sueño continuo y abdomen desinflamado, solicita tu reembolso íntegro con un solo correo electrónico.
-          </p>
-        </div>
-
       </div>
-
     </div>
   </div>
 
   <script is:inline>
-    let isBumpSelected = false;
+    const currentUtmParams = window.location.search;
+    let hasOrderBump = false;
+    let selectedGateway = 'stripe';
 
-    window.toggleOrderBump = function() {
-      const checkbox = document.getElementById('order-bump-checkbox');
-      isBumpSelected = checkbox.checked;
-      const bumpLine = document.getElementById('bump-line-item');
-      const summaryTotal = document.getElementById('summary-total');
+    window.selectGateway = function(gateway) {
+      selectedGateway = gateway;
+      const optStripe = document.getElementById('opt-stripe');
+      const optMp = document.getElementById('opt-mercadopago');
+      if (gateway === 'stripe') {
+        optStripe.classList.add('border-2', 'border-[#10B981]', 'bg-[#10B981]/10');
+        optStripe.classList.remove('border-slate-700', 'bg-slate-800/40');
+        optMp.classList.remove('border-2', 'border-[#10B981]', 'bg-[#10B981]/10');
+        optMp.classList.add('border-slate-700', 'bg-slate-800/40');
+      } else {
+        optMp.classList.add('border-2', 'border-[#10B981]', 'bg-[#10B981]/10');
+        optMp.classList.remove('border-slate-700', 'bg-slate-800/40');
+        optStripe.classList.remove('border-2', 'border-[#10B981]', 'bg-[#10B981]/10');
+        optStripe.classList.add('border-slate-700', 'bg-slate-800/40');
+      }
+    };
+
+    window.toggleOrderBump = function(checkbox) {
+      hasOrderBump = checkbox.checked;
+      const bumpRow = document.getElementById('order-bump-row');
+      const finalTotal = document.getElementById('final-total');
       const btnTotal = document.getElementById('btn-total');
 
-      if (isBumpSelected) {
-        bumpLine.classList.remove('hidden');
-        bumpLine.classList.add('flex');
-        summaryTotal.innerText = '$54 USD';
+      if (hasOrderBump) {
+        bumpRow.classList.remove('hidden');
+        finalTotal.innerText = '$54 USD';
         btnTotal.innerText = '$54 USD';
       } else {
-        bumpLine.classList.add('hidden');
-        bumpLine.classList.remove('flex');
-        summaryTotal.innerText = '$37 USD';
+        bumpRow.classList.add('hidden');
+        finalTotal.innerText = '$37 USD';
         btnTotal.innerText = '$37 USD';
       }
     };
 
-    window.completeOrder = function() {
-      const name = document.getElementById('cust-name').value;
-      const email = document.getElementById('cust-email').value;
+    window.closeModal = function() {
+      const modal = document.getElementById('payment-modal');
+      if (modal) modal.classList.add('hidden');
+    };
 
-      if (!email) {
-        alert('Por favor introduce tu correo electrónico para enviarte los accesos.');
+    window.completeOrder = function() {
+      const name = document.getElementById('cust-name').value || 'Cliente';
+      const email = document.getElementById('cust-email').value || '';
+      const total = hasOrderBump ? 54 : 37;
+
+      // Si existen variables de pasarela configuradas en window o entorno
+      const stripeUrl = window.STRIPE_PAYMENT_LINK;
+      const mpUrl = window.MP_CHECKOUT_URL;
+
+      if (selectedGateway === 'stripe' && stripeUrl) {
+        window.location.href = stripeUrl + (hasOrderBump ? '?bump=true' : '');
+        return;
+      }
+      if (selectedGateway === 'mercadopago' && mpUrl) {
+        window.location.href = mpUrl;
         return;
       }
 
-      // Redirigir hacia la pasarela de Hotmart real preservando UTMs
-      const params = new URLSearchParams(window.location.search);
-      let targetCheckout = isBumpSelected 
-        ? 'https://pay.hotmart.com/PROT21RESET?off=bump17' 
-        : 'https://pay.hotmart.com/PROT21RESET';
-
-      const url = new URL(targetCheckout);
-      params.forEach((val, key) => url.searchParams.set(key, val));
-      
-      // Registrar lead/compra en el backend
-      try {
-        fetch('http://localhost:3004/api/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name,
-            email,
-            score: 50,
-            utm_source: params.get('utm_source') || 'checkout_direct',
-            utm_campaign: params.get('utm_campaign') || 'order_flow'
-          })
-        }).finally(() => {
-          window.location.href = url.toString();
-        });
-      } catch (e) {
-        window.location.href = url.toString();
+      // Si no están configuradas aún, mostrar el modal de guía asistida
+      const modal = document.getElementById('payment-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+      } else {
+        simulateSuccessOrder();
       }
+    };
+
+    window.simulateSuccessOrder = function() {
+      const name = document.getElementById('cust-name').value || 'Cliente Demo';
+      const email = document.getElementById('cust-email').value || 'cliente@demo.com';
+      const total = hasOrderBump ? 54 : 37;
+
+      // Registrar lead comprador en backend si está disponible
+      fetch('http://localhost:3004/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          score: 100,
+          utm_source: 'checkout_direct',
+          utm_medium: selectedGateway,
+          utm_campaign: hasOrderBump ? 'order_bump_included' : 'standard_order'
+        })
+      }).catch(() => {});
+
+      alert('¡Pago Confirmado por $' + total + ' USD (' + selectedGateway.toUpperCase() + ')!\n\nCliente: ' + name + '\nTus accesos digitales inmediatos y la App Móvil han sido desbloqueados.');
+      closeModal();
+      window.location.href = '/app/';
     };
   </script>
 </BaseLayout>

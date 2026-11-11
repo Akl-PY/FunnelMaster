@@ -6,7 +6,7 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth bg-[#0B0F19] text-[#F8FAFC]">
+<html lang="es" class="scroll-smooth bg-[#050D0A] text-[#F8FAFC]">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,6 +15,90 @@ const { title, description } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style is:global>
+      /* ==========================================================================
+         W3C Official CSS Scroll-Driven Animations (animation-timeline: scroll/view)
+         Zero-JS GPU-composited animations using the latest CSS specification
+         ========================================================================== */
+      @keyframes cssScrollProgressBar {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+      }
+      @keyframes cssRevealUp {
+        from {
+          opacity: 0;
+          transform: translateY(38px) scale(0.97);
+          filter: blur(4px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: blur(0);
+        }
+      }
+      @keyframes cssRevealScale {
+        from {
+          opacity: 0;
+          transform: scale(0.92) translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      @keyframes cssRevealLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-32px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes cssRevealRight {
+        from {
+          opacity: 0;
+          transform: translateX(32px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: scroll()) {
+          .css-scroll-progress-bar {
+            transform-origin: 0% 50%;
+            animation: cssScrollProgressBar 1ms linear both;
+            animation-timeline: scroll(root block);
+          }
+        }
+        @supports (animation-timeline: view()) {
+          .css-scroll-reveal {
+            animation: cssRevealUp 1ms cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 26%;
+          }
+          .css-scroll-scale {
+            animation: cssRevealScale 1ms cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 28%;
+          }
+          .css-scroll-left {
+            animation: cssRevealLeft 1ms cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 26%;
+          }
+          .css-scroll-right {
+            animation: cssRevealRight 1ms cubic-bezier(0.22, 1, 0.36, 1) both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 26%;
+          }
+        }
+      }
+    </style>
     <script>
       // Preservación estricta de parámetros UTM y tracking hacia el checkout
       document.addEventListener('DOMContentLoaded', () => {
@@ -35,7 +119,11 @@ const { title, description } = Astro.props;
       });
     </script>
   </head>
-  <body class="font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-emerald-500 selection:text-white">
+  <body class="font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-[#10B981] selection:text-black">
+    <!-- Native CSS Scroll-Driven Progress Bar (animation-timeline: scroll(root block)) -->
+    <div class="fixed top-0 left-0 right-0 h-1 z-[100] bg-slate-900/50 pointer-events-none">
+      <div class="css-scroll-progress-bar h-full w-full bg-gradient-to-r from-[#10B981] via-[#10B981] to-[#F59E0B] shadow-[0_0_12px_rgba(16, 185, 129, 0.32)]"></div>
+    </div>
     <slot />
   </body>
 </html>

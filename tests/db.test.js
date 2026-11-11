@@ -4,6 +4,11 @@ const { initDb, saveNiche, getLatestNiche, saveOffer, getLatestOffer, logAutomat
 
 describe('Database Persistence Layer (SQLite / Postgres)', () => {
   after(() => {
+    try {
+      const db = require('../scripts/db').getDbInstance().client;
+      db.prepare("DELETE FROM niches WHERE niche_name LIKE 'Test Dynamic Niche%'").run();
+      db.prepare("DELETE FROM offers WHERE product_name = 'Método Automatizador Exprés'").run();
+    } catch (_) {}
     closeDb();
   });
 

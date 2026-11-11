@@ -4,39 +4,52 @@ description: Estructura y redacta los contenidos de infoproductos digitales (mó
 allowed-tools: read_file write_file
 ---
 
-# Product Generator (Paso #9)
+# Product Generator — Creador de Infoproductos Accionables y Prompts para Gamma.app (Paso #9 del Playbook de 48hs)
 
-Esta skill toma el mecanismo único y la oferta activa desde `DATA.md` y genera el contenido completo del producto digital y su pila de bonos para entrega inmediata a través de Hotmart o Shopify.
-
-> [!IMPORTANT]
-> **Enfoque Accionable (Zero Fluff)**: El producto debe resolver la promesa de forma práctica y paso a paso. Prohibido rellenar con teoría abstracta; cada módulo o capítulo debe incluir un plan de acción, checklist o plantilla ejecutable.
+Esta skill lee la oferta rediseñada y el Mecanismo Único desde `data/active_offer.json` y [`DATA.md`](../../../DATA.md) para construir todos los entregables digitales del producto principal y su pila de 4 bonos, además de exportar su versión lista para imprimir/PDF en `dist_html/`.
 
 ---
 
-## Flujo de Creación del Infoproducto
+## 1. Super Prompt Maestro — Paso #9: Creación de Producto de Alto Impacto (Playbook 48hs / Nova Creator & Gamma)
 
-### 1. Definición del Esquema (Syllabus / Tabla de Contenidos)
-- **Módulo / Fase 1**: Diagnóstico rápido y victoria inmediata en 24 horas.
-- **Módulo / Fase 2**: Implementación del núcleo del mecanismo único paso a paso.
-- **Módulo / Fase 3**: Optimización, mantenimiento del resultado y resolución de errores comunes.
+La generación del contenido del producto obedece la directriz de diseño instruccional de respuesta directa:
 
-### 2. Redacción de Contenidos por Módulo
-Para cada lección o capítulo, la skill genera:
-- **Objetivo concreto**: Qué sabrá o habrá construido el usuario al terminar.
-- **Instrucciones paso a paso**: Metodología clara sin rodeos.
-- **Ejemplo práctico real**: Caso de aplicación.
-- **Plantilla / Entregable complementario**: Hoja de cálculo, checklist o prompt de apoyo.
-
-### 3. Redacción de la Pila de Bonos
-Generación de los 3 a 5 bonos prometidos en la oferta:
-- **Bono 1 (Acelerador)**: Cheat sheet / guía rápida para acortar tiempos a la mitad.
-- **Bono 2 (Eliminador de fricción)**: Banco de plantillas o recursos listos para copiar y pegar.
-- **Bono 3 (Soporte o caso de estudio)**: Desglose paso a paso de una implementación exitosa.
+> *"Actúa como un Diseñador Instruccional Senior y Especialista en Implementación Rápida. Crea el manual maestro del producto y cada uno de sus 4 bonos con enfoque 100% táctico y 'Zero Fluff' (cero relleno teórico). El comprador no quiere leer 200 páginas de historia; quiere abrir el documento y obtener una victoria medible en los primeros 15 minutos.*
+> *Cada fase y cada bono debe incluir:*
+> 1. *Diagnóstico inicial o autoevaluación puntuada.*
+> 2. *Protocolo paso a paso con tiempos exactos de ejecución.*
+> 3. *Plantillas listas para copiar/pegar, tablas comparativas de errores comunes vs. ejecución correcta y checklists de verificación.*
+> 4. *Plan de contingencia ('Qué hacer en días de emergencia o falta de tiempo')."*
 
 ---
 
-## Exportación y Formatos
-- Los contenidos redactados se almacenan en `products/<niche-slug>/`:
-  - `master-guide.md` (Contenido principal para maquetar en PDF o Gamma.app).
-  - `bonuses/` (Archivos independientes para cada bono de la oferta).
-- Quedan listos para subirse como entregables en la plataforma de checkout (Hotmart/Shopify).
+## 2. Reglas Anti-Genéricas de Contenido (Cero Hardcoding y Cero "21 Días" Forzado)
+
+- **Prohibido mezclar industrias**: Ningún documento puede contener vestigios de otros nichos (cero referencias a hormonas, tiroides o espalda si el nicho activo es otro).
+- **Fases Lógicas y Herramientas Tangibles**:
+  - **Fase 1**: Auditoría de punto de partida, eliminación de fugas críticas y victoria en las primeras 24-48 horas.
+  - **Fase 2**: Instalación paso a paso del **Mecanismo Único** con protocolos de mañana, tarde y cierre.
+  - **Fase 3**: Automatización del sistema, prevención de recaídas y escalamiento de resultados.
+- **Cada Bono es una Herramienta Independiente (Prohibido Clonar Contenido o Repetir Ejemplos de este `.md`)**:
+  - ⚠️ **REGLA CRÍTICA (Regla #24)**: Los nombres de bonos listados a continuación son **ÚNICAMENTE EJEMPLOS ILUSTRATIVOS** de cómo diferenciar entregables. **Queda estrictamente prohibido usar estos mismos nombres de bonos en todos los nichos**. El generador siempre debe leer los títulos y propósitos reales definidos para el nicho activo en `data/active_offer.json` (`offer.bonuses`).
+  - Queda terminantemente prohibido usar una misma plantilla de texto para los 4 bonos. Cada archivo en `products/<niche-slug>/bonuses/` debe desarrollar su propia herramienta especializada de alto valor percibido (por ejemplo, a modo meramente ilustrativo:
+    1. *Ejemplo de Bono de Acción Rápida*: Secuencia cronometrada minuto a minuto + tabla de respuesta inmediata ante el síntoma agudo del nicho.
+    2. *Ejemplo de Bono de Recursos / Plantillas*: Marcos de trabajo, guiones o recetas listas para copiar y rellenar según la actividad del cliente.
+    3. *Ejemplo de Bono de Diagnóstico / Medición*: Test puntuado de 10 indicadores (0 a 100 puntos), ecuación de retorno y registro de evolución de 4 semanas.
+    4. *Ejemplo de Bono de Continuidad / Casos Difíciles*: Sistema de 3 marchas operativas para días complicados y protocolo de prevención de abandono).
+
+---
+
+## 3. Entregables Físicos, Exportación a HTML/PDF y Publicación en `/funnel/public/docs`
+
+1. Ejecutar el generador de producto:
+   ```bash
+   node agents/skills/product-generator/scripts/generate-product.js
+   ```
+2. Compilar las versiones maquetadas listas para descargar o guardar como PDF (`window.print()`) y publicarlas en `/funnel/public/docs/`:
+   ```bash
+   npm run export:docs
+   ```
+3. Archivos generados en `products/<niche-slug>/` y `/funnel/public/docs/`:
+   - `master-guide.md` → `dist_html/master-guide.html` y `/funnel/public/docs/master-guide.html`
+   - `bonuses/bono-1-*.md` ... `bono-4-*.md` → `dist_html/bono-1.html` ... `bono-4.html` y `/funnel/public/docs/bono-1.html` ... `bono-4.html` (accesibles directamente desde la App Móvil y la página de confirmación de compra).

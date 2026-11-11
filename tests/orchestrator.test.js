@@ -47,4 +47,25 @@ describe('Orchestrator Skill & Contingency Rules', () => {
     assert.match(content, /Vercel/i);
     assert.match(content, /\/browser/);
   });
+
+  test('AGENTS.md and orchestrator must mandate plain language for non-programmers (Rule #16)', () => {
+    const agentsMd = fs.readFileSync(path.join(__dirname, '..', 'AGENTS.md'), 'utf8');
+    assert.match(agentsMd, /Regla.*16|16 — Comunicación Clara para No-Programadores/i);
+    assert.match(agentsMd, /Cero Jerga T[ée]cnica/i);
+    assert.match(agentsMd, /Prohibido mencionar nombres de archivos/i);
+
+    const content = fs.readFileSync(orchestratorMd, 'utf8');
+    assert.match(content, /No-Code First|Cero Jerga/i);
+    assert.match(content, /Tu P[aá]gina de Ventas/i);
+  });
+
+  test('AGENTS.md and orchestrator must forbid hardcoded niche menus and enforce open discovery (Rule #17)', () => {
+    const agentsMd = fs.readFileSync(path.join(__dirname, '..', 'AGENTS.md'), 'utf8');
+    assert.match(agentsMd, /Regla.*17|17 — Prohibici[oó]n Absoluta de Men[uú]s Fijos/i);
+    assert.match(agentsMd, /Open Market Discovery/i);
+    assert.match(agentsMd, /Prohibido presentar men[uú]s cerrados/i);
+
+    const content = fs.readFileSync(orchestratorMd, 'utf8');
+    assert.match(content, /Regla 17|Inicio 100% Abierto/i);
+  });
 });

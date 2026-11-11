@@ -1,12 +1,83 @@
 ---
 ---
-<section class="py-12 px-4 sm:px-6 max-w-3xl mx-auto">
-  <div class="bg-[#131B2E] border border-[#24304D] rounded-2xl p-6 sm:p-10 shadow-xl">
-    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Si tienes más de 35 años, esto te resultará familiar...</h2>
-    <div class="space-y-4 text-slate-300 text-base sm:text-lg leading-relaxed">
-      <p>Te levantas más cansada de lo que te acostaste. Sientes que tu abdomen se inflama con un vaso de agua y tu ropa favorita empieza a apretar sin explicación.</p>
-      <p>Vas al médico y la respuesta es siempre la misma: <em>"Tus análisis están normales, es la edad"</em>.</p>
-      <p class="font-semibold text-emerald-400">El problema no eres tú ni es tu fuerza de voluntad: es el bloqueo metabólico de la perimenopausia.</p>
+<section class="w-full h-full css-scroll-reveal flex flex-col">
+  <div class="h-full bg-[#0C1A15] border border-[#18382E] rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <span class="text-xs font-bold text-rose-400 uppercase tracking-widest">Diagnóstico de Situación Actual</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">
+        ¿Te resulta familiar esta escena al mirar el saldo de tu cuenta?
+      </h2>
+      <p class="text-sm text-[#94A3B8] mt-2">
+        Marca las casillas que describen tu realidad actual para medir tu nivel de urgencia:
+      </p>
+    </div>
+
+    <!-- Escena Visceral del Copy -->
+    
+    <div class="mb-8 p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-800 text-slate-300 text-sm sm:text-base leading-relaxed space-y-3">
+      <div class="flex items-center gap-2 text-rose-400 font-bold text-xs uppercase tracking-wider mb-1">
+        <span class="text-base">🌙</span> La realidad silenciosa a mitad de mes
+      </div>
+      <p class="text-white font-medium italic">
+        "Son las 11:30 de la noche. Abres la aplicación de tu banco desde el celular con un nudo en el estómago. Trabajaste todo el mes, cumpliste con tus clientes o tu jornada laboral, cobraste tu ingreso hace apenas diez días... pero cuando miras el saldo disponible después de pagar el resumen de la tarjeta y los cargos fijos, apenas queda margen para llegar a fin de mes."
+      </p>
+      <p class="text-slate-300 text-sm">Lo más frustrante no es trabajar duro: es sentir que **trabajas para alimentar al banco**. Pagas el mínimo o un poco más cada mes, pero al mes siguiente los intereses rotativos, las comisiones de mantenimiento y los impuestos vuelven a inflar el saldo casi al mismo lugar donde empezaste.</p>
+    </div>
+
+    <!-- 4 Tarjetas Interactivas de Síntomas del Nicho -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
+      
+      <label class="symptom-card css-scroll-left cursor-pointer p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-rose-500/50 transition flex items-start gap-3">
+        <input type="checkbox" onchange="updateSymptomCount()" class="symptom-check mt-1 w-4 h-4 accent-rose-500 rounded" checked />
+        <span class="text-sm text-slate-200 leading-snug">
+          <strong class="text-white block mb-0.5">El sueldo desaparece antes del día 15</strong>
+          Cobras tu ingreso mensual, pagas resúmenes de tarjeta y cargos fijos, y a mitad de mes ya estás contando cada gasto para llegar al cierre.
+        </span>
+      </label>
+      <label class="symptom-card css-scroll-right cursor-pointer p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-rose-500/50 transition flex items-start gap-3">
+        <input type="checkbox" onchange="updateSymptomCount()" class="symptom-check mt-1 w-4 h-4 accent-rose-500 rounded" checked />
+        <span class="text-sm text-slate-200 leading-snug">
+          <strong class="text-white block mb-0.5">Bola de nieve por intereses de tarjeta</strong>
+          Pagas el mínimo o refinancias saldos, pero los intereses rotativos e impuestos bancarios vuelven a inflar la deuda al mes siguiente.
+        </span>
+      </label>
+      <label class="symptom-card css-scroll-left cursor-pointer p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-rose-500/50 transition flex items-start gap-3">
+        <input type="checkbox" onchange="updateSymptomCount()" class="symptom-check mt-1 w-4 h-4 accent-rose-500 rounded"  />
+        <span class="text-sm text-slate-200 leading-snug">
+          <strong class="text-white block mb-0.5">Fatiga de planillas de Excel abandonadas</strong>
+          Intentaste anotar cada café y ticket de supermercado durante cuatro días seguidos, pero lo dejaste por falta de tiempo y practicidad.
+        </span>
+      </label>
+      <label class="symptom-card css-scroll-right cursor-pointer p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-rose-500/50 transition flex items-start gap-3">
+        <input type="checkbox" onchange="updateSymptomCount()" class="symptom-check mt-1 w-4 h-4 accent-rose-500 rounded"  />
+        <span class="text-sm text-slate-200 leading-snug">
+          <strong class="text-white block mb-0.5">Cero margen ante cualquier imprevisto</strong>
+          Un arreglo del auto, una consulta médica o un mes de menores ingresos te obliga a volver a endeudarte con la tarjeta de crédito.
+        </span>
+      </label>
+    </div>
+
+    <div id="symptom-status" class="mb-8 p-3.5 rounded-xl bg-rose-950/40 border border-rose-800/50 text-center text-xs sm:text-sm text-rose-200 font-semibold">
+      ⚠️ Has marcado <span id="symptom-count" class="font-extrabold text-white">2</span> de 4 indicadores críticos. Actuar en las próximas 48h cortará esta fuga de raíz.
+    </div>
+
+    <!-- Narrativa Empática y Revelación del Enemigo Común -->
+    <div class="space-y-4 text-[#94A3B8] text-base leading-relaxed border-t border-slate-800 pt-6">
+      <h3 class="text-base font-bold text-white">Por qué los métodos tradicionales solo empeoran el problema:</h3>
+      <p>
+        El mayor error es creer que esto se soluciona con más sacrificio o fuerza de voluntad aislada. <strong class="text-white">El problema nunca fue tu disciplina</strong>, sino que Las planillas de presupuesto donde anotas cada café y el consejo bancario de pagar el mínimo, diseñados para mantenerte atrapado en intereses rotativos mientras te quedas sin efectivo el día 15 del mes.
+      </p>
+      <div class="p-4 rounded-xl bg-[#10B981]/10 border-l-4 border-[#10B981] text-slate-200 text-sm sm:text-base font-medium">
+        💡 <strong>El cambio de paradigma:</strong> Cuando instalas la <strong>Arquitectura de Blindaje de Sueldo y Avalancha Inversa (ABAI)™</strong>, reemplazas el desgaste diario por una estructura automática que produce resultados medibles desde las primeras 48 horas.
+      </div>
     </div>
   </div>
+
+  <script is:inline>
+    window.updateSymptomCount = function() {
+      const checks = document.querySelectorAll('.symptom-check:checked').length;
+      const el = document.getElementById('symptom-count');
+      if (el) el.innerText = checks;
+    };
+  </script>
 </section>

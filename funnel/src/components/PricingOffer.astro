@@ -6,23 +6,78 @@ interface Props {
 }
 const { price, totalValue, checkoutUrl } = Astro.props;
 ---
-<section class="py-16 px-4 sm:px-6 max-w-3xl mx-auto text-center" id="oferta">
-  <div class="bg-gradient-to-b from-[#131B2E] to-[#0E1524] border-2 border-emerald-500/30 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-    <div class="inline-block px-4 py-1 mb-4 text-xs font-bold uppercase rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
-      OFERTA EXCLUSIVA DE LANZAMIENTO
+<section class="py-16 px-4 sm:px-6 max-w-3xl mx-auto css-scroll-scale" id="oferta">
+  <div class="bg-gradient-to-b from-[#0C1A15] to-slate-950 border-2 border-[#10B981]/50 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+    <div class="text-center">
+      <div class="inline-block px-4 py-1 mb-4 text-xs font-extrabold uppercase rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
+        🔥 OFERTA DE ACCESO INMEDIATO · AHORRAS 84% HOY
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-2">Sistema Liquidez Soberana & Cero Deudas™</h2>
+      <p class="text-sm text-[#94A3B8] mb-6">Resumen completo de todo lo que desbloqueas hoy con un único pago:</p>
     </div>
-    <h3 class="text-2xl sm:text-4xl font-extrabold text-white mb-2">Protocolo Reset Hormonal 21™</h3>
-    <p class="text-slate-400 mb-6">Acceso completo de por vida + 4 Bonos de Aceleración</p>
-    
-    <div class="text-slate-400 line-through text-lg mb-1">Valor Total: ${totalValue} USD</div>
-    <div class="text-5xl sm:text-6xl font-extrabold text-emerald-400 mb-6">${price} <span class="text-xl text-slate-300 font-normal">USD</span></div>
-    
-    <a href={checkoutUrl} class="checkout-btn block w-full py-4 text-xl font-bold rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-[0_0_35px_rgba(16,185,129,0.4)] transition-all duration-300 hover:scale-[1.02]">
-      ACCEDER AL PROTOCOLO COMPLETO AHORA
-    </a>
-    
-    <div class="mt-8 pt-8 border-t border-slate-700/60 flex items-center justify-center gap-3 text-slate-300 text-sm">
-      <span>🛡️ Garantía Incondicional de 30 Días · Riesgo 100% nuestro</span>
+
+    <!-- Desglose Matemático del Stack de Valor -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-6 mb-6 text-left">
+      <div class="flex justify-between items-center py-2.5 border-b border-slate-800 text-xs sm:text-sm font-bold">
+        <span class="text-white">📘 Sistema Liquidez Soberana & Cero Deudas™ (Sistema Maestro en 3 Fases)</span>
+        <span class="text-slate-400 line-through">$97 USD</span>
+      </div>
+      <div class="flex justify-between items-center py-2.5 border-b border-slate-800 text-xs sm:text-sm font-bold">
+        <span class="text-emerald-400">📱 App Calculadora de Liquidez y Deudas (Celular / Computadora)</span>
+        <span class="text-emerald-400">INCLUIDA</span>
+      </div>
+      
+        <div class="flex justify-between items-center py-2.5 border-b border-slate-800/80 text-xs sm:text-sm">
+          <span class="text-slate-300">🎁 Bono #1: Guiones de Negociación Bancaria para Congelar Intereses y Quitas de Deuda</span>
+          <span class="text-slate-400 line-through font-semibold">$29 USD</span>
+        </div>
+
+        <div class="flex justify-between items-center py-2.5 border-b border-slate-800/80 text-xs sm:text-sm">
+          <span class="text-slate-300">🎁 Bono #2: Kit de Automatización de Sueldo en 4 Bóvedas (Sin Excel ni Anotar Gastos Diarios)</span>
+          <span class="text-slate-400 line-through font-semibold">$37 USD</span>
+        </div>
+
+        <div class="flex justify-between items-center py-2.5 border-b border-slate-800/80 text-xs sm:text-sm">
+          <span class="text-slate-300">🎁 Bono #3: Simulador Matemático de Liquidación Acelerada: Bola de Nieve vs. Avalancha Inversa</span>
+          <span class="text-slate-400 line-through font-semibold">$27 USD</span>
+        </div>
+
+        <div class="flex justify-between items-center py-2.5 border-b border-slate-800/80 text-xs sm:text-sm">
+          <span class="text-slate-300">🎁 Bono #4: Protocolo de Blindaje para Meses de Vacas Flacas, Imprevistos o Ingresos Variables</span>
+          <span class="text-slate-400 line-through font-semibold">$47 USD</span>
+        </div>
+      <div class="flex justify-between items-center pt-3 mt-1 text-sm sm:text-base font-extrabold">
+        <span class="text-slate-300">Valor Total Acumulado:</span>
+        <span class="text-rose-400 line-through">${totalValue} USD</span>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-1">Pago Único Hoy (Sin Suscripciones):</div>
+      <div class="text-5xl sm:text-6xl font-extrabold text-[#10B981] mb-6">
+        ${price} <span class="text-xl text-slate-300 font-normal">USD</span>
+      </div>
+
+      <a href={checkoutUrl} class="checkout-btn block w-full py-4 sm:py-5 text-lg sm:text-xl font-extrabold rounded-xl bg-gradient-to-r from-[#10B981] to-[#F59E0B] hover:opacity-95 text-slate-950 shadow-[0_0_35px_rgba(16, 185, 129, 0.32)] transition-all duration-300 hover:scale-[1.01]">
+        DESBLOQUEAR ACCESO COMPLETO AHORA →
+      </a>
+
+      <!-- Pasarelas de Pago Disponibles -->
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-slate-400">
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800">💳 <strong>Stripe</strong> (Tarjetas Internacionales)</span>
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800">🤝 <strong>Mercado Pago</strong> (Moneda Local & Cuotas)</span>
+      </div>
+    </div>
+
+    <!-- Bóveda de Garantía Blindada de 30 Días -->
+    <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center gap-4 text-left bg-slate-900/50 p-4 rounded-2xl">
+      <div class="text-3xl sm:text-4xl">🛡️</div>
+      <div>
+        <h3 class="text-sm sm:text-base font-extrabold text-white">Garantía Incondicional de 30 Días (Riesgo 100% Nuestro)</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mt-1">
+          Entra hoy, descarga el manual, usa la App Móvil y aplica el protocolo de 48 horas. Si no sientes que vale al menos 10 veces tu inversión, te devolvemos el 100% de tu dinero sin preguntas.
+        </p>
+      </div>
     </div>
   </div>
 </section>

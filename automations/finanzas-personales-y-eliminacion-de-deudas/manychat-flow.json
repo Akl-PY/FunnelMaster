@@ -1,0 +1,66 @@
+{
+  "version": "2.0",
+  "name": "Funnel DM Automation - Sistema Liquidez Soberana & Cero Deudas™",
+  "triggers": [
+    {
+      "type": "keyword",
+      "value": "RESET"
+    },
+    {
+      "type": "keyword",
+      "value": "SISTEMA"
+    },
+    {
+      "type": "keyword",
+      "value": "FOCO"
+    },
+    {
+      "type": "keyword",
+      "value": "GUIA"
+    },
+    {
+      "type": "comment_reply",
+      "post_type": "reels_and_posts"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "node_1_greeting",
+      "type": "send_message",
+      "text": "¡Hola! 👋 Vi tu comentario pidiendo el acceso al Sistema Liquidez Soberana & Cero Deudas™.",
+      "quick_replies": [
+        {
+          "text": "Hacer el Test de 60s 🎯",
+          "next_node": "node_2_quiz"
+        },
+        {
+          "text": "Ver el Sistema Completo 📖",
+          "next_node": "node_3_landing"
+        }
+      ]
+    },
+    {
+      "id": "node_2_quiz",
+      "type": "send_message",
+      "text": "Genial. Primero te recomiendo hacer el Test de Diagnóstico de 60 segundos para detectar tus principales fugas operativas:\n\n👉 https://tudominio.com/quiz?utm_source=instagram&utm_medium=dm_manychat&utm_campaign=keyword_sistema",
+      "next_node": "node_followup"
+    },
+    {
+      "id": "node_3_landing",
+      "type": "send_message",
+      "text": "Aquí tienes la página completa con la Arquitectura de Blindaje de Sueldo y Avalancha Inversa (ABAI)™, la App Móvil Material Design 3 y los 4 bonos gratuitos:\n\n👉 https://tudominio.com/?utm_source=instagram&utm_medium=dm_manychat&utm_campaign=keyword_sistema",
+      "next_node": "node_followup"
+    },
+    {
+      "id": "node_followup",
+      "type": "delay",
+      "time_minutes": 120,
+      "next_node": "node_check"
+    },
+    {
+      "id": "node_check",
+      "type": "send_message",
+      "text": "¿Pudiste abrir el enlace o prefieres que te responda alguna duda puntual por aquí? Cuéntame y te ayudo 😊"
+    }
+  ]
+}

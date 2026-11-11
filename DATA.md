@@ -1,101 +1,37 @@
-# DATA.md — Modelo y Mapa de Datos
+# FunnelMaster — Estado Operativo y Datos del Proyecto
 
-Fuente única de verdad sobre los datos, entidades y esquemas manejados por FunnelMaster.
-Los agentes consultan este documento para conocer la estructura y ubicación de la información antes de leer o escribir registros.
-
----
-
-## 1. Entidades Principales
-
-### `funnels`
-Representa los embudos de conversión configurados en el sistema.
-
-| Campo | Tipo | Descripción |
-|---|---|---|
-| `id` | VARCHAR / UUID | Identificador único del funnel |
-| `name` | VARCHAR | Nombre descriptivo del embudo |
-| `status` | VARCHAR | `draft`, `active`, `paused`, `archived` |
-| `target_audience` | TEXT | Definición del perfil de cliente ideal (ICP) |
-| `config` | JSONB | Parámetros específicos del funnel (URLs de entrada, webhooks, tags) |
-| `created_at` | TIMESTAMP | Fecha de creación |
-| `updated_at` | TIMESTAMP | Última actualización |
-
----
-
-### `funnel_steps`
-Etapas o pasos que componen un funnel (ej.: Landing page, Opt-in, VSL, Checkout, Thank You page).
-
-| Campo | Tipo | Descripción |
-|---|---|---|
-| `id` | VARCHAR / UUID | Identificador del paso |
-| `funnel_id` | VARCHAR / UUID | FK a `funnels.id` |
-| `step_order` | INTEGER | Posición secuencial en el flujo (1, 2, 3...) |
-| `step_type` | VARCHAR | `landing`, `optin_form`, `survey`, `checkout`, `calendar_booking`, `thank_you` |
-| `url` | TEXT | URL de destino o landing del paso |
-| `selectors` | JSONB | Selectores DOM clave para validación y testing (inputs, botones CTA) |
-
----
-
-### `leads`
-Contactos y prospectos captados o procesados a través del embudo.
-
-| Campo | Tipo | Descripción |
-|---|---|---|
-| `id` | VARCHAR / UUID | Identificador único del lead |
-| `email` | VARCHAR | Correo electrónico principal |
-| `first_name` | VARCHAR | Nombre del prospecto |
-| `last_name` | VARCHAR | Apellido del prospecto |
-| `phone` | VARCHAR | Teléfono / WhatsApp (opcional) |
-| `funnel_id` | VARCHAR / UUID | FK al funnel de origen |
-| `current_step_id` | VARCHAR / UUID | FK a la última etapa alcanzada |
-| `status` | VARCHAR | `new`, `contacted`, `qualified`, `converted`, `lost` |
-| `metadata` | JSONB | Atributos adicionales (respuestas a formularios, UTM tags, scoring) |
-
----
-
-### `automation_logs`
-Historial de ejecuciones de las skills y pruebas de navegación.
-
-| Campo | Tipo | Descripción |
-|---|---|---|
-| `id` | VARCHAR / UUID | Identificador de la ejecución |
-| `skill` | VARCHAR | Nombre de la skill (`browser-automation`, etc.) |
-| `target_url` | TEXT | URL evaluada |
-| `status` | VARCHAR | `success`, `failed`, `blocked_by_captcha`, `pending_auth` |
-| `details` | JSONB | Diagnóstico de ejecución, tiempo de respuesta, errores capturados |
-| `created_at` | TIMESTAMP | Timestamp del log |
+Este archivo centraliza la información del nicho activo, ofertas rediseñadas, copys y métricas de validación. **Ninguna skill debe hardcodear valores fuera de este esquema.**
 
 ---
 
 ## 2. Nicho y Oferta Activa (`active_niche`)
 
-- **Nicho Activo**: Salud Hormonal y Perimenopausia (+35/+40)
-- **Avatar Target**: Mujeres mayores de 35 años con fatiga, insomnio y niebla mental
-- **Dolor Principal**: Cambios metabólicos y hormonales inexplicables sin respuesta médica clara
-- **Volumen de Anuncios Activos**: ~28000 anuncios detectados en Meta Ads Library
-- **Veredicto**: Ganador Absoluto (+100 anuncios) (super_winner)
-- **Acción Estratégica**: Prioridad máxima: modelar de inmediato, factura +$100.000 USD/mes comprobables.
-- **Competidor / Landing de Referencia**: https://balancehormonal.com/protocolo-vsl
-- **Fecha de Validación**: 2026-11-07T19:19:53.014Z
-
+- **Nicho Activo**: Finanzas Personales y Eliminación de Deudas
+- **Avatar Target**: Profesionales y trabajadores independientes que ven su sueldo evaporarse cada mes en pagos de tarjeta, intereses y gastos invisibles
+- **Dolor Principal**: asfixia financiera a mitad de mes, intereses bancarios que crecen sin control y frustración de cobrar el sueldo solo para pagar deudas sin capacidad de ahorro
+- **Volumen de Anuncios Activos**: ~100 anuncios detectados en Meta Ads Library
+- **Veredicto**: Oferta Escalada (scaled)
+- **Acción Estratégica**: Demanda comprobada y flujo de caja alto. Modelar y superar la oferta con nuevo mecanismo.
+- **Competidor / Landing de Referencia**: https://finanzas-personales-y-eliminacion-de-deudas.com/vsl
+- **Fecha de Validación**: 2026-11-10T18:02:33.000Z
 
 ## 2.1 Oferta Rediseñada Activa (`active_offer`)
 
-- **Producto**: Protocolo Reset Hormonal 21™
-- **Nueva Promesa Transformadora**: Desactiva la inflamación silenciosa y reactiva tu energía en 21 días sin pasar hambre ni medicación innecesaria
-- **Mecanismo Único**: Sistema de Sincronización Metabólica por Fases (SMPF)™
+- **Producto**: Sistema Liquidez Soberana & Cero Deudas™
+- **Nueva Promesa Transformadora**: Corta el sangrado de intereses bancarios, libera entre $300 y $650 USD al mes de tu mismo sueldo desde tus primeras 48 horas y liquida tus tarjetas en la mitad de tiempo sin usar planillas de Excel eternas
+- **Mecanismo Único**: Arquitectura de Blindaje de Sueldo y Avalancha Inversa (ABAI)™
+- **Enemigo Común Derribado**: Las planillas de presupuesto donde anotas cada café y el consejo bancario de pagar el mínimo, diseñados para mantenerte atrapado en intereses rotativos mientras te quedas sin efectivo el día 15 del mes
 - **Precio Frontend**: $37 USD (Valor total acumulado: $237 USD - Descuento del 84%)
 - **Garantía Incondicional**: 30 días de riesgo cero
-- **Pila de Bonos**:
-  1. **Guía Rápida SOS: Eliminador de Sofocos e Insomnio Nocturno** (Valor: $29 USD) — Victoria rápida en las primeras 48 horas para dormir 7 horas continuas.
-  2. **Recetario Antiinflamatorio de 15 Minutos para Mujeres Ocupadas** (Valor: $37 USD) — Elimina la fricción de cocinar; 30 comidas fáciles de preparar.
-  3. **Calculadora de Balance Glucémico & Lista de Supermercado Anti-Niebla** (Valor: $27 USD) — Evita picos de insulina y quita la ansiedad de picotear entre comidas.
-  4. **Checklist de Análisis Clínicos: Qué pedirle a tu médico y cómo interpretarlo** (Valor: $47 USD) — Empodera a la mujer ante su consulta médica con preguntas específicas.
+- **Fases del Sistema**:
+  - **Fase 1 · Primeras 48 Horas (Auditoría Forense de Fugas y Corte de Sangrado Bancario)**: Detecta y congela las 5 fugas silenciosas de tu tarjeta, comisiones ocultas y débitos automáticos, liberando tus primeros $150 a $300 USD de liquidez en el mismo fin de semana.
+  - **Fase 2 · Días 3 al 7 (Instalación de la Arquitectura de Blindaje de Sueldo y Avalancha Inversa (ABAI)™)**: Divide tu ingreso en 4 Bóvedas Automáticas el día que cobras y aplica el acelerador matemático que destruye primero la deuda que más flujo mensual te roba.
+  - **Fase 3 · Consolidación Permanente (Piloto Automático de Liquidez y Blindaje Anti-Deudas)**: Instala el ritual quincenal de 10 minutos que blinda tu fondo de paz mental y hace crecer tu excedente mes a mes sin depender de fuerza de voluntad ni privaciones extremas.
+- **Pila de Bonos Mata-Objeciones**:
+  1. **Guiones de Negociación Bancaria para Congelar Intereses y Quitas de Deuda** (Valor: $29 USD) — *Destruye objeción: “El banco me cobra tasas impagables y no sé cómo negociar un plan fijo sin que me rechacen”* — Plantillas palabra por palabra para hablar con el área de retención y cobranzas del banco, frenar la bola de nieve de intereses rotativos y conseguir quitas o tasas fijas en una llamada de 15 minutos.
+  2. **Kit de Automatización de Sueldo en 4 Bóvedas (Sin Excel ni Anotar Gastos Diarios)** (Valor: $37 USD) — *Destruye objeción: “Odio anotar cada gasto hormiga en hojas de cálculo y siempre abandono al cuarto día”* — Configuración paso a paso de 4 cuentas o subcuentas automáticas que separan tu liquidez vital, tu cuota de desendeudamiento y tu margen libre el mismo día que cobras.
+  3. **Simulador Matemático de Liquidación Acelerada: Bola de Nieve vs. Avalancha Inversa** (Valor: $27 USD) — *Destruye objeción: “Tengo varias tarjetas y préstamos a la vez y no sé a cuál inyectarle dinero primero”* — Matriz de priorización exacta para ordenar tus deudas por costo financiero total y liberar flujo de caja mensual desde los primeros 30 días.
+  4. **Protocolo de Blindaje para Meses de Vacas Flacas, Imprevistos o Ingresos Variables** (Valor: $47 USD) — *Destruye objeción: “¿Qué hago si cobro comisiones variables o me surge una urgencia a mitad de mes?”* — El sistema de 3 marchas financieras (Mes de Abundancia, Mes Estándar y Modo Escudo de Emergencia) para no volver a endeudarte con la tarjeta cuando aparece un gasto inesperado.
 
-## 3. Variables de Entorno (`.env`)
-
-| Variable | Requerida | Propósito |
-|---|---|---|
-| `DATABASE_URL` | Opcional | Cadena de conexión PostgreSQL (en caso de persistencia relacional) |
-| `BROWSER_HEADLESS` | Opcional | `true` (por defecto) o `false` para navegación visible |
-| `LOG_LEVEL` | Opcional | Nivel de logging (`info`, `debug`, `error`) |
+## 3. Variables de Entorno y Configuración
+- Base de Datos: `data/funnel_master.db` (SQLite activa)

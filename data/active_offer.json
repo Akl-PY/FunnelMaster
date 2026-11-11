@@ -1,56 +1,148 @@
 {
   "niche": {
-    "id": 6,
-    "niche_name": "Salud Hormonal y Perimenopausia (+35/+40)",
-    "macro_niche": "Salud y Bienestar",
-    "target_avatar": "Mujeres mayores de 35 años con fatiga, insomnio y niebla mental",
-    "core_pain": "Cambios metabólicos y hormonales inexplicables sin respuesta médica clara",
-    "active_ads_count": 28000,
-    "validation_status": "super_winner",
-    "competitor_url": "https://balancehormonal.com/protocolo-vsl",
-    "created_at": "2026-11-07 19:19:52"
+    "id": 1,
+    "niche_name": "Finanzas Personales y Eliminación de Deudas",
+    "macro_niche": "Negocios, Marketing & Finanzas",
+    "target_avatar": "Profesionales y trabajadores independientes que ven su sueldo evaporarse cada mes en pagos de tarjeta, intereses y gastos invisibles",
+    "core_pain": "asfixia financiera a mitad de mes, intereses bancarios que crecen sin control y frustración de cobrar el sueldo solo para pagar deudas sin capacidad de ahorro",
+    "active_ads_count": 100,
+    "validation_status": "scaled",
+    "competitor_url": "https://finanzas-personales-y-eliminaci-n-de-deudas.com/vsl",
+    "created_at": "2026-11-10 18:02:33"
   },
   "competitorAnalysis": {
-    "detectedPromise": "Desinflama tu abdomen y equilibra tus hormonas en la menopausia",
+    "detectedPromise": "Cursos largos de educación financiera y planillas de Excel para anotar gastos diarios",
+    "commonEnemy": "Las planillas de presupuesto donde anotas cada café y el consejo bancario de pagar el mínimo, diseñados para mantenerte atrapado en intereses rotativos mientras te quedas sin efectivo el día 15 del mes",
     "weaknesses": [
-      "Enfoque teórico genérico sobre hormonas sin plan de acción diario",
-      "Falta de un mecanismo único memorable (parece una dieta keto más)",
-      "Bonos débiles o inexistentes (cero aceleradores de implementación)",
-      "Poco anclaje de valor antes del precio"
+      "Exigen anotar cada gasto hormiga a mano todos los días hasta que el usuario abandona por fatiga",
+      "No incluyen guiones reales para renegociar tasas e intereses abusivos con los bancos",
+      "Sin calculadora móvil de bolsillo para distribuir el sueldo y simular la salida de deudas",
+      "Ignoran cómo manejar ingresos variables o emergencias a mitad de mes"
     ]
   },
   "reengineeredOffer": {
-    "niche_id": 6,
-    "product_name": "Protocolo Reset Hormonal 21™",
-    "main_promise": "Desactiva la inflamación silenciosa y reactiva tu energía en 21 días sin pasar hambre ni medicación innecesaria",
-    "unique_mechanism": "Sistema de Sincronización Metabólica por Fases (SMPF)™",
-    "target_avatar": "Mujeres mayores de 35 años con fatiga, insomnio y niebla mental",
+    "niche_id": 1,
+    "product_name": "Sistema Liquidez Soberana & Cero Deudas™",
+    "main_promise": "Corta el sangrado de intereses bancarios, libera entre $300 y $650 USD al mes de tu mismo sueldo desde tus primeras 48 horas y liquida tus tarjetas en la mitad de tiempo sin usar planillas de Excel eternas",
+    "unique_mechanism": "Arquitectura de Blindaje de Sueldo y Avalancha Inversa (ABAI)™",
+    "common_enemy": "Las planillas de presupuesto donde anotas cada café y el consejo bancario de pagar el mínimo, diseñados para mantenerte atrapado en intereses rotativos mientras te quedas sin efectivo el día 15 del mes",
+    "target_avatar": "Profesionales y trabajadores independientes que ven su sueldo evaporarse cada mes en pagos de tarjeta, intereses y gastos invisibles",
     "price_usd": 37,
     "guarantee_days": 30,
+    "web_config": {
+      "layout_style": "executive_bento_vault",
+      "top_banner": "EDICIÓN ACTUALIZADA: Incluye Manual Maestro + 4 Bonos de Negociación y Bóvedas + Calculadora Móvil de Liquidez y Deudas",
+      "hero_pills": [
+        "$150 a $300 USD liberados en 48 horas",
+        "Sin llevar planillas de Excel diarias",
+        "Calculadora Móvil de 4 Bóvedas y Deudas"
+      ],
+      "hero_widget_title": "Simulador en Vivo · Distribución en 4 Bóvedas",
+      "symptoms": [
+        {
+          "title": "El sueldo desaparece antes del día 15",
+          "desc": "Cobras tu ingreso mensual, pagas resúmenes de tarjeta y cargos fijos, y a mitad de mes ya estás contando cada gasto para llegar al cierre."
+        },
+        {
+          "title": "Bola de nieve por intereses de tarjeta",
+          "desc": "Pagas el mínimo o refinancias saldos, pero los intereses rotativos e impuestos bancarios vuelven a inflar la deuda al mes siguiente."
+        },
+        {
+          "title": "Fatiga de planillas de Excel abandonadas",
+          "desc": "Intentaste anotar cada café y ticket de supermercado durante cuatro días seguidos, pero lo dejaste por falta de tiempo y practicidad."
+        },
+        {
+          "title": "Cero margen ante cualquier imprevisto",
+          "desc": "Un arreglo del auto, una consulta médica o un mes de menores ingresos te obliga a volver a endeudarte con la tarjeta de crédito."
+        }
+      ],
+      "quick_wins": [
+        {
+          "badge": "⏱️ En tus primeras 2 horas",
+          "title": "Corte de Fugas Bancarias Silenciosas",
+          "desc": "Aplicas el Escáner Forense de 15 minutos y detectas entre $80 y $220 USD/mes en seguros ocultos, comisiones reversibles y débitos fantasma."
+        },
+        {
+          "badge": "⚡ En las primeras 48 horas",
+          "title": "Sueldo Blindado en 4 Bóvedas",
+          "desc": "Dejas configuradas tus 4 Bóvedas Automáticas y aplicas el Guion de Negociación Bancaria para frenar los intereses rotativos."
+        },
+        {
+          "badge": "🛡️ Al completar el Día 7",
+          "title": "Ruta Matemática a Deuda Cero",
+          "desc": "Tu plan de Avalancha Inversa ABAI™ corre en automático desde tu celular con la fecha exacta en que cada tarjeta quedará en $0.00."
+        }
+      ],
+      "calculator": {
+        "slider1_label": "Tu ingreso mensual neto aproximado ($ USD):",
+        "slider1_min": 600,
+        "slider1_max": 5000,
+        "slider1_step": 100,
+        "slider1_default": 1500,
+        "slider1_unit": "USD/mes",
+        "slider2_label": "Deuda actual en tarjetas o préstamos ($ USD):",
+        "slider2_min": 500,
+        "slider2_max": 15000,
+        "slider2_step": 250,
+        "slider2_default": 3000,
+        "slider2_unit": "USD deuda",
+        "out1_label": "Liquidez Mensual Liberada",
+        "out2_label": "Ahorro Anual en Intereses y Fugas",
+        "out3_label": "Tiempo Estimado a Deuda Cero"
+      },
+      "app_showcase": {
+        "title": "2. App Calculadora de Liquidez y Deudas",
+        "desc": "Tu centro de control financiero en el celular: Distribuidor automático de sueldo en 4 Bóvedas, Simulador de Avalancha Inversa, Escáner de fugas en $ USD y Guiones bancarios copiables en 1 toque."
+      },
+      "case_studies": [
+        {
+          "metric": "+$410 USD/mes libres",
+          "quote": "Cobraba un buen sueldo pero se me iba el 42% en mínimos de 3 tarjetas. Con el Escáner Forense y el Guion de Negociación Bancaria congelé intereses en una tasa fija y liberé $410 USD desde el primer mes.",
+          "author": "Martín G. · 36 años",
+          "role": "Ingeniero de Software"
+        },
+        {
+          "metric": "$1,800 USD ahorrados",
+          "quote": "Al cobrar ingresos variables nunca sabía cuánto separar. Las 4 Bóvedas Automáticas y el protocolo para meses variables me permitieron cortar $240 USD de fugas en 48 horas y armar mi fondo de paz mental.",
+          "author": "Valeria R. · 31 años",
+          "role": "Diseñadora Independiente"
+        },
+        {
+          "metric": "2 Tarjetas en $0.00",
+          "quote": "Odiábamos anotar gastos en Excel. Con el Simulador de Avalancha Inversa en la app del celular supimos exactamente qué tarjeta atacar primero y recuperamos $580 USD mensuales de flujo familiar.",
+          "author": "Diego y Lucía M. · 41 años",
+          "role": "Profesionales con 2 hijos"
+        }
+      ]
+    },
     "bonuses": [
       {
         "id": 1,
-        "name": "Guía Rápida SOS: Eliminador de Sofocos e Insomnio Nocturno",
+        "name": "Guiones de Negociación Bancaria para Congelar Intereses y Quitas de Deuda",
         "perceivedValue": 29,
-        "purpose": "Victoria rápida en las primeras 48 horas para dormir 7 horas continuas."
+        "objectionDestroyed": "“El banco me cobra tasas impagables y no sé cómo negociar un plan fijo sin que me rechacen”",
+        "purpose": "Plantillas palabra por palabra para hablar con el área de retención y cobranzas del banco, frenar la bola de nieve de intereses rotativos y conseguir quitas o tasas fijas en una llamada de 15 minutos."
       },
       {
         "id": 2,
-        "name": "Recetario Antiinflamatorio de 15 Minutos para Mujeres Ocupadas",
+        "name": "Kit de Automatización de Sueldo en 4 Bóvedas (Sin Excel ni Anotar Gastos Diarios)",
         "perceivedValue": 37,
-        "purpose": "Elimina la fricción de cocinar; 30 comidas fáciles de preparar."
+        "objectionDestroyed": "“Odio anotar cada gasto hormiga en hojas de cálculo y siempre abandono al cuarto día”",
+        "purpose": "Configuración paso a paso de 4 cuentas o subcuentas automáticas que separan tu liquidez vital, tu cuota de desendeudamiento y tu margen libre el mismo día que cobras."
       },
       {
         "id": 3,
-        "name": "Calculadora de Balance Glucémico & Lista de Supermercado Anti-Niebla",
+        "name": "Simulador Matemático de Liquidación Acelerada: Bola de Nieve vs. Avalancha Inversa",
         "perceivedValue": 27,
-        "purpose": "Evita picos de insulina y quita la ansiedad de picotear entre comidas."
+        "objectionDestroyed": "“Tengo varias tarjetas y préstamos a la vez y no sé a cuál inyectarle dinero primero”",
+        "purpose": "Matriz de priorización exacta para ordenar tus deudas por costo financiero total y liberar flujo de caja mensual desde los primeros 30 días."
       },
       {
         "id": 4,
-        "name": "Checklist de Análisis Clínicos: Qué pedirle a tu médico y cómo interpretarlo",
+        "name": "Protocolo de Blindaje para Meses de Vacas Flacas, Imprevistos o Ingresos Variables",
         "perceivedValue": 47,
-        "purpose": "Empodera a la mujer ante su consulta médica con preguntas específicas."
+        "objectionDestroyed": "“¿Qué hago si cobro comisiones variables o me surge una urgencia a mitad de mes?”",
+        "purpose": "El sistema de 3 marchas financieras (Mes de Abundancia, Mes Estándar y Modo Escudo de Emergencia) para no volver a endeudarte con la tarjeta cuando aparece un gasto inesperado."
       }
     ],
     "value_stack": {
@@ -58,7 +150,94 @@
       "total_bonuses_perceived": 140,
       "total_perceived_value": 237,
       "offer_price": 37,
-      "discount_percentage": 84
+      "discount_percentage": 84,
+      "phases": [
+        {
+          "step": 1,
+          "timeframe": "Fase 1 · Primeras 48 Horas",
+          "name": "Auditoría Forense de Fugas y Corte de Sangrado Bancario",
+          "desc": "Detecta y congela las 5 fugas silenciosas de tu tarjeta, comisiones ocultas y débitos automáticos, liberando tus primeros $150 a $300 USD de liquidez en el mismo fin de semana.",
+          "deliverable": "Escáner de Fugas en 15 Minutos + Guion de Cancelación Instantánea"
+        },
+        {
+          "step": 2,
+          "timeframe": "Fase 2 · Días 3 al 7",
+          "name": "Instalación de la Arquitectura de Blindaje de Sueldo y Avalancha Inversa (ABAI)™",
+          "desc": "Divide tu ingreso en 4 Bóvedas Automáticas el día que cobras y aplica el acelerador matemático que destruye primero la deuda que más flujo mensual te roba.",
+          "deliverable": "Mapa de 4 Bóvedas Bancarias + Acelerador ABAI en la App Móvil"
+        },
+        {
+          "step": 3,
+          "timeframe": "Fase 3 · Consolidación Permanente",
+          "name": "Piloto Automático de Liquidez y Blindaje Anti-Deudas",
+          "desc": "Instala el ritual quincenal de 10 minutos que blinda tu fondo de paz mental y hace crecer tu excedente mes a mes sin depender de fuerza de voluntad ni privaciones extremas.",
+          "deliverable": "Tablero de Soberanía Mensual + Protocolo de Excedente Automático"
+        }
+      ],
+      "comparison_table": [
+        {
+          "dimension": "Tiempo requerido a la semana",
+          "traditional": "Horas anotando cada ticket y café en planillas de Excel que abandonas en 4 días",
+          "newMechanism": "15 minutos al cobrar el sueldo + seguimiento de 2 minutos en la App Móvil"
+        },
+        {
+          "dimension": "Estrategia ante las tarjetas",
+          "traditional": "Pagar el mínimo o refinanciar con tasas que duplican tu deuda cada año",
+          "newMechanism": "Congelamiento de intereses y Avalancha Inversa ABAI™ para liberar liquidez mensual"
+        },
+        {
+          "dimension": "Primer resultado medible",
+          "traditional": "Meses de restricción extrema sintiendo que trabajas solo para el banco",
+          "newMechanism": "$150 a $300 USD en fugas y cargos cortados dentro de las primeras 48 horas"
+        },
+        {
+          "dimension": "Herramientas entregadas",
+          "traditional": "Teoría financiera abstracta pensada para economistas, no para la vida real",
+          "newMechanism": "Manual Maestro + 4 Bonos de Negociación y Bóvedas + Calculadora Móvil de Liquidez"
+        }
+      ]
+    },
+    "app_config": {
+      "header_icon": "account_balance_wallet",
+      "header_badge": "Centro de Control Financiero",
+      "tabs": {
+        "today": {
+          "label": "Bóvedas",
+          "icon": "account_balance_wallet"
+        },
+        "tools": {
+          "label": "Deudas",
+          "icon": "trending_down"
+        },
+        "guides": {
+          "label": "Guías PDF",
+          "icon": "menu_book"
+        },
+        "progress": {
+          "label": "Liquidez",
+          "icon": "savings"
+        }
+      },
+      "tool_type": "finance_vaults_and_debt_simulator",
+      "progress_title": "Evolución de Liquidez y Reducción de Deuda",
+      "progress_desc": "Proyección de flujo libre recuperado al aplicar las 4 Bóvedas ABAI™:",
+      "milestones": [
+        {
+          "title": "Fugas Cortadas",
+          "status": "Activo",
+          "icon": "emoji_events"
+        },
+        {
+          "title": "4 Bóvedas",
+          "status": "Activo",
+          "icon": "military_tech"
+        },
+        {
+          "title": "Deuda Cero",
+          "status": "En ruta",
+          "icon": "workspace_premium"
+        }
+      ]
     }
   }
 }

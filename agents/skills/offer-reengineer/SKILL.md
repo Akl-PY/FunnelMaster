@@ -4,68 +4,54 @@ description: Captura páginas de venta de competidores validados y aplica ingeni
 allowed-tools: Bash(node:*) read_file write_file
 ---
 
-# Offer Re-Engineer (Pasos #5 y #6)
+# Offer Re-Engineer — Ingeniería Inversa y Neuroventas (Pasos #5 y #6 del Playbook de 48hs)
 
-Esta skill toma la URL de la página de venta del competidor validado (obtenida en `DATA.md` o pasada como argumento), extrae su estructura completa usando `browser-automation` y rediseña una oferta superior, visceral y de alta conversión.
-
-> [!IMPORTANT]
-> **Regla de oro**: No hardcodear nichos ni inventar información de competidores. La URL de la página y el nicho deben leerse de `DATA.md` (`active_niche`) o recibirse por parámetro. La extracción debe provenir del DOM real del sitio.
+Esta skill toma el nicho validado y la página del competidor, deconstruye sus puntos débiles y diseña una **Oferta Irresistible de Respuesta Directa** con un Mecanismo Único propietario, promesas cuantificadas y una Pila de Bonos mata-objeciones.
 
 ---
 
-## Flujo Operativo
+## 1. Super Prompt Maestro — Paso #6: Rediseño Estratégico de la Oferta (Playbook 48hs)
 
-### Fase 1: Captura e Inspección de la Página Ganadora (Paso #5)
-1. Leer `DATA.md` para obtener `competitor_landing_url` del nicho activo.
-2. Abrir la página usando el wrapper del navegador:
-   ```bash
-   node agents/skills/browser-automation/scripts/browser.js open "<competitor_landing_url>" --headless
-   ```
-3. Extraer el texto y estructura del DOM:
-   ```bash
-   node agents/skills/browser-automation/scripts/browser.js exec snapshot
-   ```
-4. Identificar los componentes clave de la oferta actual:
-   - **Promesa principal**: ¿Qué transformación promete en el titular?
-   - **Subpromesas y bullets**: ¿Qué beneficios específicos menciona?
-   - **Mecanismo único actual** (si existe): ¿Con qué método o vehículo promete lograrlo?
-   - **Avatar target**: ¿A quién le habla y qué dolor ataca?
-   - **Gatillos mentales**: Autoridad, prueba social, escasez, garantía.
-   - **Precio y bonos actuales**: Precio de entrada, descuentos y extras incluidos.
+Toda generación de oferta en esta skill obedece la directriz maestra del **Paso #6 del Playbook de 48hs**:
+
+> *"Actúa como un estratega jefe en marketing de respuesta directa con dominio avanzado en copywriting persuasivo, diseño de ofertas irresistibles y neuroventas. Analiza a fondo la propuesta del mercado actual en este nicho para superarla en todas sus dimensiones:*
+> 1. **Auditoría de la Competencia**:
+>    - Detecta su promesa principal, subpromesas, mecanismo actual, avatar y puntos ciegos (por qué el cliente sigue frustrado con las soluciones actuales).
+> 2. **Elevación Emocional y Neuroventas**:
+>    - Conecta con el dolor visceral reprimido del avatar (lo que no le cuenta a nadie pero sufre cada día).
+>    - Activa gatillos reptilianos profundos: **Control, Certidumbre, Alivio Inmediato, Estatus, Libertad de Tiempo y Seguridad**.
+> 3. **Creación del Mecanismo Único**:
+>    - Bautiza el sistema con un nombre científico, técnico o propietario memorable que explique: (a) Por qué todo lo que intentó antes falló (el 'Enemigo Común') y (b) Por qué este nuevo vehículo produce resultados en una fracción del tiempo.
+> 4. **Arquitectura de Fases Lógicas (Prohibido el Cliché de '21 Días')**:
+>    - Prohibido usar el cliché quemado de '21 días' o nombres como 'Protocolo X 21™'.
+>    - Estructura el sistema en 3 fases operativas con plazos reales y creíbles (ej.: Fase 1: Auditoría y Desbloqueo en 48h; Fase 2: Instalación del Sistema Nucleo; Fase 3: Automatización y Blindaje Permanente).
+> 5. **Pila de 4 Bonos Mata-Objeciones (Anclaje de Valor)**:
+>    - Cada bono debe existir únicamente para destruir una objeción específica (falta de tiempo, falta de claridad técnica, miedo a recaer, pereza de empezar de cero) y tener un entregable tangible (Calculadora, Plantilla Plug & Play, Protocolo SOS de 5 minutos, Matriz de Diagnóstico)."*
 
 ---
 
-### Fase 2: Rediseño Estratégico de la Oferta (Paso #6)
-Con los datos reales extraídos, reestructurar la oferta superando a la competencia en 4 dimensiones críticas:
+## 2. Reglas Anti-Genéricas de Diseño de Oferta (Regla #21)
 
-1. **Mayor Conexión Emocional**:
-   - Agregar storytelling empático y conexión visceral con el dolor reprimido del avatar.
-   - Activar gatillos primarios (seguridad, estatus, control, pertenencia, certidumbre).
-2. **Mayor Sofisticación (Mecanismo Único)**:
-   - Crear un nombre propio y memorable para el método/sistema (ejemplo de estructura: *Protocolo [Nombre]™, Método [Nombre]™*).
-   - Explicar **por qué** los métodos tradicionales han fallado y por qué este mecanismo nuevo sí funciona.
-3. **Pila de Bonos Irresistibles**:
-   - Diseñar entre 3 y 5 bonos complementarios de alto valor percibido que eliminen objeciones (plantillas, hojas de trabajo, checklists, masterclass extra).
-   - Asignar un valor percibido monetario a cada bono para inflar el empilamiento de valor.
-4. **Anclaje de Valor y Justificación de Precio**:
-   - Contrastar el valor total acumulado (producto + bonos) frente al precio de oferta especial.
-   - Llamado a la acción (CTA) con urgencia real o justificación emocional convincente.
+- **Prohibido el relleno tipo "Mad-Libs"**:
+  - ❌ **PROHIBIDO**: `"Resuelve [dolor] en 21 días de forma guiada y sin complicaciones"`.
+  - ✅ **OBLIGATORIO**: Promesas específicas, cuantificadas y con eliminación de la fricción principal (ej.: *"Recupera 2.5 horas diarias de concentración profunda y elimina la fatiga frente a la pantalla en tus primeras 72 horas sin cambiar de trabajo ni usar apps complejas"*).
+- **Prohibido el sufijo "21™"**:
+  - Los nombres de productos deben reflejar autoridad y precisión técnica (ej.: *Sistema DeepWork OS™*, *Arquitectura de Foco Ejecutivo™*, *Protocolo de Descompresión Axial Activa™*).
+- **Mapa de Objeciones en los Bonos (Cero Repetición de Ejemplos)**:
+  - ⚠️ **REGLA CRÍTICA (Regla #24)**: Todos los nombres de productos, fases y bonos citados en este documento (como *"Protocolo SOS"*, *"Calculadora"*, *"Plantillas Plug & Play"*, *"DeepWork OS"*, etc.) son **ÚNICAMENTE EJEMPLOS ILUSTRATIVOS**.
+  - Queda terminantemente prohibido reutilizar esos mismos nombres de bonos cuando se diseñe una oferta para un nuevo nicho. Cada nicho debe tener bonos bautizados con el vocabulario real y específico de su mercado (ej. ilustrativo: si es adiestramiento canino, un bono sobre paseos sin tirones; si es pastelería, una calculadora de costos por porción; si es finanzas, un rastreador de fugas de gastos).
+  - Cada bono en `active_offer.json` y `DATA.md` debe incluir: `name`, `perceivedValue`, `objectionDestroyed` (qué excusa elimina) y `purpose` (resultado rápido que entrega).
 
 ---
 
-## Salida y Persistencia en `DATA.md`
+## 3. Esquema del Blueprint de Salida (Handoff a `funnel-copywriter`, `prompt-web-maker` y `app-maker`)
 
-El resultado del rediseño debe presentarse estructurado y persistirse en `DATA.md` bajo `active_offer`:
+El script `reengineer.js` y el agente persisten en `data/active_offer.json`, SQLite y [`DATA.md`](../../../DATA.md) una estructura rica que alimenta al resto de skills:
 
-```markdown
-### Oferta Rediseñada: [Nombre del Producto]
-- **Nicho**: Leído dinámicamente de DATA.md
-- **Nueva Promesa Principal**: [Transformación concreta en X tiempo sin fricción Y]
-- **Mecanismo Único**: [Nombre del Método con marca registrada ficticia/conceptual]
-- **Pila de Bonos**:
-  1. Bono 1: [Nombre] (Valor percibido: $XX) — Elimina objeción A
-  2. Bono 2: [Nombre] (Valor percibido: $XX) — Acelera resultado B
-  3. Bono 3: [Nombre] (Valor percibido: $XX) — Automatiza paso C
-- **Precio Frontend Propuesto**: [$XX USD]
-- **Garantía Incondicional**: [7 a 30 días de riesgo cero]
-```
+- **Producto Principal**: Nombre propietario + subtítulo de autoridad.
+- **Promesa Principal**: Resultado tangible + marco temporal corto + "sin [objeción #1]".
+- **Enemigo Común**: Por qué las soluciones tradicionales fracasan en este nicho.
+- **Mecanismo Único**: Nombre del método + explicación lógica de su superioridad.
+- **3 Fases de Implementación**: Con nombre, marco temporal realista, acción concreta y métrica de éxito.
+- **4 Bonos Tácticos**: Con nombre de alto valor, valor en USD, objeción que derriba y descripción práctica.
+- **Anclaje de Valor**: Suma total percibida vs. Precio de lanzamiento ($37 USD) + Order Bump ($17 USD) + Upsell ($67 USD) + Garantía Incondicional de 30 Días.

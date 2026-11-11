@@ -4,52 +4,64 @@ description: Genera el Perfect Prompt meticuloso y ultra-especificado para const
 allowed-tools: read_file write_file
 ---
 
-# Prompt Web Maker (Paso #8)
+# Prompt Web Maker — Arquitecto del Super Prompt Web (Paso #8 del Playbook de 48 Horas)
 
-Esta skill toma el copy redactado por `funnel-copywriter` y la identidad definida en `DATA.md` para producir un **"Perfect Prompt" ultra-específico para constructores web basados en IA (Lovable.dev, v0.dev, Bolt.new, etc.)**.
+Esta skill actúa como el **Cerebro de Diseño e Ingeniería UI/UX** entre el copy persuasivo (`funnel-copywriter`) y el constructor de páginas (`landing-builder` o herramientas externas como Lovable.dev, v0.dev, Bolt.new y Cursor).
 
-El objetivo es eliminar páginas web genéricas, especificando al detalle:
-- Tokens de diseño (colores HEX primarios, fondos oscuros/claros, acentos de destello).
-- Tipografía, tracking (espaciado entre letras) y jerarquía visual.
-- Layouts responsive (móvil y desktop) con espaciados y paddings milimétricos.
-- Microanimaciones interactivas (hover en botones CTA, destellos de gradiente, contadores regresivos).
-- Integración exacta de los 11 bloques de copy del embudo.
+Su misión es erradicar por completo las páginas web planas, genéricas o repetitivas aplicando la instrucción maestra del **Paso #8 del Playbook de 48hs**:
+
+> *"A partir de ahora, necesito que me crees un perfect prompt para Lovable. Con los copies que me pasaste de la página web, quiero que me crees una página web completa. Pero necesito que te tomes el tiempo de explicarlo de la forma más detallada posible, porque Lovable siempre me entrega una página genérica. Necesito que coloques todos los detalles de animación, de colores, de destellos, que sea responsive para computadora, para celular... Todo de la forma más meticulosa posible, los movimientos, necesito que lo detalles, inclusive los espacios entre las letras, qué tan grandes, qué tan chicos los márgenes a los costados, los mockups, las imágenes. Necesito que me crees un perfect prompt detallado con el branding y los copies que estuvimos hablando dentro de este chat."*
 
 ---
 
-## Estructura del Perfect Prompt
+## 1. Cadena de Super Prompts (Cómo alimenta a `landing-builder`)
 
-El prompt generado debe componerse de las siguientes secciones técnicas:
-
-### 1. Rol y Stack Tecnológico
-- Indicación de arquitectura: Single Page Application en React + Tailwind CSS + Lucide Icons + Framer Motion.
-- Mobile-First: Optimización obligatoria para pantallas móviles (390px - 428px) donde ocurrirá el 80% del tráfico de Meta Ads.
-
-### 2. Design System & Tokens
-- **Paleta de Colores**:
-  - Background principal y secundario (modo oscuro elegante o contraste blanco/puro según el nicho).
-  - Color de acento de alta conversión para botones CTA (ej.: verde esmeralda `#10B981` o naranja cálido `#F97316`).
-  - Color de alerta/urgencia para banners de descuento o countdown timers.
-- **Tipografía**:
-  - Encabezados: Sans-serif moderna con tracking ajustado (`tracking-tight`, peso `font-extrabold`).
-  - Cuerpo: Legible (`text-slate-300` o `text-slate-600`), interlineado cómodo (`leading-relaxed`).
-
-### 3. Efectos Visuales y Microanimaciones
-- Destellos de fondo sutiles (glow effects mediante gradientes radiales `bg-gradient-to-r from-.../20 to-.../20 blur-3xl`).
-- Botones CTA con efecto de pulso suave o reflejo de luz (shimmer effect).
-- Tarjetas de bonos con bordes iluminados (`border border-slate-700 hover:border-accent/50 transition-all`).
-
-### 4. Estructura Sección por Sección (Injecting Copy)
-El prompt debe incluir el texto exacto redactado para cada uno de los 11 bloques:
-1. **Hero**: Headline, subheadline, mockup 3D flotante, badge social y botón primario.
-2. **Pain Points / Story**: Tarjetas de dolor con iconografía clara y narrativa del lead.
-3. **Mecanismo Único**: Diagrama visual o timeline de las fases del método.
-4. **Who is this for**: Grid de 2 columnas (Para ti vs No es para ti) con checks y cruces.
-5. **Stack de Bonos**: Cards individuales con valor tachado y badge de "GRATIS".
-6. **Pricing Stack**: Tarjeta de oferta destacada con anclaje de precio, garantía y botón checkout.
-7. **FAQ**: Acordeón interactivo desplegable.
+1. Lee la oferta activa (`data/active_offer.json`) y el copy completo de los 11 bloques (`funnels/<slug>/copy.md`).
+2. Detecta el **Arquetipo Visual** del nicho (`archetypes.js`) y define la arquitectura de componentes interactivos más efectiva para ese mercado.
+3. Genera un **Super Prompt Maestro de Ingeniería Web** en `funnels/<slug>/web-builder-prompt.txt` que especifica:
+   - Paleta de Colores exacta en HEX/RGBA con jerarquía de superficies y contrastes.
+   - Escala tipográfica, `letter-spacing` (`tracking-tight` `-0.03em`), `line-height` y márgenes laterales milimétricos para móvil y desktop.
+   - Microanimaciones, efectos de luz ambiente (radial glows, glassmorphism, shimmer sweeps en botones CTA).
+   - Especificación interactiva del **Simulador / Calculadora en Vivo** del arquetipo.
+   - Especificación de la **Tabla Comparativa de Alto Contraste** (*Método Tradicional Fallido vs. Nuevo Mecanismo Único*).
+   - Inyección íntegra de los 11 bloques del copy persuasivo.
+4. Pasa este plano directamente a `landing-builder` para que construya la aplicación web real en `/funnel`.
 
 ---
 
-## Salida de la Skill
-El prompt final se guarda en `funnels/<niche-slug>/web-builder-prompt.txt` listo para que el usuario o el agente lo copie y ejecute directamente en el generador web deseado.
+## 2. Especificaciones Obligatorias del Super Prompt
+
+### A. Design System & Paleta de Colores por Arquetipo
+- **Fondos con Profundidad**: Prohibido usar fondos planos aburridos. Combinar color base oscuro/claro (`bgMain`) con mallas sutiles (`bg-[radial-gradient(...)]`) y tarjetas translúcidas (`backdrop-blur-md`).
+- **Jerarquía de Bordes y Destellos**: Bordes de `1px` con iluminación progresiva en hover y sombras cromáticas (`shadow-[0_0_35px_glow]`).
+- **Tipografía de Alta Conversión**:
+  - Títulos: `Plus Jakarta Sans` o `Inter`, peso `800` (`font-extrabold`), tracking `-0.025em` a `-0.035em`.
+  - Cuerpo de lectura: `16px` a `18px` en móvil, interlineado `1.65`, ancho de línea controlado (`60ch-70ch`) para lectura veloz sin fatiga visual.
+
+### B. Microanimaciones, Tailwind CSS y Animaciones en Scroll Nativas con CSS Oficial
+- **Tailwind CSS Mandatorio**:
+  - Todo el sistema de layout, grillas asimétricas (`grid-cols-1 lg:grid-cols-12`), espaciados (`py-16 md:py-24`), bordes translúcidos (`border-slate-800/80`), efectos de cristal (`backdrop-blur-xl`) y estados interactivos (`hover:-translate-y-1`, `active:scale-95`) debe escribirse con **Tailwind CSS**.
+- **Animaciones en Scroll Nativas con la Última Especificación Oficial de CSS (W3C CSS Scroll-Driven Animations)**:
+  - Prohibido depender de librerías pesadas de JavaScript para animar el scroll. El Super Prompt y la página compilada deben utilizar las propiedades nativas de la última versión oficial de CSS:
+    1. **`animation-timeline: scroll(root block)`**: Para la barra superior de progreso de lectura que avanza de `0%` a `100%` en tiempo real conforme el usuario baja por la página.
+    2. **`animation-timeline: view()` + `animation-range: entry 0% cover 28%`**: Para revelar orgánicamente cada bloque, tarjeta de síntoma, fila de comparativa, calculadora, testimonio y bono a medida que entran en el viewport del navegador (`css-scroll-reveal`, `css-scroll-scale`, `css-scroll-slide`).
+    3. **Orden de Declaración y Accesibilidad**: Declarar siempre `animation-timeline` **después** del shorthand `animation`, envolviendo las reglas en `@supports (animation-timeline: view())` y `@media (prefers-reduced-motion: no-preference)`.
+- **85%+ del tráfico proviene de anuncios en el móvil**:
+  - Márgenes laterales de seguridad: `px-4 sm:px-6 lg:px-8`.
+  - Botones táctiles de pulgar: altura mínima de `54px`, ancho `100%` en móvil con reflejo de luz e indicador de seguridad debajo.
+  - Barra inferior flotante (`StickyMobileCTA`) con precio, garantía e ir al checkout en 1 toque.
+
+### C. Arquitectura de 12 Módulos Interactivos (Anti-Estructuras Rígidas)
+El prompt exige construir una experiencia completa y jamás un esqueleto de 4 cajas:
+1. **Top Status Bar**: Aviso superior con estado de edición, acceso inmediato y bono activo.
+2. **Split Hero con Widget Interactivo en Vivo**: Titular + Subtitular + Doble CTA a la izquierda, y **Vista Previa Interactiva del Sistema / Dashboard en Vivo** a la derecha.
+3. **Auditoría Visceral de Dolor (4 Tarjetas de Síntomas + Diagnóstico de Raíz)**: Escenas cotidianas donde el cliente se identifica en 3 segundos.
+4. **Timeline de Victorias Rápidas (Quick Wins en 2h, 48h y 7 Días)**: Qué logra desde el primer día sin esperar semanas.
+5. **Simulador / Calculadora Interactiva del Nicho**: Widget con controles deslizantes (sliders) o selector interactivo que calcula el impacto real en tiempo, salud o dinero para el usuario.
+6. **Matriz Comparativa de Contraste**: Tabla comparando las *Soluciones Tradicionales* (lentas, caras, frustrantes) contra el *Nuevo Mecanismo Único*.
+7. **Arquitectura del Mecanismo Único en 3 Fases**: Tarjetas numeradas con el qué, el cómo y el entregable de cada fase.
+8. **Filtro de Calificación de Audiencia (2 Columnas)**: *Para quién ES* (checks esmeralda) vs. *Para quién NO es* (cruces rojas).
+9. **Radiografía del Producto + App Móvil de Bolsillo (PWA)**: Mockup interactivo mostrando los módulos descargables y las 5 pantallas de la App incluida.
+10. **Muro de Casos de Estudio Cuantificados**: 3 tarjetas de clientes con situación inicial, acción tomada y métrica lograda.
+11. **Pila de Bonos (Bonus Stack) + Bóveda de Oferta y Garantía de 30 Días**: Desglose de bonos con la objeción que eliminan + caja de oferta con valor tachado y pasarelas Stripe / Mercado Pago.
+12. **Acordeón FAQ de 6 Objeciones + Sticky Mobile Bar**: Cierre de dudas frecuentes con apertura suave.

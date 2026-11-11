@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bono #2: Kit de Automatización de Sueldo en 4 Bóvedas (Sin Excel ni Anotar Gastos Diarios)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+    
+    body {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 11.5pt;
+      line-height: 1.68;
+      color: #0f172a;
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      background: #f8fafc;
+    }
+
+    .doc-sheet {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 44px 48px;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+    }
+    
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #0f172a;
+    }
+
+    h1 {
+      font-size: 24pt;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      border-bottom: 3px solid #10b981;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 15.5pt;
+      font-weight: 800;
+      color: #047857;
+      margin-top: 32px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 12.5pt;
+      font-weight: 700;
+      margin-top: 22px;
+      color: #1e293b;
+    }
+
+    h4 {
+      font-size: 11pt;
+      font-weight: 700;
+      margin-top: 16px;
+      color: #334155;
+    }
+
+    code {
+      font-family: monospace;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10pt;
+      color: #0f766e;
+    }
+
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9.8pt;
+    }
+
+    .doc-table th {
+      background: #0f172a;
+      color: #ffffff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 700;
+    }
+
+    .doc-table td {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 10px 12px;
+      vertical-align: top;
+      color: #334155;
+    }
+
+    .doc-table tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    .check-item {
+      margin: 8px 0;
+      padding: 8px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10.2pt;
+    }
+
+    .box {
+      font-size: 13pt;
+      color: #10b981;
+      margin-right: 8px;
+      font-weight: bold;
+    }
+
+    blockquote {
+      border-left: 4px solid #10b981;
+      margin: 18px 0;
+      padding: 12px 18px;
+      background: #ecfdf5;
+      border-radius: 0 8px 8px 0;
+      font-style: normal;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10.2pt;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #e2e8f0;
+      margin: 28px 0;
+    }
+
+    .print-bar {
+      position: sticky;
+      top: 12px;
+      background: #0f172a;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+      z-index: 50;
+    }
+
+    .print-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .back-link {
+      color: #94a3b8;
+      text-decoration: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 600;
+    }
+
+    .print-btn {
+      background: #10b981;
+      color: #022c22;
+      border: none;
+      padding: 9px 18px;
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9.5pt;
+    }
+
+    @media print {
+      .print-bar { display: none; }
+      body { padding: 0; background: #ffffff; }
+      .doc-sheet { border: none; box-shadow: none; padding: 0; }
+      h2 { page-break-after: avoid; }
+      .check-item, .doc-table { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="print-bar">
+    <span class="brand-font font-bold">📘 Bono #2: Kit de Automatización de Sueldo en 4 Bóvedas (Sin Excel ni Anotar Gastos Diarios) · Edición Ejecutiva Imprimible</span>
+    <div class="print-actions">
+      <a href="/app/index.html" class="back-link">← Volver a la App</a>
+      <button class="print-btn" onclick="window.print()">🖨️ Descargar / Guardar como PDF</button>
+    </div>
+  </div>
+  <div class="doc-sheet">
+    <p><h1>Bono #2: Kit de Automatización de Sueldo en 4 Bóvedas (Sin Excel ni Anotar Gastos Diarios)</h1>
+<h3>Banco de Plantillas Copiables · Valor Individual: $37 USD (Incluido Gratis)</h3></p><p><strong>Propósito Operativo</strong>: Configuración paso a paso de 4 cuentas o subcuentas automáticas que separan tu liquidez vital, tu cuota de desendeudamiento y tu margen libre el mismo día que cobras.  
+<strong>Objeción que Elimina de Raíz</strong>: “Odio anotar cada gasto hormiga en hojas de cálculo y siempre abandono al cuarto día”</p><p><hr/></p><p><h2>1. Plantilla #1: Tablero Diario de Prioridad Única (Regla 1-2-3)</h2></p><p>Copia esta estructura cada mañana (en papel, Notion, Notes o junto a tu App Móvil) en menos de 3 minutos:</p><p><blockquote><strong>FECHA</strong>: [ ___ / ___ / 2026 ] · <strong>NIVEL DE ENERGÍA INICIAL (1-10)</strong>: [ ___ ]</blockquote>
+>
+<blockquote><strong>🎯 1 ENTREGABLE CRÍTICO INNEGOCIABLE (60% de tu impacto de hoy)</strong>:</blockquote>
+<blockquote><div class="check-item"><span class="box">☐</span> __________________________________________________________________</div></blockquote>
+<blockquote>- <em>Bloque asignado</em>: De [ __:__ ] a [ __:__ ] (Sin correo ni teléfono)</blockquote>
+>
+<blockquote><strong>⚡ 2 TAREAS DE IMPULSO COMPLEMENTARIO</strong>:</blockquote>
+<blockquote><div class="check-item"><span class="box">☐</span> 1. _______________________________________________________________</div></blockquote>
+<blockquote><div class="check-item"><span class="box">☐</span> 2. _______________________________________________________________</div></blockquote>
+>
+<blockquote><strong>🧹 3 MICRO-PENDIENTES OPERATIVOS (Agrupados al final de la tarde en 15 min)</strong>:</blockquote>
+<blockquote><div class="check-item"><span class="box">☐</span> A. ___________________ · [ ] B. ___________________ · [ ] C. ___________________</div></blockquote></p><p><hr/></p><p><h2>2. Plantilla #2: Guion de Bloque de Inmersión con Arquitectura de Blindaje de Sueldo y Avalancha Inversa (ABAI)™</h2></p><p>Utiliza esta secuencia cada vez que te sientes a ejecutar un bloque de 25 o 50 minutos:</p><p><table class="doc-table"><thead><tr><th>Etapa del Bloque</th><th>Minutos</th><th>Qué Hacer Exactamente</th></tr></thead><tbody><tr><td><strong>1. Preparación de Cabina</strong></td><td>Min 00 a 02</td><td>Abrir únicamente el archivo de trabajo, activar Onda 432Hz en la App y definir qué debe quedar listo al terminar el reloj.</td></tr><tr><td><strong>2. Tracción Bruta (Cero Edición)</strong></td><td>Min 02 a 20</td><td>Avanzar a máxima velocidad sobre el entregable sin corregir detalles estéticos ni cambiar de ventana.</td></tr><tr><td><strong>3. Pulido y Cierre con Sello</strong></td><td>Min 20 a 25</td><td>Revisar el resultado, guardar cambios y dejar anotado el siguiente paso exacto para el próximo bloque.</td></tr></tbody></table></p><p><hr/></p><p><h2>3. Plantilla #3: Mensajes Pre-Redactados para Blindar tu Tiempo sin Fricción</h2></p><p>Copia y pega estos mensajes para proteger tus bloques de concentración frente a clientes, jefes o colegas sin parecer inaccesible:</p><p><li><strong>Guion A (Respuesta rápida para diferir una solicitud no urgente)</strong>:</li>
+  > <em>"¡Hola [Nombre]! Recibido. Ahora mismo estoy cerrando una entrega prioritaria para tenerla lista a tiempo. Apenas termine mi bloque a las [Hora, ej: 12:30] lo reviso con calma y te doy respuesta."</em>
+<li><strong>Guion B (Para evitar reuniones innecesarias de 45 minutos)</strong>:</li>
+  > <em>"Para avanzar más rápido hoy sin esperar a coincidir en agenda: ¿me envías por aquí un audio de 2 minutos o 3 puntos con lo clave y te devuelvo la solución resuelta antes de las [Hora]?"</em></p><p><hr/></p><p><h2>4. Checklist de Uso de Plantillas</h2></p><p><div class="check-item"><span class="box">☐</span> Plantilla 1-2-3 rellenada antes de revisar el teléfono por la mañana.</div>
+<div class="check-item"><span class="box">☐</span> Bloques de inmersión ejecutados separando creación bruta de corrección.</div>
+<div class="check-item"><span class="box">☐</span> Mensajes de blindaje aplicados para evitar interrupciones en horario pico.</div>
+</p>
+  </div>
+</body>
+</html>

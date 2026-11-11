@@ -1,0 +1,87 @@
+---
+---
+<section class="w-full h-full css-scroll-scale flex flex-col">
+  <div class="h-full bg-gradient-to-br from-[#0C1A15] to-[#050D0A] border border-[#18382E] rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between">
+    <div class="text-xs font-bold text-[#10B981] uppercase tracking-widest mb-2">
+      Ingeniería de Liquidez y Desbloqueo Patrimonial · Simulador Interactivo en Vivo
+    </div>
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+      Radiografía de Fugas de Liquidez e Interés Compuesto Bancario
+    </h2>
+    <p class="text-sm text-[#94A3B8] mb-6">
+      Por qué tu sueldo desaparece en los primeros 10 días del mes aunque trabajes más horas:
+    </p>
+
+    <!-- Calculadora / Simulador Interactivo en Vivo -->
+    <div class="bg-slate-950/90 border border-[#18382E] rounded-2xl p-5 sm:p-6 mb-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+        <div>
+          <div class="flex justify-between text-xs font-bold text-slate-300 mb-2">
+            <span>Tu ingreso mensual neto aproximado ($ USD):</span>
+            <span id="calc-income-val" class="text-[#10B981]">$1.500 USD/mes</span>
+          </div>
+          <input id="calc-income" type="range" min="600" max="5000" step="100" value="1500" oninput="updateImpactCalc()" class="w-full accent-[#10B981] cursor-pointer" />
+        </div>
+        <div>
+          <div class="flex justify-between text-xs font-bold text-slate-300 mb-2">
+            <span>Deuda actual en tarjetas o préstamos ($ USD):</span>
+            <span id="calc-debt-val" class="text-amber-400">$3.000 USD deuda</span>
+          </div>
+          <input id="calc-debt" type="range" min="500" max="15000" step="250" value="3000" oninput="updateImpactCalc()" class="w-full accent-amber-400 cursor-pointer" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800 text-center">
+        <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="text-[11px] text-slate-400 uppercase font-semibold">Liquidez Mensual Liberada</div>
+          <div id="calc-out-monthly" class="text-xl sm:text-2xl font-extrabold text-emerald-400 mt-1">+$345 USD/mes</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="text-[11px] text-slate-400 uppercase font-semibold">Ahorro Anual en Intereses y Fugas</div>
+          <div id="calc-out-yearly" class="text-xl sm:text-2xl font-extrabold text-white mt-1">+$4,140 USD</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="text-[11px] text-slate-400 uppercase font-semibold">Tiempo Estimado a Deuda Cero</div>
+          <div id="calc-out-months" class="text-xl sm:text-2xl font-extrabold text-amber-400 mt-1">5.5 meses</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-2.5">
+      
+      <div class="bg-[#050D0A]/80 border border-[#18382E] p-4 rounded-xl flex items-center justify-between">
+        <span class="text-xs sm:text-sm text-slate-300 font-medium">Drenaje por Pagos Mínimos y Gastos Hormiga</span>
+        <span class="font-extrabold text-rose-400 text-xs sm:text-sm">34% del ingreso neto mensual perdido</span>
+      </div>
+
+      <div class="bg-[#050D0A]/80 border border-[#18382E] p-4 rounded-xl flex items-center justify-between">
+        <span class="text-xs sm:text-sm text-slate-300 font-medium">Primeras 48 Horas (Auditoría de Sangrado)</span>
+        <span class="font-extrabold text-amber-400 text-xs sm:text-sm">Corte inmediato de suscripciones y fugas invisibles</span>
+      </div>
+
+      <div class="bg-[#050D0A]/80 border border-[#18382E] p-4 rounded-xl flex items-center justify-between">
+        <span class="text-xs sm:text-sm text-slate-300 font-medium">Con Arquitectura de Liquidez Activa</span>
+        <span class="font-extrabold text-emerald-400 text-xs sm:text-sm">+$380 a $850 USD/mes liberados sin ganar más</span>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    window.updateImpactCalc = function() {
+      const income = parseFloat(document.getElementById('calc-income').value) || 1500;
+      const debt = parseFloat(document.getElementById('calc-debt').value) || 3000;
+      document.getElementById('calc-income-val').innerText = '$' + income.toLocaleString() + ' USD/mes';
+      document.getElementById('calc-debt-val').innerText = '$' + debt.toLocaleString() + ' USD deuda';
+
+      // Cálculo de recuperación proporcional al valor de entrada
+      const monthlyFreed = Math.round(income * 0.18 + debt * 0.025);
+      const yearlySaved = monthlyFreed * 12;
+      const attackQuota = Math.max(120, Math.round(income * 0.20) + Math.round(monthlyFreed * 0.5));
+      const monthsToZero = Math.max(1.5, (debt / attackQuota)).toFixed(1);
+
+      document.getElementById('calc-out-monthly').innerText = '+$' + monthlyFreed.toLocaleString() + ' USD/mes';
+      document.getElementById('calc-out-yearly').innerText = '+$' + yearlySaved.toLocaleString() + ' USD';
+      document.getElementById('calc-out-months').innerText = monthsToZero + ' meses';
+    };
+  </script>
+</section>

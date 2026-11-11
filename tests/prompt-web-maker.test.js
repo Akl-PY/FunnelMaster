@@ -53,4 +53,20 @@ describe('Prompt Web Maker & Offer Re-Engineer Validation', () => {
     assert.strictEqual(res.reengineeredOffer.bonuses.length, 4);
     assert.strictEqual(typeof res.reengineeredOffer.unique_mechanism, 'string');
   });
+
+  test('runGeneratePrompt generates 48hs Playbook Perfect Prompt and enforces Rule #20', () => {
+    const { runGeneratePrompt } = require('../agents/skills/prompt-web-maker/scripts/generate-prompt');
+    const res = runGeneratePrompt();
+    assert.strictEqual(typeof res.outputPath, 'string');
+    assert.strictEqual(fs.existsSync(res.outputPath), true);
+    assert.match(res.perfectPrompt, /DIRECTRIZ MAESTRA DEL PLAYBOOK DE 48HS/i);
+    assert.match(res.perfectPrompt, /Lovable/i);
+    assert.match(res.perfectPrompt, /P\u00c1GINA DE VENTAS DE ALTA CONVERSI\u00d3N/i);
+
+    // Rule 20 in AGENTS.md
+    const agentsMd = path.join(__dirname, '..', 'AGENTS.md');
+    const agentsContent = fs.readFileSync(agentsMd, 'utf8');
+    assert.match(agentsContent, /20 \u2014 Arquitectura Web Din\u00e1mica y Perfect Prompt del Playbook de 48hs/i);
+    assert.match(agentsContent, /Anti-Estructuras R\u00edgidas/i);
+  });
 });

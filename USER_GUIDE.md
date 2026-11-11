@@ -1,198 +1,163 @@
-# Manual de Uso de FunnelMaster 🚀
-### Cómo operar el framework con Google Antigravity, OpenAI Codex, Claude Code o Cursor
+# Guía Fácil de FunnelMaster 🚀
+### Cómo crear tu negocio digital completo conversando con tu Asistente de IA (Sin saber programar)
 
-**FunnelMaster** es un repositorio agentic-first: está diseñado específicamente para que lo abras dentro de tu **asistente de codificación de IA (Antigravity, Codex, Cursor o Claude Code)** y le delegues la creación, validación y lanzamiento de tus embudos conversando con él.
+¡Bienvenido/a a **FunnelMaster**!
 
-> [!IMPORTANT]
-> **Sin claves de API externas ni configuraciones complejas**:
-> No tienes que configurar OpenAI ni Gemini por tu cuenta ni instalar bots en la terminal. El agente de IA es el propio asistente de tu entorno (Antigravity / Codex), que ya cuenta con herramientas para leer archivos, navegar por la web, ejecutar comandos en terminal y redactar copys de alta conversión.
+Este proyecto fue diseñado para que **cualquier persona, creador de contenido o emprendedor** pueda crear y lanzar un embudo de ventas digital rentable en tiempo récord, **sin tocar una sola línea de código** ni tener conocimientos técnicos previos.
 
 ---
 
-## 1. Flujo de Trabajo en el Chat de Antigravity / Codex
+## 💡 ¿Cómo funciona? (La regla de oro)
 
-Simplemente abre esta carpeta en tu editor y escribe en el chat lo que deseas que el Agente haga:
+> **Tú no tienes que programar absolutamente nada.**  
+> Solo conversas con tu Asistente de Inteligencia Artificial (en Google Antigravity, OpenAI Codex, Claude Code o Cursor) como si fuera tu socio de negocios experto en marketing y diseño.
 
-### Paso 1: Descubrimiento y Validación de Nicho
-> **Tú en el chat**:  
-> *"Agente, investiga y valida 3 nichos emergentes escalables para el mercado hispano."*
-- El Agente ejecutará `agents/skills/niche-discovery`, consultará Meta Ads Library con Playwright y te presentará los datos reales de anunciantes activos.
-
-### Paso 2: Rediseño de Oferta y Mecanismo Único
-> **Tú en el chat**:  
-> *"Rediseña la oferta para [mi nicho o el nicho ganador]: define la nueva promesa visceral, un mecanismo único memorable y 4 bonos irresistibles."*
-- El Agente ejecutará `agents/skills/offer-reengineer`, persistirá la oferta en `data/funnel_master.db` y actualizará `DATA.md`.
-
-### Paso 3: Redacción del Copy de 11 Bloques (Hero's Journey)
-> **Tú en el chat**:  
-> *"Redacta el copy completo de la página de ventas aplicando la regla Anti-LLM."*
-- El Agente ejecutará `agents/skills/funnel-copywriter`, pasará el linter para evitar clichés de IA y guardará `copy.md`.
-
-### Paso 4: Construcción de la Landing y el Quiz
-> **Tú en el chat**:  
-> *"Construye la landing en Astro con Tailwind, preservación de UTMs y agrega el quiz interactivo de diagnóstico."*
-- El Agente compilará los componentes en `/funnel/src/pages/` (`index.astro`, `quiz.astro`, `checkout.astro`, `dashboard.astro`).
-
-### Paso 5: Creación del Infoproducto y Campaña Publicitaria
-> **Tú en el chat**:  
-> *"Genera la guía maestra del producto, los 4 bonos terminados, los guiones de video UGC para Meta Ads y la secuencia de 5 emails."*
-- El Agente generará todos los entregables en `products/`, `traffic/`, `content/` y compilará los HTMLs imprimibles listos para subir a Hotmart o Shopify.
-
-### Paso 6: Despliegue Asistido a Producción en Vercel con `/browser`
-> **Tú en el chat**:  
-> *"Agente, acompáñame a subir mi embudo a Vercel para dejarlo en vivo con HTTPS."*
-- El Agente te invitará a activar el comando:  
-  👉 **/browser**
-- A través del subagente `/browser`, el Agente abre Chromium y te acompaña paso a paso en pantalla:
-  1. Te guía para crear tu cuenta gratuita o iniciar sesión en [Vercel](https://vercel.com/signup) con GitHub o Google.
-  2. Despliega el proyecto de `/funnel` en modo producción (`npx vercel --cwd funnel --prod`) o vinculando tu repositorio de GitHub.
-  3. Verifica la URL pública HTTPS generada (ej: `https://tu-embudo.vercel.app`).
-  4. Comprueba en vivo que el Quiz interactivo, el Checkout con Order Bump y la captura de leads respondan al 100%.
-
-### Ejecución Todo-en-Uno (El Plan de 48 Horas)
-> **Tú en el chat**:  
-> *"Agente, ejecuta el plan completo de 48 horas de punta a punta para [Nicho/Idea]."*
-- El agente orquestará todos los pasos de forma secuencial sin detenerse hasta dejar el embudo terminado y listo para desplegar.
+Tú le dices lo que quieres en español común y corriente, y el asistente se encarga de todo el trabajo técnico bajo el capó:
+- Investiga qué productos se están vendiendo de verdad en Facebook e Instagram.
+- Diseña una oferta irresistible con garantía y regalos de valor.
+- Escribe textos persuasivos profesionales (sin sonar a robot ni usar frases cliché).
+- Crea tu página de ventas y tu cuestionario interactivo con un diseño visual único para tu industria.
+- Redacta tus libros y guías en PDF listos para entregar a tus clientes.
+- Prepara tus anuncios para redes sociales, correos automáticos y mensajes de WhatsApp.
+- Te acompaña a publicarlo en internet con tu propio enlace público y gratuito.
 
 ---
 
-## 2. Visualización Local en el Navegador
+## 🗣️ ¿Cómo pedirle las cosas al Asistente en el Chat?
 
-Cuando quieras ver el resultado visual de tu embudo en vivo, solo ejecuta en tu terminal:
+Aquí tienes ejemplos exactos de lo que puedes escribir en el chat según lo que quieras lograr:
 
-```bash
-npm run dev
-```
+### 1. Si quieres ideas de qué vender:
+> *"Quiero ver qué productos digitales están funcionando bien ahora mismo."*  
+👉 El asistente analizará el mercado y te mostrará opciones comprobadas para que elijas la que más te guste.
 
-Y abre en tu navegador:
-- **Página de Ventas**: [http://localhost:3003](http://localhost:3003)
-- **Embudo Quiz**: [http://localhost:3003/quiz](http://localhost:3003/quiz)
-- **Checkout con Order Bump Reactivo**: [http://localhost:3003/checkout](http://localhost:3003/checkout)
-- **Panel de Control / Dashboard**: [http://localhost:3003/dashboard](http://localhost:3003/dashboard)
+### 2. Si ya tienes una idea o nicho en mente:
+> *"Tengo una idea para vender un curso/guía sobre alivio de dolor de espalda para personas que trabajan sentadas."*  
+👉 El asistente investigará cuántos anuncios reales existen en Meta Ads Library y te dirá si es una oferta ganadora con alta demanda.
 
----
+### 3. Si quieres que prepare la oferta y los textos:
+> *"Crea una oferta irresistible para este nicho con un nombre llamativo, 4 regalos incluidos y los textos completos de la página de venta."*  
+👉 El asistente redactará todos los argumentos comerciales usando técnicas probadas de copywriting directo.
 
-## 3. Comandos de Soporte y Utilidades
+### 4. Si quieres que construya tu página web y tu cuestionario:
+> *"Construye la página de venta y el test de preguntas con un diseño visual moderno y adaptado a este nicho."*  
+👉 El asistente creará tu web completa con colores profesionales, versión para teléfonos móviles y preservación automática de tus etiquetas de publicidad.
 
-El proyecto incluye scripts que tanto tú como el Agente pueden ejecutar en cualquier momento:
+### 5. Si quieres tus libros y guías en PDF:
+> *"Genera la guía práctica de 21 días y los 4 libros de regalo listos para entregar a mis compradores."*  
+👉 El asistente redactará el contenido completo sin rodeos teóricos y lo dejará listo para imprimir o guardar como PDF en 1 clic.
 
-- `npm run export:docs`: Compila todos los entregables (`master-guide.md` y los 4 bonos) a HTML imprimible para guardarlos como PDF en 1 clic.
-- `npm run roas`: Simula los Unit Economics, AOV y el retorno publicitario proyectado.
-- `npm test`: Ejecuta la suite de 68 pruebas automatizadas para verificar que todo esté en regla antes de lanzar.
+### 6. Si quieres tus anuncios y mensajes automáticos:
+> *"Prepara mis guiones para videos de TikTok/Reels, mis correos de seguimiento y mis mensajes de WhatsApp para ventas perdidas."*  
+👉 El asistente generará toda tu batería de ventas para redes sociales.
 
----
-
-## 2. Mapa de Activos Generados en tu Proyecto
-
-Una vez ejecutado el pipeline, encontrarás todos los activos organizados en carpetas limpias:
-
-```text
-FunnelMaster/
-├── data/
-│   ├── active_niche.json            # Nicho auditado en Meta Ads con volumen de competencia
-│   ├── active_offer.json            # Oferta rediseñada, mecanismo único y desglose de bonos
-│   └── funnel_master.db             # Base de datos SQLite local (cero configuración externa)
-├── funnel/                          # Código fuente de tu Landing Page y Quiz (Astro + Tailwind)
-│   ├── src/pages/index.astro        # Página de ventas principal (PV)
-│   └── src/pages/quiz.astro         # Embudo Quiz interactivo de 5 preguntas
-├── funnels/<nicho>/
-│   ├── copy.md                      # Copy persuasivo de 11 bloques (Hero's Journey)
-│   └── web-builder-prompt.txt       # Perfect Prompt para Lovable.dev, v0 o Bolt
-├── products/<nicho>/
-│   ├── master-guide.md              # Manual operativo de 21 días (listo para entregar)
-│   └── bonuses/                     # 4 Bonos de implementación inmediata terminados
-├── traffic/<nicho>/
-│   ├── checkout-setup.md            # Parámetros para Hotmart/Shopify, Order Bump y Upsell
-│   └── meta-ads-campaign.md         # 5 guiones de video UGC segundo a segundo y copys
-├── content/<nicho>/
-│   ├── social-reels-scripts.md      # Guiones para Reels/TikToks con llamadas a la acción
-│   ├── instagram-carousels.md       # Carruseles educativos slide por slide
-│   ├── email-sequence-5days.md      # Secuencia de nutrición y venta de 5 emails
-│   └── gamma-presentation-prompt.md # Prompt para maquetar el PDF/diapositivas en Gamma.app
-├── automations/<nicho>/
-│   ├── manychat-flow.json           # Flujo de mensajes importable en ManyChat
-│   └── manychat-guide.md            # Guía para conectar palabras clave en Instagram
-└── recovery/<nicho>/
-    └── whatsapp-recovery-sequences.md # 3 mensajes de WhatsApp y SMS para carritos abandonados
-```
+### 7. Si quieres hacer todo de golpe (El Plan de 48 Horas):
+> *"Ejecuta todo el plan completo de punta a punta para mi nicho."*  
+👉 El asistente orquestará cada fase automáticamente y te avisará cuando todo esté listo para ver y lanzar.
 
 ---
 
-## 3. Cómo Visualizar tu Landing Page y Quiz Localmente
+## 🖥️ ¿Cómo ver tu Página y tu Cuestionario en pantalla?
 
-Para ver tu embudo en vivo en tu navegador:
+Para ver tu página funcionando en vivo en tu computadora:
 
-```bash
-cd funnel
-npm run preview -- --port 3003
-```
-
-Abre en tu navegador:
-- **Página de Ventas**: [http://localhost:3003](http://localhost:3003)
-- **Embudo Quiz (Captura de Leads)**: [http://localhost:3003/quiz](http://localhost:3003/quiz)
-- **Página de Checkout con Order Bump**: [http://localhost:3003/checkout](http://localhost:3003/checkout)
-- **Panel de Control & Dashboard de Métricas**: [http://localhost:3003/dashboard](http://localhost:3003/dashboard)
-
-### Captura de Leads y Exportación
-Cada vez que un visitante completa el Quiz en `/quiz`, sus respuestas y datos se guardan en la base de datos SQLite. Puedes descargar todos tus prospectos en un archivo Excel/CSV con:
-```bash
-node scripts/export-leads.js
-```
-O descargarlo directamente desde el botón en el Dashboard web.
+1. Escribe en la terminal:
+   ```bash
+   npm run dev
+   ```
+2. Haz clic en cualquiera de estos enlaces para abrirlo en tu navegador:
+   - **Tu Página de Ventas**: [http://localhost:3003](http://localhost:3003)
+   - **Tu Test de Diagnóstico Interactivo**: [http://localhost:3003/quiz](http://localhost:3003/quiz)
+   - **Tu Pasarela de Pago con Oferta Especial**: [http://localhost:3003/checkout](http://localhost:3003/checkout)
+   - **Tu Aplicación Móvil de Bolsillo (PWA)**: [http://localhost:3003/app/](http://localhost:3003/app/)
+   - **Tu Panel de Control y Clientes**: [http://localhost:3003/dashboard](http://localhost:3003/dashboard)
 
 ---
 
-## 4. Compilación de tu Producto a PDF para Entrega Inmediata
+## 📱 ¿Cómo usar tu Aplicación Móvil Interactiva?
 
-No necesitas abrir Canva ni herramientas de diseño para maquetar tu infoproducto y los 4 bonos:
-
-```bash
-npm run export:docs
-```
-Esto compilará todos los entregables en archivos HTML elegantes en `products/<nicho>/dist_html/`. Ábrelos en cualquier navegador y presiona `Ctrl + P` para guardarlos como PDF profesional listos para subir a Hotmart o Shopify.
-
-### Prueba de Tracking UTM
-Si pruebas ingresar con parámetros de seguimiento, por ejemplo:
-`http://localhost:3003/?utm_source=facebook&utm_campaign=retargeting_vsl`
-El sistema inyectará automáticamente esas etiquetas en todos los botones que conducen al checkout de Hotmart/Shopify.
+Tu negocio digital incluye una aplicación web interactiva lista para teléfonos móviles:
+1. Abre [http://localhost:3003/app/](http://localhost:3003/app/) en el navegador de tu teléfono o computadora.
+2. Tus clientes pueden tocar **"Instalar en mi teléfono"** para tenerla en su pantalla de inicio como cualquier app nativa (sin pasar por App Store ni Google Play).
+3. Incluye 5 pestañas completas: Rutina de Hoy (con cronómetro con sonido y checklist), Herramientas Tácticas con audio de concentración (432Hz), Biblioteca de Guías con acordeones de contenido, Gráfico de Progreso semanal y Ajustes.
 
 ---
 
-## 4. Cómo Simular la Rentabilidad de tu Campaña (ROAS)
+## 🤖 ¿Cómo usar el Super Prompt de tu App en otras IAs? (Lovable, v0, Bolt)
 
-Para conocer tus números antes de gastar un solo dólar en publicidad:
-
-```bash
-npm run roas
-```
-
-Calcula automáticamente:
-- **AOV (Ticket Promedio)** sumando el producto frontend ($37), el Order Bump ($17) y el Upsell ($67).
-- **CAC Máximo permitido** (punto de equilibrio).
-- **ROAS estimado** según presupuesto diario.
+Si quieres compilar tu app móvil como aplicación nativa en React Native / Expo o construirla en plataformas visuales de IA:
+1. El sistema genera automáticamente el archivo **Super Prompt para Apps** con toda la especificación técnica, modelos de datos y diseño.
+2. Copia el texto y pégalo directamente en [Lovable.dev](https://lovable.dev), [v0.dev](https://v0.dev) o [Bolt.new](https://bolt.new).
+3. La IA de esas plataformas creará una versión hiper-avanzada lista para publicar en la App Store o Google Play.
 
 ---
 
-## 5. Cómo Desplegar tu Embudo a Internet (Producción)
+## 💳 ¿Cómo conectar Stripe y Mercado Pago para recibir dinero real?
 
-La carpeta `/funnel` está construida sobre Astro, lo que permite desplegarla en menos de 2 minutos de forma 100% gratuita en cualquier hosting moderno:
+Tu página de pago ya viene lista con selector visual para **Stripe (Internacional)** y **Mercado Pago (LATAM)**:
 
-### Opción A: Vercel
-1. Instala el CLI de Vercel: `npm i -g vercel`.
-2. Desde la carpeta `/funnel`, ejecuta: `vercel`.
-3. Sigue las instrucciones y tendrás tu dominio HTTPS activo en segundos.
-
-### Opción B: Netlify
-1. Arrastra la carpeta `/funnel/dist` directamente a [Netlify Drop](https://app.netlify.com/drop).
-2. O conecta tu repositorio de GitHub para despliegue continuo.
+1. **Para Stripe**:
+   - Entra a tu cuenta en [Stripe.com](https://stripe.com) > *Productos* > *Payment Links*.
+   - Crea un enlace de pago por $37 USD y agrégalo en tu archivo de configuración `.env`:
+     ```env
+     STRIPE_PAYMENT_LINK="https://buy.stripe.com/tu_enlace_aqui"
+     ```
+2. **Para Mercado Pago**:
+   - En tu app o web de Mercado Pago, ve a *Cobrar con link de pago*.
+   - Crea tu link por el monto equivalente y agrégalo a tu `.env`:
+     ```env
+     MP_CHECKOUT_URL="https://mpago.la/tu_link_aqui"
+     ```
+3. Si todavía no tienes tus cuentas creadas, puedes probar el **Modo Sandbox / Prueba** directamente en la página de pago: pulsa "Pagar de Forma Segura" y podrás simular compras reales que se registran de inmediato en tu panel de control.
 
 ---
 
-## 6. Ejecución de Tests de Calidad
+## 🎬 ¿Cómo procesar tus Videos Verticales para TikTok y Reels?
 
-Para verificar que todos los componentes, reglas Anti-LLM, esquemas de datos y archivos físicos están en orden:
+El sistema cuenta con un motor de edición de video automatizado con FFmpeg:
+1. Tus guiones de video con gancho visual en los primeros 3 segundos se generan en la carpeta de contenidos.
+2. Si tienes clips grabados en horizontal (16:9), el motor los recorta a vertical (9:16) y les añade titulares animados arriba y abajo.
+3. Para renderizar tus clips en lote automáticamente:
+   ```bash
+   traffic\videos\render-reels.bat
+   ```
 
-```bash
-npm test
-```
-Debe mostrar `58 pass, 0 fail`.
+---
+
+## 🖨️ ¿Cómo descargar tus Guías y Bonos en PDF?
+
+No necesitas herramientas complicadas ni pagar diseñadores:
+
+1. Ejecuta:
+   ```bash
+   npm run export:docs
+   ```
+2. Se abrirán tus documentos listos para entrega con diseño profesional.
+3. Presiona el botón verde **"Imprimir / Guardar como PDF"** (o presiona `Ctrl + P`) y tendrás tus PDFs terminados para subir a Hotmart, Shopify o enviarlos por correo a tus clientes.
+
+---
+
+## 🌐 ¿Cómo publicar tu página en internet gratis? (Despliegue Asistido)
+
+Cuando tu embudo esté listo, el Asistente no te deja solo con el proyecto en tu máquina. Te invitará a usar el comando:
+
+👉 **/browser**
+
+Al activarlo, el Asistente abrirá una ventana de navegador frente a tus ojos y te guiará paso a paso:
+1. Te ayudará a crear una cuenta gratuita en **Vercel** (la plataforma de hosting más rápida del mundo).
+2. Subirá tu proyecto a internet en un par de clics.
+3. Te entregará tu dirección web en vivo con candado de seguridad HTTPS (ejemplo: `https://tu-producto.vercel.app`).
+4. Comprobará que la página, el cuestionario y el formulario de compra funcionen al 100% en teléfonos y computadoras.
+
+---
+
+## ❓ Preguntas Frecuentes
+
+**¿Necesito saber algo de código?**  
+No, en absoluto. Tú conversas en el chat como con cualquier otra persona; el asistente se encarga de crear, editar y organizar todo por ti.
+
+**¿Las páginas son todas iguales o parecen plantillas repetidas?**  
+No. FunnelMaster tiene una regla estricta de personalización: cada nicho tiene su propia paleta de colores, su tipografía y sus secciones especiales (por ejemplo, comparativas de postura para salud física, líneas de tiempo hormonales para bienestar femenino, o curvas de retención para edición de video).
+
+**¿Tengo que pagar suscripciones adicionales para que funcione?**  
+No. La base de datos es local y gratuita, y la publicación en Vercel es 100% gratuita. Solo inviertes en publicidad cuando decidas lanzar tus anuncios.

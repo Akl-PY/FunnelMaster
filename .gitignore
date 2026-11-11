@@ -17,13 +17,17 @@ package-lock.json
 .playwright/
 
 # Cache, logs & temp files
-data/*.db
+data/*.db*
 logs/
 *.log
 .tmp-*
 .tmp_*
 .DS_Store
 Thumbs.db
+.astro/
+dist/
+funnel/dist/
+app/dist/
 
 # Agent state & local runtime
 .agents

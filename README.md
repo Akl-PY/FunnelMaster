@@ -9,23 +9,27 @@
 > 
 > El Agente de tu IDE lee `AGENTS.md`, descubre automáticamente las skills en `.agents/skills/`, y tú lo diriges hablando en el chat del editor. El agente ejecuta las herramientas de terminal (`run_command`), audita competidores con Playwright, redacta los copys, compila las páginas en Astro y persiste el estado en `DATA.md` y SQLite.
 
+> [!TIP]
+> **Diseñado para Personas que NUNCA han Programado**:
+> No necesitas saber de código, ni abrir archivos técnicos, ni tocar la terminal. Hablas con el Agente en español cotidiano y él construye todo tu negocio digital por ti: tu página web con diseño único, tu cuestionario interactivo, tus guías en PDF y tus anuncios de venta listos para usar.
+
 ---
 
 ## 🎯 Cómo Operar el Repositorio con Antigravity / Codex
 
 Abre este repositorio en tu aplicación de agentes (Antigravity, Codex o Cursor) y pídele al Agente en el chat lo que necesitas:
 
-| Qué le dices al Agente en el Chat | Qué hace el Agente autónomamente |
+| Qué le dices al Agente en el Chat | Qué hace el Agente por ti (Bajo el capó) |
 | :--- | :--- |
-| *"Agente, ejecuta el Paso 1 y descubre 5 nichos ganadores"* | Ejecuta `niche-discovery/scripts/discover.js` y analiza tendencias reales de 180 días. |
-| *"Audita este nicho en Meta Ads Library"* | Abre Playwright en headless, cuenta anunciantes activos y valida el volumen. |
-| *"Rediseña la oferta para [mi producto/nicho]"* | Ejecuta `offer-reengineer`, inventa el mecanismo único y crea la pila de 4 bonos. |
-| *"Redacta el copy de 11 bloques sin clichés de IA"* | Ejecuta `funnel-copywriter`, valida con el linter Anti-LLM y genera `copy.md`. |
-| *"Construye la Landing Page y el Quiz en Astro"* | Ejecuta `landing-builder` y crea la web interactiva con preservación de UTMs en `/funnel`. |
-| *"Genera los contenidos del infoproducto y los bonos"* | Ejecuta `product-generator` y redacta la guía maestra de 21 días y los 4 bonos en `products/`. |
-| *"Genera la estrategia de checkout, ManyChat y Meta Ads"* | Ejecuta `traffic-launcher`, `dm-automation` y `cart-recovery`. |
-| *"Acompáñame a subir mi embudo a Vercel"* | Te invita a usar **/browser**, abre Vercel, asiste en la creación de cuenta/login, ejecuta el despliegue de `/funnel` y valida tu URL pública HTTPS. |
-| *"Ejecuta todo el embudo de 48h de punta a punta para [nicho]"* | El agente orquesta los 11 pasos y el despliegue de forma secuencial sin detenerse. |
+| *"Agente, descubre 5 nichos ganadores"* | Investiga tendencias reales de los últimos 180 días y te presenta las mejores oportunidades. |
+| *"Audita este nicho en Meta Ads"* | Consulta los anuncios activos en Meta Ads Library y confirma si tiene alta demanda de compra. |
+| *"Rediseña la oferta para mi producto"* | Diseña tu oferta irresistible: define una promesa atractiva, un mecanismo único y 4 bonos de regalo. |
+| *"Redacta el texto de ventas sin clichés de IA"* | Escribe el copy persuasivo completo de tu página siguiendo técnicas de respuesta directa y tono natural. |
+| *"Construye la página web y el cuestionario"* | Maqueta tu página de ventas y tu test diagnóstico con un diseño visual único y adaptado a tu sector. |
+| *"Genera los contenidos del producto y los bonos"* | Redacta tu manual de 21 días y los 4 libros de regalo listos para entregar a tus clientes en PDF. |
+| *"Genera los anuncios, emails y WhatsApp"* | Prepara los guiones en video para TikTok/Reels, correos de venta y mensajes de recuperación. |
+| *"Acompáñame a subir mi embudo a Vercel"* | Te invita a usar **/browser**, abre el navegador frente a ti, te guía en el registro y publica tu web con enlace HTTPS gratuito. |
+| *"Ejecuta todo el plan completo para mi nicho"* | El agente construye todo tu negocio digital de principio a fin sin que tengas que programar nada. |
 
 ---
 
@@ -116,21 +120,25 @@ Generador de contenidos del infoproducto digital para el **Paso #9**:
 - Redacción completa de las guías y la pila de bonos complementarios.
 
 ### 7. `browser-automation` (`agents/skills/browser-automation`)
-Motor de navegación y automatización web basado en Playwright CLI y wrappers en Node.js:
-- **Aislamiento de sesión**: Perfiles persistentes (`.browser-profile`) para retener cookies y sesiones autenticadas.
-- **Soporte Headless / Headed**: Ejecución eficiente en background y elevación a headed sólo ante bloqueos, logins o captchas.
-- **Guías específicas por sitio (`sites/`)**: Selectores y flujos testeados para evitar fallos de interacción en formularios y páginas dinámicas.
-- **Modos de ejecución**:
-  ```bash
-  # Abrir una URL en el navegador controlado
-  node agents/skills/browser-automation/scripts/browser.js open <url> [--headless|--headed]
+Motor de navegación y automatización web basado en Playwright CLI y wrappers en Node.js.
 
-  # Navegar a una nueva dirección
-  node agents/skills/browser-automation/scripts/browser.js goto <url>
+### 8. `traffic-launcher` (`agents/skills/traffic-launcher`)
+Estrategia publicitaria para Meta Ads, 5 guiones UGC/VSL y configuración completa de checkout con Order Bump y Upsell.
 
-  # Ejecutar comandos de playwright CLI
-  node agents/skills/browser-automation/scripts/browser.js exec snapshot
-  ```
+### 9. `content-creator` (`agents/skills/content-creator`)
+Generador de contenidos orgánicos para redes (Reels, TikTok, carruseles educativos) y secuencia de nutrición por email de 5 días.
+
+### 10. `dm-automation` (`agents/skills/dm-automation`)
+Automatización de respuestas directas en Instagram y ManyChat con entrega inmediata de enlaces desde comentarios.
+
+### 11. `cart-recovery` (`agents/skills/cart-recovery`)
+Secuencias de recuperación de compras abandonadas en 3 fases para WhatsApp y SMS.
+
+### 12. `app-maker` (`agents/skills/app-maker`)
+Generador de aplicaciones móviles web interactivas (PWA) de acompañamiento en `/app` e instalables directamente en teléfonos.
+
+### 13. `video-editor` (`agents/skills/video-editor`)
+Motor de procesamiento de video vertical 9:16 con FFmpeg, ganchos animados en los primeros 3 segundos y renderizado en lote.
 
 ---
 

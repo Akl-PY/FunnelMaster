@@ -4,46 +4,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const checkoutUrl = "/checkout";
 ---
 <BaseLayout 
-  title="Test de Diagnóstico Metabólico en 60 Segundos | Protocolo Reset Hormonal 21™"
-  description="Descubre qué patrón hormonal está bloqueando tu energía y desinflama tu cuerpo.">
+  title="Test de Diagnóstico en 60 Segundos | Sistema Liquidez Soberana & Cero Deudas™"
+  description="Descubre tu diagnóstico personalizado para Finanzas Personales y Eliminación de Deudas.">
   
   <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto flex flex-col justify-center">
     <!-- Header -->
     <div class="text-center mb-8">
-      <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 rounded-full mb-3">
-        Evaluación Confidencial de 60 Segundos
+      <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/30 rounded-full mb-3">
+        Ingeniería de Liquidez y Desbloqueo Patrimonial · Evaluación de 60 Segundos
       </span>
       <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-        Descubre tu Índice de Resistencia Hormonal
+        Diagnóstico Personalizado de Finanzas Personales y Eliminación de Deudas
       </h1>
       <p class="mt-2 text-slate-400 text-sm sm:text-base">
-        Responde con honestidad para identificar si tu metabolismo está bloqueado por cortisol, insulina o sobrecarga hepática.
+        Responde estas 5 preguntas para identificar la causa raíz de tu situación y tu plan de choque recomendado.
       </p>
 
       <!-- Progress bar -->
       <div class="w-full bg-slate-800 h-2 rounded-full mt-6 overflow-hidden">
-        <div id="progress-bar" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 transition-all duration-300 w-1/5"></div>
+        <div id="progress-bar" class="bg-gradient-to-r from-[#10B981] to-[#F59E0B] h-2 transition-all duration-300 w-1/5"></div>
       </div>
       <p id="step-counter" class="text-xs text-slate-500 mt-2 font-medium">Pregunta 1 de 5</p>
     </div>
 
     <!-- Quiz Card Container -->
-    <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-10 shadow-2xl backdrop-blur-sm relative">
+    <div class="bg-[#0C1A15] border border-[#18382E] rounded-2xl p-6 sm:p-10 shadow-2xl backdrop-blur-sm relative">
       
       <!-- Question 1 -->
-      <div id="q1" class="quiz-step">
+      <div id="q1" class="quiz-step ">
         <h2 class="text-lg sm:text-xl font-bold text-white mb-6">
-          1. ¿Cómo te sientes al despertar por la mañana en un día habitual?
+          1. ¿Qué ocurre con tu cuenta bancaria entre el día 10 y el día 20 de cada mes?
         </h2>
         <div class="space-y-3">
-          <button type="button" onclick="selectAnswer(1, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            😴 <span class="font-medium">Agotada</span>, como si no hubiera dormido nada aunque pasé 7 u 8 horas en cama.
+          
+          <button type="button" onclick="selectAnswer(1, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Se vacía pagando tarjetas y cuentas fijas; llego a fin de mes contando monedas.
           </button>
-          <button type="button" onclick="selectAnswer(1, 6)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            ☕ Regular, necesito café de inmediato para poder activarme y funcionar.
+          <button type="button" onclick="selectAnswer(1, 8)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Cubro mis gastos pero me queda cero margen para ahorrar o imprevistos.
           </button>
-          <button type="button" onclick="selectAnswer(1, 2)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            ⚡ Con energía natural y sin pesadez física.
+          <button type="button" onclick="selectAnswer(1, 7)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Ahorro algo al principio pero termino gastándolo antes de cobrar de nuevo.
           </button>
         </div>
       </div>
@@ -51,17 +52,18 @@ const checkoutUrl = "/checkout";
       <!-- Question 2 -->
       <div id="q2" class="quiz-step hidden">
         <h2 class="text-lg sm:text-xl font-bold text-white mb-6">
-          2. ¿Qué ocurre con tu digestión y tu abdomen tras el almuerzo o la cena?
+          2. ¿Cuál es tu situación actual con las tarjetas de crédito o préstamos personales?
         </h2>
         <div class="space-y-3">
-          <button type="button" onclick="selectAnswer(2, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            🎈 Inflamación notable e inmediata, la ropa me aprieta como si estuviera hinchada.
+          
+          <button type="button" onclick="selectAnswer(2, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Pago el mínimo o refinancio saldos que parecen no bajar nunca por los intereses.
           </button>
-          <button type="button" onclick="selectAnswer(2, 6)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            🥱 Pesadez estomacal y somnolencia fuerte que me quita la concentración.
+          <button type="button" onclick="selectAnswer(2, 9)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Uso la tarjeta para tapar baches del mes y el resumen se lleva gran parte de mi sueldo.
           </button>
-          <button type="button" onclick="selectAnswer(2, 2)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            🥗 Digestión ligera y rápida, sin alteraciones notables.
+          <button type="button" onclick="selectAnswer(2, 6)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            No tengo grandes deudas, pero el dinero se me escurre en gastos invisibles.
           </button>
         </div>
       </div>
@@ -69,17 +71,18 @@ const checkoutUrl = "/checkout";
       <!-- Question 3 -->
       <div id="q3" class="quiz-step hidden">
         <h2 class="text-lg sm:text-xl font-bold text-white mb-6">
-          3. ¿Sueles despertarte en mitad de la noche (especialmente entre las 2:00 y las 4:00 AM)?
+          3. ¿Qué métodos has intentado antes para ordenar tus finanzas?
         </h2>
         <div class="space-y-3">
-          <button type="button" onclick="selectAnswer(3, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            🌙 Sí, casi todas las noches con sensación de calor, sofoco o palpitaciones.
+          
+          <button type="button" onclick="selectAnswer(3, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Planillas de Excel donde anoto cafés y gastos durante 4 días y luego abandono.
           </button>
-          <button type="button" onclick="selectAnswer(3, 6)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            🤔 Ocasionalmente (2 o 3 veces por semana), tardando en volver a dormir.
+          <button type="button" onclick="selectAnswer(3, 9)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Intentar recortar todos mis gustos de golpe y terminar gastando por ansiedad.
           </button>
-          <button type="button" onclick="selectAnswer(3, 2)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            💤 Duermo 7 horas seguidas sin interrupciones.
+          <button type="button" onclick="selectAnswer(3, 8)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Apps bancarias complejas que solo muestran lo que ya gasté tarde.
           </button>
         </div>
       </div>
@@ -87,17 +90,18 @@ const checkoutUrl = "/checkout";
       <!-- Question 4 -->
       <div id="q4" class="quiz-step hidden">
         <h2 class="text-lg sm:text-xl font-bold text-white mb-6">
-          4. ¿Qué experimentas alrededor de las 16:00 o 17:00 de la tarde?
+          4. ¿Cuánto tiempo puedes dedicar para blindar tu sueldo y acelerar tu salida de deudas?
         </h2>
         <div class="space-y-3">
-          <button type="button" onclick="selectAnswer(4, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            🍫 Deseo voraz e incontrolable por dulce, carbohidratos o picoteo salado.
+          
+          <button type="button" onclick="selectAnswer(4, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            15 minutos al cobrar y 5 minutos semanales desde la App Móvil.
           </button>
-          <button type="button" onclick="selectAnswer(4, 6)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            🌫️ Niebla mental espesa, me cuesta redactar correos o pensar con agilidad.
+          <button type="button" onclick="selectAnswer(4, 9)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Necesito una configuración rápida en 48 horas con plantillas automáticas.
           </button>
-          <button type="button" onclick="selectAnswer(4, 2)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            🎯 Claridad mental sostenida y sin antojos marcados.
+          <button type="button" onclick="selectAnswer(4, 8)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            30 minutos este fin de semana para reestructurar todas mis cuentas.
           </button>
         </div>
       </div>
@@ -105,43 +109,44 @@ const checkoutUrl = "/checkout";
       <!-- Question 5 -->
       <div id="q5" class="quiz-step hidden">
         <h2 class="text-lg sm:text-xl font-bold text-white mb-6">
-          5. ¿Qué resultado has obtenido al intentar dietas restrictivas o cardio intenso recientemente?
+          5. ¿Cuál sería tu mayor alivio financiero en los próximos 30 días?
         </h2>
         <div class="space-y-3">
-          <button type="button" onclick="selectAnswer(5, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            🛑 Cero pérdida de grasa; solo más irritabilidad, fatiga y rebote.
+          
+          <button type="button" onclick="selectAnswer(5, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Cortar el sangrado de intereses, liberar entre $300 y $600 USD/mes y dormir en paz.
           </button>
-          <button type="button" onclick="selectAnswer(5, 6)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            ⚖️ Pierdo algo de peso al inicio pero lo recupero en cuanto como normal.
+          <button type="button" onclick="selectAnswer(5, 9)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Tener un fondo de tranquilidad separado automáticamente antes de gastar.
           </button>
-          <button type="button" onclick="selectAnswer(5, 2)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-emerald-950/40 hover:border-emerald-500/60 border border-slate-700/60 transition duration-150 text-slate-200">
-            👍 Mi cuerpo responde bien a los cambios de alimentación sin estrés.
+          <button type="button" onclick="selectAnswer(5, 10)" class="quiz-opt w-full text-left p-4 rounded-xl bg-slate-800/60 hover:bg-[#10B981]/20 hover:border-[#10B981]/60 border border-slate-700/60 transition duration-150 text-slate-200">
+            Liquidar mi tarjeta más cara con un plan matemático exacto.
           </button>
         </div>
       </div>
 
       <!-- Lead Capture Step -->
-      <div id="lead-step" class="quiz-step hidden text-center">
-        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 mb-4">
-          ✓
-        </div>
+      <div id="lead-step" class="quiz-step hidden">
+        <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-950/60 border border-amber-800/50 rounded-full mb-3">
+          ¡Evaluación Completa!
+        </span>
         <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">
-          ¡Evaluación Completada!
+          Ingresa tus datos para calcular tu reporte personalizado
         </h2>
         <p class="text-slate-400 text-sm mb-6">
-          Ingresa tus datos para calcular tu perfil hormonal personalizado y ver tu protocolo recomendado:
+          Te enviaremos el desglose de tu puntuación y las recomendaciones específicas del Sistema Liquidez Soberana & Cero Deudas™.
         </p>
 
-        <form id="quiz-form" onsubmit="submitQuiz(event)" class="space-y-4 max-w-md mx-auto text-left">
+        <form id="lead-form" onsubmit="submitQuiz(event)" class="space-y-4">
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Nombre</label>
-            <input type="text" id="lead-name" required placeholder="Tu nombre" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition" />
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Tu Nombre</label>
+            <input type="text" id="lead-name" required placeholder="Ej: Daniel" class="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#10B981] transition" />
           </div>
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Correo Electrónico</label>
-            <input type="email" id="lead-email" required placeholder="tu@email.com" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition" />
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Tu Correo Principal</label>
+            <input type="email" id="lead-email" required placeholder="tu@correo.com" class="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#10B981] transition" />
           </div>
-          <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-extrabold text-base transition duration-200 shadow-lg shadow-emerald-500/20">
+          <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#10B981] to-[#F59E0B] text-slate-950 font-extrabold text-base transition duration-200 shadow-lg shadow-[rgba(16, 185, 129, 0.32)]">
             Ver Mi Diagnóstico y Protocolo Recomendado →
           </button>
         </form>
@@ -150,34 +155,29 @@ const checkoutUrl = "/checkout";
       <!-- Result Screen -->
       <div id="result-screen" class="quiz-step hidden text-center">
         <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-rose-400 bg-rose-950/60 border border-rose-800/50 rounded-full mb-3">
-          Diagnóstico Detectado: Resistencia Metabólica Grado II
+          Diagnóstico Detectado: Nivel de Sobrecarga Crítica
         </span>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">
-          Hola <span id="display-name" class="text-emerald-400"></span>, tu metabolismo está bloqueado por Cortisol y Sobrecarga Hepática
+          Hola <span id="display-name" class="text-[#10B981]"></span>, tu situación requiere intervención guiada
         </h2>
         <div class="text-left bg-slate-800/60 border border-slate-700/60 rounded-xl p-5 mb-6 space-y-3 text-sm text-slate-300">
           <p>
-            ❌ <strong>Por qué tus dietas fallaron:</strong> Tu cuerpo está en modo de alarma biológica. El cortisol elevado impide la conversión tiroidea y bloquea la quema de grasa en el abdomen.
+            ❌ <strong>Por qué los métodos tradicionales fallaron:</strong> Estás atacando síntomas superficiales con Las planillas de presupuesto donde anotas cada café y el consejo bancario de pagar el mínimo, diseñados para mantenerte atrapado en intereses rotativos mientras te quedas sin efectivo el día 15 del mes sin corregir la raíz operativa que provoca asfixia financiera a mitad de mes, intereses bancarios que crecen sin control y frustración de cobrar el sueldo solo para pagar deudas sin capacidad de ahorro.
           </p>
-          <p>
-            ❌ <strong>Por qué tus análisis salen "normales":</strong> Los laboratorios miden patología clínica, pero no la desincronización funcional propia de la perimenopausia.
-          </p>
-          <p class="text-emerald-300 font-semibold pt-2 border-t border-slate-700">
-            ✓ <strong>Solución Inmediata Recomendada:</strong> Aplicar el Sistema de Sincronización Metabólica por Fases (SMPF)™ para drenar tu hígado en las primeras 48 horas y estabilizar tu insulina sin pasar hambre.
+          <p class="text-[#10B981] font-semibold pt-2 border-t border-slate-700">
+            ✓ <strong>Solución Inmediata Recomendada:</strong> Instalar la Arquitectura de Blindaje de Sueldo y Avalancha Inversa (ABAI)™ en bloques tácticos de 15 minutos para recuperar el control desde tus primeras 48 horas.
           </p>
         </div>
 
-        <a id="result-cta" href={checkoutUrl} class="checkout-btn inline-block w-full py-4 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-extrabold text-lg transition duration-200 shadow-xl shadow-emerald-500/25">
-          Quiero Descargar el Protocolo Reset Hormonal 21™ ($37 USD) →
+        <a id="result-cta" href={checkoutUrl} class="checkout-btn inline-block w-full py-4 px-6 rounded-xl bg-gradient-to-r from-[#10B981] to-[#F59E0B] text-slate-950 font-extrabold text-lg transition duration-200 shadow-xl shadow-[rgba(16, 185, 129, 0.32)]">
+          Quiero Descargar el Sistema Liquidez Soberana & Cero Deudas™ ($37 USD) →
         </a>
         <p class="text-xs text-slate-500 mt-3">
-          Incluye los 4 Bonos de Implementación Inmediata · Garantía Total de 30 Días
+          Incluye los 4 Bonos de Implementación Inmediata · Garantía Incondicional de 30 Días
         </p>
       </div>
-
     </div>
 
-    <!-- Back to landing -->
     <div class="text-center mt-6">
       <a href="/" class="text-xs text-slate-500 hover:text-slate-300 underline transition">
         ← Volver a la página principal del embudo

@@ -4,12 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          dark: '#0B0F19',
-          card: '#111827',
-          emerald: '#10B981',
-          rose: '#F43F5E'
-        }
+        themeBg: '#050D0A',
+        themeCard: '#0C1A15',
+        themeBorder: '#18382E',
+        themeAccent: '#10B981',
+        themeText: '#F8FAFC',
+        themeMuted: '#94A3B8'
       }
     },
   },

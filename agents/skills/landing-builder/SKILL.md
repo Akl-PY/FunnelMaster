@@ -4,85 +4,94 @@ description: Genera una landing page de alta conversión desde cero en /funnel u
 allowed-tools: Bash(node:*) Bash(npm:*) read_file write_file edit_file
 ---
 
-# Landing Builder (Astro / Next.js)
+# Landing Builder (Astro + Tailwind CSS) — Compilador Web de Nivel Agencia
 
-Esta skill crea y compila una landing page de conversión ultrarrápida desde cero dentro del directorio `/funnel` (o `/funnel/<niche-slug>`), utilizando **Astro** (por defecto por su rendimiento de cero JS innecesario) o **Next.js** con **Tailwind CSS**.
-
----
-
-## Reglas Obligatorias de la Skill
-
-1. **Cero Hardcoding**:
-   - Todo el contenido de la landing se inyecta dinámicamente desde el copy generado por `funnel-copywriter` (`funnels/<niche-slug>/copy.md`) y la configuración de `DATA.md`.
-   - Prohibido dejar textos de prueba, datos de nichos predeterminados o links de checkout inventados.
-2. **Ubicación Exclusiva**:
-   - Todo el código de la landing generada se almacena en el directorio raíz `/funnel` (ej.: `/funnel/src/` o `/funnel/<niche-slug>/`).
-3. **Preservación Obligatoria de UTMs**:
-   - Todo botón CTA o enlace a la pasarela de pago (Hotmart, Shopify, Stripe) debe incluir un script ligero que capture los parámetros `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` y `utm_term` de la URL y los reenvíe intactos al checkout.
-4. **Mobile-First Radical**:
-   - El 85%+ del tráfico de Meta Ads ocurre en smartphones. El diseño, fuentes, paddings y botones deben estar optimizados para pantallas de 375px a 430px antes de desktop.
-5. **Velocidad Extrema (Core Web Vitals)**:
-   - Tiempo de carga < 1.2s. Astro es la opción preferida por generar HTML estático sin sobrecarga de JavaScript del lado del cliente salvo interactividad requerida (acordeón FAQ, timers).
+Esta skill consume el **Super Prompt de Ingeniería Web** (`funnels/<slug>/web-builder-prompt.txt`) generado por `prompt-web-maker` y el **Copy Persuasivo de 11 Bloques** (`funnels/<slug>/copy.md`) generado por `funnel-copywriter` para construir y compilar un embudo completo de alta conversión en `/funnel`.
 
 ---
 
-## Estructura Modular de Componentes (11 Bloques)
+## 1. Reglas Inquebrantables de Construcción (Anti-Genérico)
 
-La landing debe ensamblarse dividiendo la página en componentes independientes en `src/components/`:
+1. **Consumo Real de `copy.md` y `active_offer.json` (Prohibido Ignorar el Copy)**:
+   - `build-funnel.js` **DEBE leer y parsear los bloques reales de `copy.md`** e inyectar sus textos, beneficios, casos de estudio y preguntas frecuentes dentro de los componentes de Astro.
+   - Queda terminantemente prohibido generar componentes vacíos de 10 líneas o textos estáticos desconectados de la oferta.
+2. **Prohibición de Gramática Rota y Cliché de "21 Días"**:
+   - Jamás interpolar cadenas crudas que rompan la sintaxis en español (ej.: prohibido *"Si eres Profesionales..."*).
+   - Prohibido forzar "21 días" cuando la oferta define fases operativas reales.
+3. **Ubicación Exclusiva en `/funnel`**:
+   - Todo el código fuente y compilado estático reside en `/funnel` (`/funnel/src/` y `/funnel/dist/`).
+4. **Preservación Obligatoria de UTMs**:
+   - Todo enlace o botón hacia `/checkout` o `/quiz` preserva automáticamente `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, `src` y `sck`.
+5. **Interactividad Real en Cliente**:
+   - La página principal debe incluir un **Simulador / Calculadora Interactiva funcional** (con sliders o botones reactivos en JavaScript nativo ligero), acordeón FAQ interactivo, tabla comparativa antes/después y barra flotante móvil (`StickyMobileCTA`).
+6. **Tailwind CSS + Animaciones en Scroll Nativas con CSS Oficial (`animation-timeline`)**:
+   - Todo el estilizado visual se construye con **Tailwind CSS**.
+   - `BaseLayout.astro` y los 12 componentes modulares deben incluir **Animaciones en Scroll Nativas de la Última Especificación Oficial de CSS (W3C CSS Scroll-driven Animations)** sin librerías pesadas externas:
+     - Barra superior de lectura con `animation-timeline: scroll(root block)`.
+     - Clases `.css-scroll-reveal`, `.css-scroll-scale`, `.css-scroll-left` y `.css-scroll-right` impulsadas por `animation-timeline: view()` y `animation-range: entry 0% cover 28%` dentro de `@supports (animation-timeline: view())` y `@media (prefers-reduced-motion: no-preference)`.
+7. **Libertad Creativa por Nicho y Prohibición de Jerga Técnica o Textos de Productividad Reciclados (Regla #25)**:
+   - **PROHIBIDO** escribir nombres de frameworks o sistemas de diseño (`"Google Material Design 3"`, `"Google Material You"`, `"PWA"`, `"Tailwind"`, `"432Hz"`) en los textos comerciales visibles para el comprador final.
+   - **PROHIBIDO** dejar textos fijos de productividad (*"arranque con neblina"*, *"horas perdidas frente a la pantalla"*, *"valor de tu hora productiva"*) cuando el nicho activo es otro.
+   - Cada página web debe renderizar **los síntomas reales, la calculadora interactiva propia del rubro, el widget interactivo del Hero, la descripción funcional real de la app y los casos de estudio reales** del nicho activo (`offer.web_config` y `copy.md`), variando libremente la disposición visual (layouts Bento, paneles financieros interactivos, tarjetas asimétricas, etc.) según la personalidad del mercado.
+
+---
+
+## 2. Arquitectura Completa de 12 Componentes Modulares en `/funnel`
+
+El constructor genera y ensambla todos los componentes dentro de `/funnel/src/`:
 
 ```text
 funnel/
 ├── package.json
-├── astro.config.mjs (o next.config.js)
+├── astro.config.mjs
 ├── tailwind.config.mjs
 └── src/
     ├── layouts/
-    │   └── BaseLayout.astro      # Metadata, OpenGraph, Pixel placeholder y UTM script
+    │   └── BaseLayout.astro       # SEO, tipografía Plus Jakarta Sans, ambient glow y script de UTMs
     ├── components/
-    │   ├── HeroSection.astro     # Kicker, Headline, Subheadline, CTA primario
-    │   ├── PainPoints.astro      # Lead con dolor y transformación del avatar
-    │   ├── QuickWins.astro       # Beneficios inmediatos en 24-48h
-    │   ├── UniqueMechanism.astro # Explicación visual del método único
-    │   ├── TargetAudience.astro  # Para quién es vs Para quién no es
-    │   ├── SocialProof.astro     # Testimonios / Casos de estudio
-    │   ├── SolutionShowcase.astro# Vista previa del producto digital
-    │   ├── BonusStack.astro      # Tarjetas de bonos con valor tachado y badge GRATIS
-    │   ├── PricingOffer.astro    # Value stack, anclaje de precios, garantía y checkout
-    │   ├── CreatorBio.astro      # Autoridad y empatía
-    │   ├── FaqAccordion.astro    # Acordeón de preguntas frecuentes
-    │   └── StickyMobileCTA.astro # Barra flotante con botón de compra para móvil
+    │   ├── HeroSection.astro      # Top bar + Split Hero + Simulador/Preview en vivo + Doble CTA
+    │   ├── PainPoints.astro       # Auditoría visual de 4 síntomas + Raíz del problema + Narrativa del copy
+    │   ├── QuickWins.astro        # Timeline de victorias en 2 horas, 48 horas y 7 días
+    │   ├── SpecialSection.astro   # Calculadora / Simulador Interactivo con Sliders según el Arquetipo
+    │   ├── UniqueMechanism.astro  # Matriz comparativa (Viejo vs Nuevo) + 3 Fases detalladas del Mecanismo
+    │   ├── TargetAudience.astro   # Grid de 2 columnas: Para quién ES vs. Para quién NO es
+    │   ├── SocialProof.astro      # 3 Casos de estudio verificados con métricas y transformación
+    │   ├── SolutionShowcase.astro # Radiografía interna del sistema + Preview de la App Móvil (PWA)
+    │   ├── BonusStack.astro       # 4 Tarjetas de Bonos con valor tachado y objeción que destruyen
+    │   ├── PricingOffer.astro     # Pila de valor completa, anclaje matemático, Garantía 30 días y pasarelas
+    │   ├── CreatorBio.astro       # Bloque de autoridad y respaldo metodológico
+    │   ├── FaqAccordion.astro     # Acordeón interactivo con 6 preguntas clave mata-objeciones
+    │   └── StickyMobileCTA.astro  # Barra inferior fija para conversión móvil con 1 toque
     └── pages/
-        └── index.astro           # Composición secuencial de los 11 bloques
+        ├── index.astro            # Ensamblaje completo de los 12 módulos de conversión
+        ├── quiz.astro             # Test de diagnóstico interactivo de 5 pasos con captura de lead
+        ├── checkout.astro         # Pasarela de pago con Stripe, Mercado Pago, Order Bump y Sandbox
+        └── dashboard.astro        # Panel de control con tabla de leads en vivo y simulador ROAS
 ```
 
 ---
 
-## Flujo de Ejecución Paso a Paso
+## 3. Script Preservador de UTMs Obligatorio
 
-### Paso 1: Lectura de Fuentes de Datos
-- [ ] Leer `DATA.md` para extraer `active_niche` y los datos de `active_offer`.
-- [ ] Leer el copy estructurado desde `funnels/<niche-slug>/copy.md`. Si no existe, invocar `funnel-copywriter` primero.
+```javascript
+const params = new URLSearchParams(window.location.search);
+document.querySelectorAll('a.checkout-btn').forEach(btn => {
+  const url = new URL(btn.href, window.location.origin);
+  params.forEach((val, key) => url.searchParams.set(key, val));
+  btn.href = url.toString();
+});
+```
 
-### Paso 2: Inicialización del Directorio `/funnel`
-- [ ] Crear el directorio `/funnel` si no existe.
-- [ ] Configurar `package.json`, scripts de build/dev y configuración de Tailwind CSS.
+---
 
-### Paso 3: Generación de Componentes y Páginas
-- [ ] Crear `BaseLayout` con meta tags de viewport, fuentes y script UTM:
-  ```javascript
-  // Script preservador de UTMs en botones de compra
-  const params = new URLSearchParams(window.location.search);
-  document.querySelectorAll('a.checkout-btn').forEach(btn => {
-    const url = new URL(btn.href);
-    params.forEach((val, key) => url.searchParams.set(key, val));
-    btn.href = url.toString();
-  });
-  ```
-- [ ] Inyectar el texto de cada uno de los 11 bloques en sus componentes correspondientes.
+## 4. Flujo de Compilación y Verificación
 
-### Paso 4: Verificación y Compilación
-- [ ] Ejecutar comprobación de sintaxis y build:
-  ```bash
-  npm --prefix funnel run build
-  ```
-- [ ] Correr tests automatizados para validar que no existan broken links ni textos vacíos.
+1. Ejecutar el generador de la landing:
+   ```bash
+   node agents/skills/landing-builder/scripts/build-funnel.js
+   ```
+2. Compilar el proyecto estático en `/funnel/dist` y sincronizar la App móvil en `/funnel/dist/app`:
+   ```bash
+   npm --prefix funnel run build
+   ```
+3. Verificar que `npm test` pase al 100%.
